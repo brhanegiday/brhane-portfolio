@@ -18,6 +18,10 @@ export interface Project {
 }
 
 export type ProjectCategory =
+    | "Enterprise Software Leadership"
+    | "AI Platform Architecture"
+    | "AI-Powered RegTech"
+    | "Enterprise AI Solutions"
     | "Full-Stack Development"
     | "AI/ML Application"
     | "Data Platform"
@@ -61,7 +65,7 @@ export interface Skill {
     yearsOfExperience?: number;
 }
 
-export type SkillCategory = "Frontend" | "Backend" | "AI/ML" | "Database" | "Cloud/DevOps" | "Tools" | "Design";
+export type SkillCategory = "Frontend" | "Backend" | "AI/ML" | "Database" | "Cloud/DevOps" | "Leadership" | "Tools" | "Design";
 
 export interface SocialLink {
     platform: string;
@@ -92,7 +96,7 @@ export interface Achievement {
     title: string;
     description: string;
     date: string;
-    category: "award" | "certification" | "publication" | "project" | "other";
+    category: "award" | "certification" | "publication" | "project" | "speaking" | "other";
     url?: string;
 }
 
