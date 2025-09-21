@@ -1,16 +1,14 @@
-// src/lib/data.ts
-
-import { PersonalInfo, ContactInfo, Experience, Education, Project, Skill, Achievement, SocialLink } from "@/types";
+import { Achievement, ContactInfo, Education, Experience, PersonalInfo, Project, Skill } from "@/types";
 
 export const personalInfo: PersonalInfo = {
     name: "Brhane Giday",
-    title: "Staff Software Engineer & AI Researcher",
-    tagline: "Building the Future with AI & Code",
-    bio: `Staff Software Engineer with 5+ years of experience building scalable systems and AI applications. 
-        MS in Information Technology from Carnegie Mellon University Africa. Currently leading research on AI 
-        applications in healthcare at the Upanzi Network, specializing in Large Language Models for biomarker 
-        assay variability harmonization. Passionate about creating impactful solutions at the intersection of 
-        AI, healthcare, and modern software architecture.`,
+    title: "Software Engineer & AI Researcher",
+    tagline: "Building AI-Powered Solutions for Real-World Impact",
+    bio: `Software engineer with 5+ years of experience in fullstack development, DevOps, and cloud-native solutions. 
+        MSc in Information Technology from Carnegie Mellon University Africa. Currently conducting research on 
+        Large Language Models at the Upanzi Network, specializing in LLM-powered policy and healthcare data analysis. 
+        Passionate about architecting scalable applications, building CI/CD pipelines, and applying AI to solve 
+        complex problems in healthcare and policy domains.`,
     profileImage: "/images/brhane-giday.jpg",
     resumeUrl: "/documents/Brhane-Giday_Resume.pdf",
     cvUrl: "/documents/Brhane_Giday_CV.pdf",
@@ -34,10 +32,10 @@ export const contactInfo: ContactInfo = {
             icon: "linkedin",
         },
         {
-            platform: "Twitter",
-            url: "https://twitter.com/brhane_giday",
-            username: "brhane_giday",
-            icon: "twitter",
+            platform: "YouTube",
+            url: "https://youtube.com/@bashandbeyond",
+            username: "Bash & Beyond",
+            icon: "youtube",
         },
         {
             platform: "Instagram",
@@ -51,73 +49,97 @@ export const contactInfo: ContactInfo = {
 export const experiences: Experience[] = [
     {
         id: "1",
-        title: "Staff Software Engineer & AI Researcher",
-        company: "Upanzi Network - Carnegie Mellon University Africa",
+        title: "Research Associate",
+        company: "Upanzi Network, Carnegie Mellon University Africa",
         location: "Kigali, Rwanda",
         startDate: "2025-01",
         description:
-            "Leading research and development of AI-driven healthcare solutions, specializing in Large Language Models for biomarker assay variability harmonization. Architecting scalable systems that bridge AI research and practical medical applications.",
+            "Conducting cutting-edge research on LLM-powered policy and healthcare data analysis. Designing AI pipelines to process heterogeneous datasets across Africa and collaborating with policy experts, researchers, and engineers to create practical AI tools.",
         achievements: [
-            "Architected LLM-powered systems for biomarker analysis serving 1000+ healthcare researchers",
-            "Led cross-functional team of 8 engineers and researchers across 3 countries",
-            "Reduced biomarker assay variability by 40% through AI-driven harmonization techniques",
-            "Published 2 peer-reviewed papers on AI applications in healthcare technology",
+            "Designed AI pipelines for processing heterogeneous datasets across African countries",
+            "Collaborated with cross-functional teams of policy experts, researchers, and engineers",
+            "Developed LLM-powered analysis tools for healthcare and policy applications",
+            "Created scalable solutions for data harmonization and policy analysis",
         ],
-        technologies: ["Python", "LLMs", "Healthcare APIs", "Microservices", "Docker", "AWS", "Research Methodologies"],
+        technologies: ["Python", "LLMs", "OpenAI APIs", "Data Processing", "Healthcare Analytics", "Policy Analysis"],
         type: "research",
     },
     {
         id: "2",
-        title: "Graduate Research Assistant",
-        company: "Carnegie Mellon University Africa",
-        location: "Kigali, Rwanda",
-        startDate: "2024-08",
-        endDate: "2024-12",
-        description:
-            'Teaching Assistant for "Data Structures and Algorithms for Engineers" course, mentoring students in advanced computer science concepts.',
-        achievements: [
-            "Mentored 50+ students in advanced CS concepts",
-            "Designed practical assignments and coding exercises",
-            "Improved student performance by 25% through personalized guidance",
-        ],
-        technologies: ["Python", "Java", "Algorithm Design", "Educational Technology"],
-        type: "part-time",
-    },
-    {
-        id: "3",
-        title: "Frontend Developer",
+        title: "Frontend Engineer",
         company: "Better Mobile Security",
         location: "Remote, USA",
         startDate: "2022-09",
         endDate: "2024-08",
         description:
-            "Led frontend engineering teams, architected scalable web applications, and established engineering best practices across multiple high-impact projects. Focused on building secure, performant applications for cybersecurity solutions.",
+            "Led frontend development teams for large-scale security applications using modern web technologies. Developed secure dashboards, optimized performance for thousands of users, and mentored junior engineers while integrating CI/CD workflows.",
         achievements: [
-            "Architected and led development of security dashboard serving 15K+ enterprise users",
-            "Built comprehensive design system reducing development time by 50% across 5 product teams",
-            "Mentored 12 junior developers and conducted 200+ code reviews",
-            "Optimized application performance achieving 70% faster load times and 99.9% uptime",
-            "Implemented security best practices reducing vulnerabilities by 85%",
+            "Led frontend team for large-scale security applications serving thousands of users",
+            "Developed secure dashboards with advanced security features and user management",
+            "Optimized application performance achieving significant load time improvements",
+            "Integrated comprehensive CI/CD workflows and established development best practices",
+            "Mentored junior engineers and conducted extensive code reviews",
+            "Built scalable React applications with TypeScript and Next.js",
         ],
-        technologies: ["React", "TypeScript", "Next.js", "Tailwind CSS", "GraphQL"],
+        technologies: ["React", "Next.js", "TypeScript", "Security Dashboards", "CI/CD", "Performance Optimization"],
         type: "full-time",
     },
     {
-        id: "4",
-        title: "Senior Frontend Developer",
+        id: "3",
+        title: "Frontend Engineer",
         company: "DoubleDice",
-        location: "Remote",
+        location: "Remote, Belgium",
         startDate: "2022-03",
         endDate: "2022-09",
         description:
-            "Developed complex betting platform interface with real-time updates and advanced user interactions.",
+            "Built Web3-enabled interfaces with advanced wallet integrations and blockchain connectivity. Focused on improving scalability and optimizing user experience for decentralized applications.",
         achievements: [
-            "Built real-time betting interface with WebSocket integration",
-            "Implemented advanced charting and analytics features",
-            "Optimized mobile experience for better user engagement",
+            "Built Web3-enabled interfaces with Next.js and Redux architecture",
+            "Implemented secure wallet integrations for cryptocurrency transactions",
+            "Improved application scalability and performance optimization",
+            "Enhanced user experience for decentralized application interactions",
+            "Developed responsive interfaces with modern design patterns",
         ],
-        technologies: ["React", "Web3.js", "Socket.io", "Material-UI", "Redux"],
+        technologies: ["Next.js", "Redux", "Web3.js", "Wallet Integration", "Blockchain", "DeFi"],
         type: "contract",
+    },
+    {
+        id: "4",
+        title: "Frontend Developer & UI/UX Designer",
+        company: "MAD Technologies",
+        location: "Ethiopia",
+        startDate: "2020-09",
+        endDate: "2021-10",
+        description:
+            "Delivered client websites combining WordPress with custom React components. Designed intuitive user interfaces using Figma and Adobe XD, focusing on user experience and modern design principles.",
+        achievements: [
+            "Delivered multiple client websites using WordPress with custom React components",
+            "Designed intuitive user interfaces in Figma and Adobe XD",
+            "Implemented responsive designs with modern UI/UX principles",
+            "Collaborated with clients to understand requirements and deliver solutions",
+            "Built custom React components for WordPress integration",
+        ],
+        technologies: ["WordPress", "React", "Figma", "Adobe XD", "UI/UX Design", "Custom Components"],
+        type: "full-time",
+    },
+    {
+        id: "5",
+        title: "Team Lead & Frontend Engineer",
+        company: "North Computing Group",
+        location: "Ethiopia",
+        startDate: "2019-11",
+        endDate: "2020-08",
+        description:
+            "Led a small engineering team to deliver enterprise web solutions. Focused on building scalable, responsive, and user-friendly applications while managing team coordination and project delivery.",
+        achievements: [
+            "Led small engineering team for enterprise web solution delivery",
+            "Focused on scalability, responsiveness, and usability in UI development",
+            "Managed project timelines and team coordination effectively",
+            "Delivered enterprise-grade web applications for business clients",
+            "Established development workflows and quality standards",
+        ],
+        technologies: ["JavaScript", "React", "Team Leadership", "Enterprise Solutions", "Project Management"],
+        type: "full-time",
     },
 ];
 
@@ -128,16 +150,19 @@ export const education: Education[] = [
         field: "Information Technology",
         institution: "Carnegie Mellon University Africa",
         location: "Kigali, Rwanda",
-        startDate: "2023-07",
+        startDate: "2023-08",
         endDate: "2025-05",
         relevantCoursework: [
-            "Foundations of Software Engineering",
-            "Machine Learning",
-            "Data Structures and Algorithms",
-            "Software Architecture",
-            "AI Applications in Healthcare",
+            "Software Engineering",
+            "DevOps and Cloud-Native Development",
+            "Artificial Intelligence Applications",
+            "Software Design and Architecture",
+            "Scalable Systems Design",
+            "Distributed Systems",
+            "Applied Machine Learning",
         ],
-        thesis: "Leveraging Large Language Models for Biomarker Assay Variability Harmonization",
+        description:
+            "Focused on software engineering, DevOps, and AI with emphasis on software design, architecture, and scalable systems. Coursework and projects explored distributed systems, cloud-native development, and applied machine learning.",
     },
     {
         id: "2",
@@ -146,228 +171,291 @@ export const education: Education[] = [
         institution: "Addis Ababa University",
         location: "Addis Ababa, Ethiopia",
         startDate: "2014-09",
-        endDate: "2019-08",
-        honors: ["Dean's List"],
+        endDate: "2019-07",
         relevantCoursework: [
             "Computer Programming",
-            "Digital Systems Design",
-            "Software Engineering",
-            "Database Systems",
-            "Network Programming",
+            "Computer Architecture",
+            "Digital Logic Design",
+            "Compilers",
+            "Data Structures and Algorithms",
+            "Software Engineering Principles",
         ],
+        description:
+            "Specialized in Computer Engineering with strong foundation in computer programming, computer architecture, and digital systems. The program provided both low-level systems knowledge and practical software development skills.",
     },
 ];
 
 export const projects: Project[] = [
     {
         id: "1",
-        title: "Enterprise Student Management Platform",
+        title: "Curricula - AI-Powered Academic Advisor",
         description:
-            "Architected and led development of a comprehensive student management system serving 500+ students and 50+ faculty members with 99.9% uptime.",
+            "AI-powered platform helping students plan academic paths aligned with career goals using LLM-based recommendation engine.",
         longDescription:
-            "Led a 4-person engineering team to build a scalable student management platform from the ground up. The system handles complex workflows including enrollment, grading, scheduling, and communication with advanced role-based access control. Implemented real-time notifications and analytics that improved administrative efficiency by 60%.",
-        technologies: ["React", "Node.js", "Express", "MongoDB", "Material-UI", "Socket.io", "JWT", "Docker"],
-        category: "Enterprise Software Leadership",
-        liveUrl: "https://sms-frontend-sw3p.onrender.com/",
+            "**The Challenge:** Students spend countless hours trying to navigate complex university catalogs and prerequisite chains, often making suboptimal course selections that delay graduation or don't align with career goals.\n\n**My Solution:** Architected a comprehensive AI platform leveraging Large Language Models to parse university catalogs and provide personalized academic recommendations. Built both frontend and backend systems with CI/CD pipelines for seamless deployment.\n\n**Technical Innovation:** Designed recommendation engine using advanced NLP techniques to understand course relationships and career alignment. Implemented scalable architecture with Next.js frontend, Node.js backend, and MongoDB for data persistence.\n\n**Recognition:** Platform was successfully incubated at CMU-Africa's Industry Innovation Lab, demonstrating its potential for real-world impact in educational technology.",
+        technologies: ["Next.js", "Node.js", "MongoDB", "OpenAI API", "LLMs", "CI/CD", "Academic Analytics"],
+        category: "AI/ML Application",
         features: [
-            "Multi-tenant Architecture",
-            "Real-time Collaboration",
-            "Advanced Analytics Dashboard",
-            "Automated Enrollment Workflows",
-            "Performance Monitoring",
-            "Mobile-responsive Design",
-        ],
-        status: "completed",
-        startDate: "2024-03",
-        endDate: "2024-06",
-        highlights: [
-            "Reduced administrative workload by 60% through automation",
-            "Achieved 99.9% uptime with zero data loss incidents",
-            "Led cross-functional team of 4 engineers",
-            "Implemented CI/CD pipeline reducing deployment time by 80%",
-        ],
-    },
-    {
-        id: "2",
-        title: "Curricula.tech - AI Academic Planning Platform",
-        description:
-            "🎯 Problem: Students spend 15+ hours manually planning course sequences, often missing optimal paths. ⚡ Solution: Built AI-powered platform using LLMs for intelligent course recommendations. 📈 Impact: 70% reduction in planning time across 10+ universities, serving 2,000+ students.",
-        longDescription:
-            "**The Challenge:** Academic advisors were overwhelmed with course planning requests, while students struggled with complex prerequisite chains and optimal sequencing decisions, leading to delayed graduations and suboptimal academic paths.\n\n**My Approach:** Architected a comprehensive AI platform leveraging Large Language Models to analyze academic patterns, university requirements, and student profiles. Built scalable microservices architecture integrating with multiple university systems to provide real-time, personalized course recommendations.\n\n**Technical Leadership:** Led cross-functional team of 4 engineers, defining technical strategy and implementation roadmap. Designed fault-tolerant systems with 99.8% uptime and sub-200ms response times.\n\n**Measurable Impact:** Transformed academic planning for thousands of students, achieving 85% recommendation accuracy and reducing average planning time from 15 hours to 4.5 hours per semester.",
-        technologies: [
-            "Next.js",
-            "Python",
-            "OpenAI API",
-            "PostgreSQL",
-            "FastAPI",
-            "TailwindCSS",
-            "Prisma",
-            "Docker",
-            "AWS",
-        ],
-        category: "AI Platform Architecture",
-        liveUrl: "https://www.curricula.tech/",
-        features: [
-            "Intelligent Course Sequencing Engine",
-            "Multi-University Data Integration",
-            "Predictive Academic Analytics",
-            "Real-time Prerequisite Validation",
-            "Personalized Learning Path Generation",
+            "AI-Powered Course Recommendations",
+            "University Catalog Parsing",
+            "Academic Path Planning",
+            "Career Goal Alignment",
+            "Student and Faculty Workflows",
             "Scalable Microservices Architecture",
         ],
         status: "completed",
-        startDate: "2024-01",
-        endDate: "2024-08",
+        startDate: "Jan 2024",
+        endDate: "Jun 2024",
         highlights: [
-            "85% accuracy in AI-driven course recommendations",
-            "Integrated 10+ university database systems seamlessly",
-            "70% reduction in student course planning time",
-            "2,000+ active users across multiple institutions",
-            "Led technical architecture and team of 4 engineers",
+            "Successfully incubated at CMU-Africa's Industry Innovation Lab",
+            "AI-driven recommendations using Large Language Models",
+            "Full-stack development with modern web technologies",
+            "Comprehensive CI/CD pipeline implementation",
         ],
+        imageUrl: undefined,
+        liveUrl: "#",
+        githubUrl: "#",
+    },
+    {
+        id: "2",
+        title: "AI-Powered Policy Analyzer for Africa",
+        description:
+            "AI chatbot with LLM integration making complex African policies accessible through interactive Q&A and analysis.",
+        longDescription:
+            "**The Challenge:** African policy documents are often complex, fragmented, and difficult for citizens, researchers, and policymakers to navigate effectively, creating barriers to informed decision-making.\n\n**My Solution:** Developed a sophisticated AI-powered platform with a sleek, professional UI that makes complex policies accessible to all stakeholders. Integrated advanced LLM chatbot for interactive policy Q&A sessions.\n\n**Technical Excellence:** Built responsive design with smooth API integration, ensuring optimal user experience across devices. Implemented advanced natural language processing for accurate policy interpretation and contextual responses.",
+        technologies: [
+            "React",
+            "Next.js",
+            "LLMs",
+            "OpenAI API",
+            "Policy Analysis",
+            "Conversational AI",
+            "Responsive Design",
+        ],
+        category: "AI/ML Application",
+        features: [
+            "Interactive Policy Q&A Chatbot",
+            "Professional UI for Complex Data",
+            "LLM Integration for Policy Analysis",
+            "Responsive Design",
+            "API Integration",
+            "Multi-stakeholder Access",
+        ],
+        status: "completed",
+        startDate: "Mar 2024",
+        endDate: "May 2024",
+        highlights: [
+            "Sleek, professional UI making complex policies accessible",
+            "AI chatbot powered by Large Language Models",
+            "Responsive design ensuring cross-device compatibility",
+            "Smooth API integration for seamless user experience",
+        ],
+        imageUrl: undefined,
+        liveUrl: "#",
+        githubUrl: "#",
     },
     {
         id: "3",
-        title: "Open Data Platform",
+        title: "LLM-Based Healthcare Data Harmonization",
         description:
-            "Public and private dataset sharing platform with advanced search capabilities, data visualization, and collaborative features.",
+            "AI system using LLMs to harmonize fragmented healthcare datasets across Africa for better research and policy making.",
         longDescription:
-            "Created a comprehensive data sharing platform that enables organizations and researchers to publish, discover, and collaborate on datasets. Features advanced search, data visualization, and API integration.",
-        technologies: ["React", "Django", "PostgreSQL", "ElasticSearch", "D3.js", "AWS S3", "Redis"],
-        category: "Data Platform",
+            "**The Challenge:** Healthcare datasets across Africa are fragmented with inconsistent terminology, formats, and missing data, making it difficult for researchers and policymakers to conduct comprehensive analysis.\n\n**My Solution:** Built a comprehensive system using Large Language Models to automatically harmonize healthcare datasets, unifying terminology and formats while handling missing data intelligently.\n\n**Technical Innovation:** Developed robust pipelines for data processing, terminology mapping, and quality assurance. Created both frontend visualization tools and backend APIs for scalable data access.",
+        technologies: [
+            "Python",
+            "LLMs",
+            "Healthcare APIs",
+            "Data Processing",
+            "FastAPI",
+            "Data Visualization",
+            "ETL Pipelines",
+        ],
+        category: "AI/ML Application",
         features: [
-            "Advanced Dataset Search",
-            "Data Visualization Tools",
-            "API Integration",
-            "Collaboration Features",
-            "Version Control for Datasets",
-            "Usage Analytics",
+            "Automated Data Harmonization",
+            "Terminology Unification",
+            "Missing Data Handling",
+            "Frontend Visualization Tools",
+            "Scalable Backend APIs",
+            "Healthcare Data Standards",
         ],
         status: "completed",
-        startDate: "2023-09",
-        endDate: "2024-02",
+        startDate: "Feb 2024",
+        endDate: "Apr 2024",
         highlights: [
-            "Hosts 1000+ datasets from 50+ organizations",
-            "Advanced search with ML-powered relevance",
-            "RESTful API with 99.5% uptime",
+            "LLM-powered healthcare data harmonization system",
+            "Unified terminology and format standardization",
+            "Frontend tools for easy data visualization",
+            "Scalable backend APIs for data access",
         ],
+        imageUrl: undefined,
+        liveUrl: "#",
+        githubUrl: "#",
     },
     {
         id: "4",
-        title: "Africa Policy Intelligence Platform",
+        title: "StayHub - Property Booking Platform",
         description:
-            "🎯 Problem: Legal professionals spending days researching scattered African regulatory documents. ⚡ Solution: Built AI-powered RAG system processing 1,000+ policy documents across 20+ countries. 📈 Impact: Reduced research time from days to minutes for 100+ legal professionals.",
+            "Full-featured property booking platform with advanced booking management, secure payments, and comprehensive property listings similar to Airbnb.",
         longDescription:
-            "**The Challenge:** Legal and compliance professionals across Africa faced fragmented access to regulatory information, spending 3-5 days researching policy landscapes across multiple countries. Critical compliance decisions were delayed due to information silos.\n\n**My Solution:** Architected a sophisticated AI-powered regulatory analysis platform using advanced RAG (Retrieval-Augmented Generation) architecture. Built custom NLP pipelines to process and analyze complex legal documents, creating a unified knowledge base spanning 20+ African countries.\n\n**Technical Innovation:** Designed scalable vector search infrastructure capable of processing multilingual legal text with 90% accuracy. Implemented intelligent document parsing and semantic search capabilities that understand legal context and cross-jurisdictional relationships.\n\n**Business Impact:** Democratized access to regulatory intelligence, enabling legal professionals to make informed decisions 10x faster. Platform adoption grew to 100+ professionals within 4 months of launch.",
-        technologies: [
-            "Python",
-            "Streamlit",
-            "LangChain",
-            "Vector DB",
-            "FastAPI",
-            "Transformers",
-            "PostgreSQL",
-            "Docker",
-        ],
-        category: "AI-Powered RegTech",
-        features: [
-            "Multi-jurisdictional Policy Mapping",
-            "Advanced RAG Architecture",
-            "Intelligent Compliance Analysis",
-            "Comparative Regulatory Intelligence",
-            "Semantic Legal Search",
-            "Executive Reporting Dashboard",
-        ],
-        status: "completed",
-        startDate: "2024-06",
-        endDate: "2024-10",
-        highlights: [
-            "1,000+ policy documents processed across 20+ countries",
-            "90% accuracy in complex legal query responses",
-            "100+ legal professionals actively using platform",
-            "Research time reduced from days to minutes",
-            "Scalable vector search serving 10K+ queries/month",
-        ],
-    },
-    {
-        id: "5",
-        title: "Ethiopian Airlines AI Support Platform",
-        description:
-            "🎯 Problem: 60% of customer queries resulted in long wait times and inconsistent support quality. ⚡ Solution: Architected enterprise AI support system with advanced RAG capabilities. 📈 Impact: 85% autonomous resolution rate, 60% reduction in wait times, handling 1,000+ daily queries.",
-        longDescription:
-            "**The Challenge:** Ethiopian Airlines faced mounting pressure from increasing customer service demands, with traditional support systems creating bottlenecks. Customers experienced average wait times of 45+ minutes, while support agents struggled with inconsistent information access across multiple systems.\n\n**My Approach:** Designed and implemented a comprehensive AI-powered customer support platform using advanced RAG architecture. Built seamless integrations with existing booking systems, customer databases, and knowledge management platforms to create a unified support experience.\n\n**Technical Excellence:** Architected multi-language processing capabilities supporting English and Amharic with 95% accuracy. Implemented intelligent query routing, sentiment analysis, and seamless human handoff protocols for complex scenarios requiring human intervention.\n\n**Transformational Impact:** Revolutionized customer experience with 85% of queries resolved autonomously, dramatically reducing wait times and improving customer satisfaction scores by 40%. Platform now serves as the primary customer interaction channel.",
-        technologies: ["Python", "LangChain", "OpenAI API", "Vector DB", "FastAPI", "React", "MongoDB", "Redis"],
-        category: "Enterprise AI Solutions",
-        features: [
-            "Multilingual RAG Processing Engine",
-            "Legacy System Integration",
-            "Intelligent Query Classification",
-            "Real-time Sentiment Analysis",
-            "Seamless Human Handoff Protocol",
-            "Executive Analytics Dashboard",
-        ],
-        status: "completed",
-        startDate: "2024-04",
-        endDate: "2024-09",
-        highlights: [
-            "1,000+ customer queries processed daily",
-            "85% autonomous resolution rate achieved",
-            "60% reduction in average customer wait time",
-            "95% accuracy in English and Amharic processing",
-            "Seamless integration with 5+ legacy systems",
-        ],
-    },
-    {
-        id: "6",
-        title: "Event Management System",
-        description:
-            "Role-based event management platform with comprehensive user roles including admin, event coordinators, and participants.",
-        longDescription:
-            "Built a comprehensive event management system that handles event creation, registration, scheduling, and analytics with different user roles and permissions for seamless event organization.",
-        technologies: ["Next.js", "Node.js", "PostgreSQL", "Prisma", "NextAuth.js", "Tailwind CSS", "Socket.io"],
-        category: "Enterprise Software",
-        features: [
-            "Multi-role User Management",
-            "Event Creation and Scheduling",
-            "Registration Management",
-            "Real-time Notifications",
-            "Analytics Dashboard",
-            "Payment Integration",
-        ],
-        status: "completed",
-        startDate: "2023-11",
-        endDate: "2024-03",
-        highlights: [
-            "Manages 100+ events annually",
-            "Supports 5 different user roles",
-            "Real-time collaboration features",
-        ],
-    },
-    {
-        id: "7",
-        title: "Property Booking Platform",
-        description:
-            "Airbnb-like property booking system with date-based availability, secure payments, and comprehensive booking management.",
-        longDescription:
-            "Developed a full-featured property rental platform with advanced booking system, payment processing, property management, and review system similar to Airbnb with enhanced security features.",
-        technologies: ["Next.js", "Stripe API", "PostgreSQL", "Prisma", "Tailwind CSS", "Cloudinary", "NextAuth.js"],
-        category: "E-commerce Platform",
+            "Architected and developed a comprehensive end-to-end property rental platform with modern web technologies. Implemented advanced booking system, secure payment processing, and intuitive user interface for both property owners and renters.",
+        technologies: ["Next.js", "Tailwind CSS", "Node.js", "PostgreSQL", "CI/CD", "Docker", "Payment Integration"],
+        category: "Full-Stack Development",
         features: [
             "Property Listing Management",
             "Advanced Booking System",
             "Secure Payment Processing",
-            "Review and Rating System",
-            "Calendar Integration",
-            "Host Dashboard",
+            "User Authentication",
+            "Responsive Design",
+            "Admin Dashboard",
         ],
         status: "completed",
-        startDate: "2023-06",
-        endDate: "2023-10",
+        startDate: "Jun 2023",
+        endDate: "Oct 2023",
         highlights: [
-            "Zero double-booking incidents",
-            "Integrated with Stripe for secure payments",
-            "Mobile-responsive design",
+            "End-to-end platform development",
+            "Docker containerization and deployment",
+            "Comprehensive CI/CD pipeline",
+            "Modern web technologies integration",
         ],
+        imageUrl: undefined,
+        liveUrl: "#",
+        githubUrl: "#",
+    },
+    {
+        id: "5",
+        title: "Customer Support AI Chatbot for Ethiopian Airlines",
+        description:
+            "AI chatbot with RAG pipelines providing real-time customer support using airline-specific knowledge.",
+        longDescription:
+            "**The Challenge:** Ethiopian Airlines faced increasing customer service demands with traditional support creating bottlenecks and long wait times for customers.\n\n**My Solution:** Developed an intelligent AI chatbot using RAG (Retrieval-Augmented Generation) pipelines to provide instant, accurate responses to customer queries using airline-specific datasets including fares, schedules, and policies.\n\n**Technical Excellence:** Built scalable web application with Next.js frontend and Node.js backend, implementing secure APIs for data access and chat functionality.",
+        technologies: [
+            "Next.js",
+            "Node.js",
+            "RAG Pipelines",
+            "LLMs",
+            "Airline APIs",
+            "Customer Support",
+            "Real-time Chat",
+        ],
+        category: "AI/ML Application",
+        features: [
+            "Real-time Customer Support",
+            "RAG Pipeline Integration",
+            "Airline-specific Knowledge Base",
+            "Secure API Implementation",
+            "Scalable Web Application",
+            "Multi-language Support",
+        ],
+        status: "completed",
+        startDate: "Jan 2024",
+        endDate: "Mar 2024",
+        highlights: [
+            "RAG pipelines for accurate, context-aware responses",
+            "Integration with airline-specific datasets",
+            "Scalable web application architecture",
+            "Real-time customer query processing",
+        ],
+        imageUrl: undefined,
+        liveUrl: "#",
+        githubUrl: "#",
+    },
+    {
+        id: "6",
+        title: "Role-Based Event Management System",
+        description:
+            "Comprehensive event management platform with multi-role user management, event creation, booking workflows, and administrative features.",
+        longDescription:
+            "Built a full-featured event management system supporting multiple user roles including admins, event coordinators, and participants. Implemented comprehensive event creation, booking management, and real-time features.",
+        technologies: [
+            "React",
+            "Material-UI",
+            "Tailwind CSS",
+            "Role-Based Access",
+            "Event Management",
+            "Responsive Design",
+        ],
+        category: "Full-Stack Development",
+        features: [
+            "Multi-role User Management",
+            "Event Creation and Management",
+            "Booking System",
+            "Real-time Updates",
+            "Administrative Dashboard",
+            "Responsive Interface",
+        ],
+        status: "completed",
+        startDate: "Aug 2023",
+        endDate: "Dec 2023",
+        highlights: [
+            "Role-based access control implementation",
+            "Reusable React components with Material-UI",
+            "Smooth API integrations",
+            "Responsive design for all device types",
+        ],
+        imageUrl: undefined,
+        liveUrl: "#",
+        githubUrl: "#",
+    },
+    {
+        id: "7",
+        title: "Open Data Portal",
+        description:
+            "Platform for researchers to upload, manage, and share datasets with advanced search capabilities, data validation, and collaboration features.",
+        longDescription:
+            "Designed and built a comprehensive data sharing platform enabling researchers and organizations to publish, discover, and collaborate on datasets. Features include advanced search, metadata management, and data visualization tools.",
+        technologies: ["React", "Next.js", "TypeScript", "Data Management", "Search", "Accessibility"],
+        category: "Frontend Engineering",
+        features: [
+            "Dataset Upload and Management",
+            "Advanced Search Functionality",
+            "Metadata Entry and Validation",
+            "Data Preview Tools",
+            "Collaboration Features",
+            "Accessibility Compliance",
+        ],
+        status: "completed",
+        startDate: "Apr 2023",
+        endDate: "Jul 2023",
+        highlights: [
+            "Comprehensive data management platform",
+            "Advanced search and filtering capabilities",
+            "Dataset validation and preview tools",
+            "Focus on accessibility and performance",
+        ],
+        imageUrl: undefined,
+        liveUrl: "#",
+        githubUrl: "#",
+    },
+    {
+        id: "8",
+        title: "Salon Management System",
+        description:
+            "Complete salon management solution with booking system, staff management, and operational workflows for salon businesses.",
+        longDescription:
+            "Designed and implemented a comprehensive salon management system featuring intuitive UI/UX for booking management, staff coordination, and salon operations. Built with modern React and TypeScript architecture.",
+        technologies: ["React", "TypeScript", "Booking System", "Staff Management", "API Integration"],
+        category: "Frontend Engineering",
+        features: [
+            "Appointment Booking System",
+            "Staff Management",
+            "Service Management",
+            "Customer Database",
+            "Payment Integration",
+            "Reporting Dashboard",
+        ],
+        status: "completed",
+        startDate: "Jan 2023",
+        endDate: "Mar 2023",
+        highlights: [
+            "Intuitive UI/UX design and implementation",
+            "Comprehensive booking and scheduling system",
+            "Staff management and coordination tools",
+            "API integration for payments and scheduling",
+        ],
+        imageUrl: undefined,
+        liveUrl: "#",
+        githubUrl: "#",
     },
 ];
 
@@ -376,91 +464,91 @@ export const skills: Skill[] = [
     { name: "React", category: "Frontend", proficiency: "expert", yearsOfExperience: 5 },
     { name: "Next.js", category: "Frontend", proficiency: "expert", yearsOfExperience: 4 },
     { name: "TypeScript", category: "Frontend", proficiency: "expert", yearsOfExperience: 4 },
+    { name: "JavaScript", category: "Frontend", proficiency: "expert", yearsOfExperience: 5 },
     { name: "Tailwind CSS", category: "Frontend", proficiency: "advanced", yearsOfExperience: 3 },
     { name: "Material-UI", category: "Frontend", proficiency: "advanced", yearsOfExperience: 3 },
+    { name: "Redux", category: "Frontend", proficiency: "advanced", yearsOfExperience: 3 },
     { name: "GraphQL", category: "Frontend", proficiency: "advanced", yearsOfExperience: 3 },
 
     // Backend
     { name: "Node.js", category: "Backend", proficiency: "expert", yearsOfExperience: 4 },
     { name: "Express.js", category: "Backend", proficiency: "expert", yearsOfExperience: 4 },
     { name: "Python", category: "Backend", proficiency: "expert", yearsOfExperience: 3 },
-    { name: "Django", category: "Backend", proficiency: "advanced", yearsOfExperience: 2 },
     { name: "FastAPI", category: "Backend", proficiency: "advanced", yearsOfExperience: 2 },
-    { name: "Microservices", category: "Backend", proficiency: "advanced", yearsOfExperience: 3 },
+    { name: "Java", category: "Backend", proficiency: "intermediate", yearsOfExperience: 2 },
+    { name: "C++", category: "Backend", proficiency: "intermediate", yearsOfExperience: 2 },
 
     // AI/ML
     { name: "Large Language Models", category: "AI/ML", proficiency: "expert", yearsOfExperience: 2 },
-    { name: "RAG Architecture", category: "AI/ML", proficiency: "expert", yearsOfExperience: 2 },
-    { name: "OpenAI API", category: "AI/ML", proficiency: "expert", yearsOfExperience: 2 },
-    { name: "LangChain", category: "AI/ML", proficiency: "advanced", yearsOfExperience: 2 },
-    { name: "Vector Databases", category: "AI/ML", proficiency: "advanced", yearsOfExperience: 2 },
+    { name: "RAG Pipelines", category: "AI/ML", proficiency: "expert", yearsOfExperience: 2 },
+    { name: "OpenAI APIs", category: "AI/ML", proficiency: "expert", yearsOfExperience: 2 },
+    { name: "LLM Applications", category: "AI/ML", proficiency: "advanced", yearsOfExperience: 2 },
     { name: "Healthcare AI", category: "AI/ML", proficiency: "advanced", yearsOfExperience: 1 },
+    { name: "Policy Analysis AI", category: "AI/ML", proficiency: "advanced", yearsOfExperience: 1 },
 
     // Database
-    { name: "PostgreSQL", category: "Database", proficiency: "advanced", yearsOfExperience: 4 },
-    { name: "MongoDB", category: "Database", proficiency: "advanced", yearsOfExperience: 3 },
-    { name: "Redis", category: "Database", proficiency: "intermediate", yearsOfExperience: 2 },
-    { name: "Prisma", category: "Database", proficiency: "advanced", yearsOfExperience: 2 },
+    { name: "MongoDB", category: "Database", proficiency: "advanced", yearsOfExperience: 4 },
+    { name: "PostgreSQL", category: "Database", proficiency: "advanced", yearsOfExperience: 3 },
+    { name: "MySQL", category: "Database", proficiency: "advanced", yearsOfExperience: 3 },
 
     // Cloud/DevOps
     { name: "AWS", category: "Cloud/DevOps", proficiency: "advanced", yearsOfExperience: 3 },
     { name: "Docker", category: "Cloud/DevOps", proficiency: "advanced", yearsOfExperience: 3 },
     { name: "Kubernetes", category: "Cloud/DevOps", proficiency: "intermediate", yearsOfExperience: 2 },
+    { name: "Terraform", category: "Cloud/DevOps", proficiency: "intermediate", yearsOfExperience: 2 },
+    { name: "GitHub Actions", category: "Cloud/DevOps", proficiency: "advanced", yearsOfExperience: 3 },
     { name: "CI/CD Pipelines", category: "Cloud/DevOps", proficiency: "advanced", yearsOfExperience: 3 },
-    { name: "Vercel", category: "Cloud/DevOps", proficiency: "expert", yearsOfExperience: 3 },
-    { name: "System Architecture", category: "Cloud/DevOps", proficiency: "advanced", yearsOfExperience: 4 },
+    { name: "Linux", category: "Cloud/DevOps", proficiency: "advanced", yearsOfExperience: 4 },
 
-    // Leadership & Tools
+    // Design & Tools
+    { name: "Figma", category: "Design", proficiency: "intermediate", yearsOfExperience: 3 },
+    { name: "Adobe XD", category: "Design", proficiency: "intermediate", yearsOfExperience: 2 },
+    { name: "WordPress", category: "Tools", proficiency: "advanced", yearsOfExperience: 3 },
+    { name: "Webflow", category: "Tools", proficiency: "intermediate", yearsOfExperience: 2 },
+
+    // Leadership & Core
+    { name: "Fullstack Engineering", category: "Core", proficiency: "expert", yearsOfExperience: 5 },
+    { name: "Software Architecture", category: "Core", proficiency: "advanced", yearsOfExperience: 4 },
     { name: "Technical Leadership", category: "Leadership", proficiency: "advanced", yearsOfExperience: 3 },
-    { name: "Cross-functional Teams", category: "Leadership", proficiency: "advanced", yearsOfExperience: 3 },
-    { name: "Mentoring", category: "Leadership", proficiency: "advanced", yearsOfExperience: 4 },
-    { name: "Strategic Planning", category: "Leadership", proficiency: "intermediate", yearsOfExperience: 2 },
-
-    // Tools
-    { name: "Git/GitHub", category: "Tools", proficiency: "expert", yearsOfExperience: 5 },
-    { name: "Jira", category: "Tools", proficiency: "advanced", yearsOfExperience: 3 },
-    { name: "Figma", category: "Tools", proficiency: "intermediate", yearsOfExperience: 2 },
-    { name: "VS Code", category: "Tools", proficiency: "expert", yearsOfExperience: 5 },
+    { name: "DevOps Automation", category: "Core", proficiency: "advanced", yearsOfExperience: 3 },
+    { name: "Team Leadership", category: "Leadership", proficiency: "advanced", yearsOfExperience: 3 },
 ];
 
 export const achievements: Achievement[] = [
     {
         id: "1",
-        title: "AWS Certified Solutions Architect",
-        description: "Advanced cloud architecture design and implementation expertise",
-        date: "2024-03",
+        title: "AWS Certified Cloud Practitioner",
+        description: "Certified in cloud computing fundamentals and AWS services",
+        date: "2024",
         category: "certification",
     },
     {
         id: "2",
-        title: "Technical Leadership Excellence Award",
-        description: "Recognition for leading high-performance engineering teams and delivering scalable solutions",
-        date: "2024-09",
-        category: "award",
+        title: "CompTIA Linux+ Certified",
+        description: "Advanced Linux system administration and DevOps skills certification",
+        date: "2024",
+        category: "certification",
     },
     {
         id: "3",
-        title: "CMU Research Excellence Award",
-        description: "Outstanding research in AI applications for healthcare and team leadership",
-        date: "2024-12",
-        category: "award",
+        title: "Bash & Beyond YouTube Channel Founder",
+        description: "Founded educational YouTube channel teaching Linux & DevOps through real-world scenarios",
+        date: "2023",
+        category: "content-creation",
     },
     {
         id: "4",
-        title: "Published Research: LLM Healthcare Applications",
-        description:
-            "Lead author on research paper: 'Leveraging Large Language Models for Biomarker Assay Variability Harmonization'",
-        date: "2024-11",
-        category: "publication",
-        url: "https://example.com/research-paper",
+        title: "CMU-Africa Industry Innovation Lab Incubation",
+        description: "Curricula platform successfully incubated at Carnegie Mellon University Africa's Innovation Lab",
+        date: "2024",
+        category: "award",
     },
     {
         id: "5",
-        title: "Keynote: AI in Healthcare Conference",
-        description:
-            "Delivered keynote presentation on 'Scaling AI Solutions in Healthcare: From Research to Production'",
-        date: "2024-10",
-        category: "speaking",
+        title: "Research Leadership in AI Healthcare Applications",
+        description: "Leading research on LLM-powered healthcare data analysis at Upanzi Network",
+        date: "2025",
+        category: "research",
     },
 ];
 
@@ -475,84 +563,53 @@ export const navSections = [
 
 // SEO configuration
 export const seoConfig = {
-    title: "Brhane Giday - Staff Software Engineer & AI Researcher",
+    title: "Brhane Giday - Software Engineer & Research Associate",
     description:
-        "Staff Software Engineer with 5+ years building scalable systems and AI applications. Leading AI research in healthcare at CMU. Expert in modern software architecture, AI/ML, and cross-functional team leadership.",
+        "Software engineer with 5+ years of experience in fullstack development, DevOps, and cloud-native solutions. MS in Information Technology from Carnegie Mellon University Africa. Specializing in AI applications for healthcare and policy analysis.",
     keywords: [
-        "Staff Software Engineer",
-        "AI Researcher",
-        "Healthcare Technology",
+        "Software Engineer",
+        "Research Associate",
+        "Fullstack Development",
         "Large Language Models",
-        "Software Architecture",
-        "Team Leadership",
+        "Healthcare AI",
+        "Policy Analysis",
         "React",
+        "Next.js",
         "Python",
-        "Machine Learning",
+        "DevOps",
         "Carnegie Mellon University",
-        "Biomarker Analysis",
-        "Scalable Systems",
+        "Upanzi Network",
         "Kigali Rwanda",
     ],
     ogImage: "/images/og-image.jpg",
-    twitterHandle: "@brhane_giday",
     canonicalUrl: "https://brhane-giday.vercel.app",
 };
 
 // Statistics for hero section
 export const stats = [
     { label: "Years Experience", value: "5+" },
-    { label: "Projects Delivered", value: "20+" },
-    { label: "AI Solutions Built", value: "8+" },
-    { label: "Teams Led", value: "3+" },
+    { label: "Projects Delivered", value: "15+" },
+    { label: "AI Solutions Built", value: "6+" },
+    { label: "Teams Led", value: "4+" },
 ];
 
 // Featured technologies for hero animation
-export const featuredTechnologies = [
-    "AI/ML",
-    "System Architecture",
-    "Team Leadership",
-    "Python",
-    "Next.js",
-    "Healthcare Tech",
-];
+export const featuredTechnologies = ["React", "Next.js", "Python", "AI/ML", "Node.js", "TypeScript", "AWS", "DevOps"];
 
-// Testimonials (if available)
-export const testimonials = [
-    {
-        id: "1",
-        name: "Prof. David Vernon",
-        title: "Professor at Carnegie Mellon University Africa",
-        content:
-            "Brhane demonstrated exceptional technical skills and leadership as a teaching assistant. His ability to explain complex algorithms and mentor students is outstanding.",
-        avatar: "/images/testimonials/prof-vernon.jpg",
-    },
-    // Add more testimonials as needed
-];
-
-// Blog posts or articles (if you plan to add a blog)
-export const blogPosts = [
-    {
-        id: "1",
-        title: "Building Scalable AI Applications with RAG Architecture",
-        excerpt: "Learn how to build robust AI applications using Retrieval-Augmented Generation patterns.",
-        date: "2024-10-15",
-        readTime: "8 min read",
-        tags: ["AI/ML", "RAG", "Python"],
-        slug: "building-scalable-ai-applications-rag",
-    },
-    {
-        id: "2",
-        title: "Modern Frontend Development with Next.js and TypeScript",
-        excerpt: "Best practices for building type-safe, performant web applications.",
-        date: "2024-09-20",
-        readTime: "12 min read",
-        tags: ["Next.js", "TypeScript", "Frontend"],
-        slug: "modern-frontend-nextjs-typescript",
-    },
+// Interests and Focus Areas
+export const interests = [
+    "AI for Social Good",
+    "Healthcare Technology",
+    "Policy Analysis AI",
+    "Educational Technology",
+    "Developer Mentoring",
+    "Open Source Contribution",
+    "Linux & DevOps Education",
+    "Technical Content Creation",
 ];
 
 // Featured project IDs for homepage
-export const featuredProjectIds = ["2", "4", "5", "1"];
+export const featuredProjectIds = ["1", "2", "3", "5"];
 
 // Skills grouped by category for display
 export const skillsByCategory = skills.reduce((acc, skill) => {
@@ -566,10 +623,14 @@ export const skillsByCategory = skills.reduce((acc, skill) => {
 // Recent projects (last 2 years)
 export const recentProjects = projects
     .filter((project) => {
-        const startYear = new Date(project.startDate).getFullYear();
+        const startYear = parseInt(project.startDate.split(" ")[1]);
         return startYear >= 2023;
     })
-    .sort((a, b) => new Date(b.startDate).getTime() - new Date(a.startDate).getTime());
+    .sort((a, b) => {
+        const yearA = parseInt(a.startDate.split(" ")[1]);
+        const yearB = parseInt(b.startDate.split(" ")[1]);
+        return yearB - yearA;
+    });
 
 // Helper functions
 export const getProjectsByCategory = (category: string) => projects.filter((project) => project.category === category);
@@ -582,6 +643,10 @@ export const getFeaturedProjects = () => projects.filter((project) => featuredPr
 export const getCurrentExperience = () => experiences.find((exp) => !exp.endDate);
 
 export const getCompletedProjects = () => projects.filter((project) => project.status === "completed");
+
+export const getExpertSkills = () => skills.filter((skill) => skill.proficiency === "expert");
+
+export const getRecentAchievements = () => achievements.sort((a, b) => parseInt(b.date) - parseInt(a.date)).slice(0, 3);
 
 // Animation variants for Framer Motion
 export const animationVariants = {
@@ -601,5 +666,10 @@ export const animationVariants = {
                 staggerChildren: 0.1,
             },
         },
+    },
+    scaleIn: {
+        initial: { opacity: 0, scale: 0.8 },
+        animate: { opacity: 1, scale: 1 },
+        transition: { duration: 0.5 },
     },
 };

@@ -65,8 +65,14 @@ export function Navbar() {
                         }}
                         className="flex items-center space-x-3 group"
                     >
-                        <div className="w-10 h-10 bg-gradient-to-r from-primary to-blue-600 rounded-full flex items-center justify-center transition-transform group-hover:scale-105">
-                            <span className="text-white font-bold text-lg">BG</span>
+                        <div className="w-10 h-10 bg-primary rounded-full flex items-center justify-center shadow-lg border border-white/20 transition-transform group-hover:scale-105">
+                            <span className="text-white font-semibold text-xl tracking-tight select-none">
+                                {personalInfo.name
+                                    .split(" ")
+                                    .map((n) => n[0])
+                                    .join("")
+                                    .toUpperCase()}
+                            </span>
                         </div>
                         <div className="hidden sm:block">
                             <h1 className="text-xl font-bold text-foreground">{personalInfo.name}</h1>

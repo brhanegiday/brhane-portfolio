@@ -43,17 +43,6 @@ export function HeroSection() {
                 />
             </div>
 
-            {/* Floating Elements */}
-            {/* <div className="absolute top-20 right-10 opacity-20 animate-pulse">
-                <Code className="w-16 h-16 text-primary" />
-            </div>
-            <div className="absolute bottom-20 left-10 opacity-20 animate-bounce">
-                <Brain className="w-12 h-12 text-blue-500" />
-            </div>
-            <div className="absolute top-1/3 right-1/4 opacity-10 animate-pulse delay-1000">
-                <Sparkles className="w-8 h-8 text-purple-500" />
-            </div> */}
-
             <div className="container mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 py-20">
                 <div className="grid lg:grid-cols-2 gap-12 lg:gap-16 items-center">
                     {/* Content */}

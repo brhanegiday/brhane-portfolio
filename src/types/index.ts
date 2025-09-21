@@ -1,5 +1,4 @@
-// src/types/index.ts
-
+/* eslint-disable @typescript-eslint/no-explicit-any */
 export interface Project {
     id: string;
     title: string;
@@ -18,18 +17,10 @@ export interface Project {
 }
 
 export type ProjectCategory =
-    | "Enterprise Software Leadership"
-    | "AI Platform Architecture"
-    | "AI-Powered RegTech"
-    | "Enterprise AI Solutions"
-    | "Full-Stack Development"
     | "AI/ML Application"
-    | "Data Platform"
-    | "AI/Policy Analysis"
-    | "AI Customer Support"
-    | "Enterprise Software"
-    | "E-commerce Platform"
-    | "Healthcare Technology";
+    | "Full-Stack Development"
+    | "Team Leadership"
+    | "Frontend Engineering";
 
 export interface Experience {
     id: string;
@@ -49,6 +40,7 @@ export interface Education {
     degree: string;
     field: string;
     institution: string;
+    description?: string;
     location: string;
     startDate: string;
     endDate: string;
@@ -65,7 +57,16 @@ export interface Skill {
     yearsOfExperience?: number;
 }
 
-export type SkillCategory = "Frontend" | "Backend" | "AI/ML" | "Database" | "Cloud/DevOps" | "Leadership" | "Tools" | "Design";
+export type SkillCategory =
+    | "Frontend"
+    | "Backend"
+    | "AI/ML"
+    | "Database"
+    | "Cloud/DevOps"
+    | "Design"
+    | "Tools"
+    | "Core"
+    | "Leadership";
 
 export interface SocialLink {
     platform: string;
@@ -96,9 +97,17 @@ export interface Achievement {
     title: string;
     description: string;
     date: string;
-    category: "award" | "certification" | "publication" | "project" | "speaking" | "other";
+    category: AchievementCategory;
     url?: string;
 }
+
+export type AchievementCategory =
+    | "certification"
+    | "content-creation"
+    | "award"
+    | "research"
+    | "publication"
+    | "speaking";
 
 export interface Publication {
     id: string;
@@ -153,6 +162,25 @@ export interface AnimationConfig {
     ease?: string;
 }
 
+export interface AnimationVariant {
+    initial: Record<string, any>;
+    animate: Record<string, any>;
+    transition: Record<string, any>;
+}
+
+export interface AnimationVariants {
+    fadeIn: AnimationVariant;
+    slideIn: AnimationVariant;
+    stagger: {
+        animate: {
+            transition: {
+                staggerChildren: number;
+            };
+        };
+    };
+    scaleIn: AnimationVariant;
+}
+
 // Theme Types
 export interface ThemeConfig {
     colors: {
@@ -190,6 +218,27 @@ export interface ContactFormErrors {
     message?: string;
 }
 
+// Statistics Types
+export interface Stat {
+    label: string;
+    value: string;
+}
+
+// Featured Technology Type
+export type FeaturedTechnology = string;
+
+// Interest Type
+export type Interest = string;
+
+// Helper Function Return Types
+export interface SkillsByCategory {
+    [category: string]: Skill[];
+}
+
+export interface ProjectsByCategory {
+    [category: string]: Project[];
+}
+
 // Utility Types
 export type Optional<T, K extends keyof T> = Omit<T, K> & Partial<Pick<T, K>>;
 export type RequireAtLeastOne<T, Keys extends keyof T = keyof T> = Pick<T, Exclude<keyof T, Keys>> &
@@ -200,6 +249,18 @@ export interface ProjectFilters {
     category?: ProjectCategory;
     technology?: string;
     status?: Project["status"];
+}
+
+export interface SkillFilters {
+    category?: SkillCategory;
+    proficiency?: Skill["proficiency"];
+    minYearsOfExperience?: number;
+}
+
+export interface ExperienceFilters {
+    type?: Experience["type"];
+    location?: string;
+    company?: string;
 }
 
 export interface SortConfig<T> {
@@ -215,4 +276,170 @@ export interface SEOConfig {
     ogImage?: string;
     twitterHandle?: string;
     canonicalUrl?: string;
+}
+
+// Content Types for Blog/Articles (if needed in the future)
+export interface BlogPost {
+    id: string;
+    title: string;
+    excerpt: string;
+    content?: string;
+    date: string;
+    readTime: string;
+    tags: string[];
+    slug: string;
+    published?: boolean;
+    featuredImage?: string;
+    author?: string;
+}
+
+// Testimonial Type (if needed)
+export interface Testimonial {
+    id: string;
+    name: string;
+    title: string;
+    company?: string;
+    content: string;
+    avatar?: string;
+    rating?: number;
+    date?: string;
+}
+
+// Portfolio Configuration Types
+export interface PortfolioConfig {
+    personalInfo: PersonalInfo;
+    contactInfo: ContactInfo;
+    seoConfig: SEOConfig;
+    navSections: NavSection[];
+    featuredProjectIds: string[];
+    featuredTechnologies: FeaturedTechnology[];
+    interests: Interest[];
+    stats: Stat[];
+}
+
+// Data Export Types
+export interface PortfolioData {
+    personalInfo: PersonalInfo;
+    contactInfo: ContactInfo;
+    experiences: Experience[];
+    education: Education[];
+    projects: Project[];
+    skills: Skill[];
+    achievements: Achievement[];
+    config: PortfolioConfig;
+}
+
+// Component State Types
+export interface ContactFormState {
+    form: ContactForm;
+    errors: ContactFormErrors;
+    isSubmitting: boolean;
+    isSuccess: boolean;
+}
+
+export interface ProjectModalState {
+    isOpen: boolean;
+    selectedProject: Project | null;
+}
+
+export interface FilterState<T> {
+    filters: T;
+    sortConfig?: SortConfig<any>;
+    searchQuery?: string;
+}
+
+// Hook Return Types
+export interface UseProjectsReturn {
+    projects: Project[];
+    filteredProjects: Project[];
+    filters: ProjectFilters;
+    setFilters: (filters: ProjectFilters) => void;
+    searchQuery: string;
+    setSearchQuery: (query: string) => void;
+    sortConfig: SortConfig<Project>;
+    setSortConfig: (config: SortConfig<Project>) => void;
+}
+
+export interface UseSkillsReturn {
+    skills: Skill[];
+    skillsByCategory: SkillsByCategory;
+    filters: SkillFilters;
+    setFilters: (filters: SkillFilters) => void;
+    expertSkills: Skill[];
+}
+
+// Animation Hook Types
+export interface UseScrollAnimationReturn {
+    ref: React.RefObject<HTMLElement>;
+    isVisible: boolean;
+    hasAnimated: boolean;
+}
+
+export interface UseTypingEffectReturn {
+    displayText: string;
+    isComplete: boolean;
+}
+
+// Responsive Design Types
+export type Breakpoint = "sm" | "md" | "lg" | "xl" | "2xl";
+
+export interface ResponsiveConfig {
+    [key: string]: {
+        [breakpoint in Breakpoint]?: any;
+    };
+}
+
+// Error Types
+export interface FormValidationError {
+    field: string;
+    message: string;
+    code?: string;
+}
+
+export interface ApiError {
+    message: string;
+    code: number;
+    details?: any;
+}
+
+// Loading States
+export type LoadingState = "idle" | "loading" | "success" | "error";
+
+export interface AsyncState<T> {
+    data: T | null;
+    loading: boolean;
+    error: string | null;
+    status: LoadingState;
+}
+
+// Search Types
+export interface SearchResult<T> {
+    item: T;
+    score: number;
+    matches: string[];
+}
+
+export interface SearchConfig {
+    keys: string[];
+    threshold?: number;
+    includeScore?: boolean;
+    includeMatches?: boolean;
+}
+
+// Performance Monitoring Types
+export interface PerformanceMetrics {
+    loadTime: number;
+    renderTime: number;
+    interactionTime: number;
+    route: string;
+    timestamp: number;
+}
+
+// Analytics Types
+export interface AnalyticsEvent {
+    name: string;
+    properties?: Record<string, any>;
+    timestamp: number;
+    userId?: string;
+    sessionId?: string;
 }

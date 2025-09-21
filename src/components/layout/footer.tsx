@@ -142,25 +142,6 @@ export function Footer() {
                                     })}
                                 </div>
                             </div>
-
-                            {/* Newsletter/Updates */}
-                            <div className="pt-4">
-                                <h5 className="font-medium text-foreground mb-2">Stay Updated</h5>
-                                <p className="text-xs text-muted-foreground mb-3">
-                                    Get notified about new projects and opportunities
-                                </p>
-                                <Button
-                                    variant="outline"
-                                    size="sm"
-                                    onClick={() =>
-                                        window.open(`mailto:${contactInfo.email}?subject=Subscribe to Updates`)
-                                    }
-                                    className="w-full transition-all hover:scale-105"
-                                >
-                                    <Mail className="w-4 h-4 mr-2" />
-                                    Subscribe
-                                </Button>
-                            </div>
                         </div>
                     </div>
                 </div>

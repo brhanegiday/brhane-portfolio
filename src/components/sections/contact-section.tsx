@@ -20,14 +20,14 @@ import {
     MessageCircle,
     Phone,
     Send,
-    Twitter,
+    Youtube,
 } from "lucide-react";
 import { useState } from "react";
 
 const socialIcons = {
     GitHub: Github,
     LinkedIn: Linkedin,
-    Twitter: Twitter,
+    YouTube: Youtube,
     Instagram: Instagram,
 };
 
