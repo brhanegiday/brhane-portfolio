@@ -3,24 +3,26 @@
 
 "use client";
 
-import { Card, CardContent } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
+import { Card, CardContent } from "@/components/ui/card";
+import { achievements, education, personalInfo, skillsByCategory } from "@/lib/data";
+import { SkillCategory } from "@/types";
 import {
-    GraduationCap,
     Award,
+    Brain,
+    Cloud,
+    Code2,
+    Database,
     Download,
     ExternalLink,
-    Code2,
-    Brain,
-    Database,
-    Cloud,
+    GraduationCap,
     Palette,
     Settings,
-    Users,
+    Target,
+    User,
+    Users
 } from "lucide-react";
-import { personalInfo, education, skillsByCategory, achievements } from "@/lib/data";
-import { SkillCategory } from "@/types";
 
 const categoryIcons: Record<SkillCategory, any> = {
     Frontend: Code2,
@@ -31,6 +33,7 @@ const categoryIcons: Record<SkillCategory, any> = {
     Leadership: Users,
     Tools: Settings,
     Design: Palette,
+    Core: Target,
 };
 
 export function AboutSection() {
@@ -42,23 +45,35 @@ export function AboutSection() {
     };
 
     return (
-        <section id="about" className="py-20 lg:py-32 bg-muted/20">
-            <div className="container mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-                {/* Section Header */}
-                <div className="text-center mb-16">
-                    <Badge variant="secondary" className="mb-4">
-                        About Me
-                    </Badge>
-                    <h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold tracking-tight mb-6">
+        <section id="about" className="relative py-20 lg:py-32 overflow-hidden">
+            {/* Background Elements */}
+            <div className="absolute inset-0">
+                <div className="absolute inset-0 bg-gradient-to-br from-background via-muted/5 to-background" />
+                <div className="absolute top-1/4 right-0 w-72 h-72 bg-primary/5 rounded-full blur-3xl" />
+                <div className="absolute bottom-1/4 left-0 w-80 h-80 bg-purple-500/5 rounded-full blur-3xl" />
+            </div>
+
+            <div className="relative container mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+                {/* Enhanced Section Header */}
+                <div className="text-center mb-20">
+                    <div className="inline-flex items-center gap-3 px-6 py-2 rounded-full border border-border/50 bg-background/50 backdrop-blur-sm mb-6">
+                        <User className="w-4 h-4 text-primary" />
+                        <span className="text-sm font-medium text-muted-foreground">About Me</span>
+                    </div>
+                    <h2 className="text-4xl sm:text-5xl lg:text-6xl font-bold tracking-tight mb-6">
                         Engineering{" "}
-                        <span className="bg-gradient-to-r from-primary to-blue-600 bg-clip-text text-transparent">
-                            Excellence
+                        <span className="relative">
+                            <span className="bg-gradient-to-r from-primary via-blue-600 to-purple-600 bg-clip-text text-transparent">
+                                Excellence
+                            </span>
+                            <div className="absolute -bottom-2 left-0 right-0 h-px bg-gradient-to-r from-transparent via-primary/50 to-transparent" />
                         </span>{" "}
                         at Scale
                     </h2>
                     <p className="text-xl text-muted-foreground max-w-3xl mx-auto leading-relaxed">
-                        Staff-level engineer specializing in AI-powered healthcare solutions, system architecture, and
-                        high-performance team leadership
+                        Staff-level engineer specializing in{" "}
+                        <span className="text-primary font-semibold">AI-powered healthcare solutions</span>,
+                        system architecture, and high-performance team leadership
                     </p>
                 </div>
 
