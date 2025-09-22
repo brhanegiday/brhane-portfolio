@@ -33,14 +33,6 @@ export const metadata: Metadata = {
             },
         ],
     },
-    twitter: {
-        card: "summary_large_image",
-        site: seoConfig.twitterHandle,
-        creator: seoConfig.twitterHandle,
-        title: seoConfig.title,
-        description: seoConfig.description,
-        images: [seoConfig.ogImage],
-    },
     robots: {
         index: true,
         follow: true,
@@ -51,10 +43,6 @@ export const metadata: Metadata = {
             "max-image-preview": "large",
             "max-snippet": -1,
         },
-    },
-    verification: {
-        // Add your Google Search Console verification ID here
-        // google: 'your-google-verification-id',
     },
 };
 
