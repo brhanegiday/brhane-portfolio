@@ -44,10 +44,8 @@ export function Footer() {
                                 </div>
                             </div>
                             <p className="text-sm text-muted-foreground leading-relaxed max-w-sm">
-                                I’m Brhane Giday — a Software Engineer and AI researcher passionate about building
-                                scalable systems and AI-powered solutions that create real impact. From full-stack apps
-                                to DevOps pipelines and applied AI research, I bridge design, code, and data to deliver
-                                technology that matters.
+                                From full-stack apps to DevOps pipelines and applied AI research, I bridge design, code,
+                                and data to deliver technology that matters.
                             </p>
 
                             <div className="flex items-center space-x-2 text-sm text-muted-foreground">
@@ -77,7 +75,7 @@ export function Footer() {
                             <h4 className="font-semibold text-sm text-foreground">Resources</h4>
                             <div className="flex flex-col space-y-2.5">
                                 <a
-                                    href={personalInfo.cvUrl}
+                                    href={personalInfo.resumeUrl}
                                     target="_blank"
                                     rel="noopener noreferrer"
                                     className="text-sm text-muted-foreground hover:text-primary transition-colors inline-flex items-center gap-1.5"
@@ -156,47 +154,12 @@ export function Footer() {
 
                 {/* Bottom Footer */}
                 <div className="py-6">
-                    <div className="flex flex-col sm:flex-row justify-between items-center gap-4">
+                    <div className="flex justify-center">
                         {/* Copyright */}
                         <div className="text-sm text-muted-foreground text-center sm:text-left">
                             <span>
                                 © {currentYear} {personalInfo.name}. All rights reserved.
                             </span>
-                        </div>
-
-                        {/* Built With & Back to Top */}
-                        <div className="flex items-center gap-6">
-                            <div className="text-xs text-muted-foreground">
-                                Built with{" "}
-                                <a
-                                    href="https://nextjs.org"
-                                    target="_blank"
-                                    rel="noopener noreferrer"
-                                    className="text-foreground hover:text-primary transition-colors"
-                                >
-                                    Next.js
-                                </a>
-                                {" & "}
-                                <a
-                                    href="https://tailwindcss.com"
-                                    target="_blank"
-                                    rel="noopener noreferrer"
-                                    className="text-foreground hover:text-primary transition-colors"
-                                >
-                                    Tailwind
-                                </a>
-                            </div>
-
-                            {/* Back to Top */}
-                            <Button
-                                variant="ghost"
-                                size="sm"
-                                onClick={scrollToTop}
-                                className="h-8 w-8 p-0"
-                                aria-label="Back to top"
-                            >
-                                <ArrowUp className="w-4 h-4" />
-                            </Button>
                         </div>
                     </div>
                 </div>

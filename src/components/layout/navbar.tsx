@@ -95,7 +95,7 @@ export function Navbar() {
                                 key={section.id}
                                 onClick={() => scrollToSection(section.id)}
                                 className={cn(
-                                    "relative px-4 py-3 text-sm font-medium transition-all duration-300 rounded-xl group hover:bg-primary/10",
+                                    "relative cursor-pointer px-4 py-3 text-sm font-medium transition-all duration-300 rounded-xl group hover:bg-primary/10",
                                     activeSection === section.id
                                         ? "text-primary bg-primary/10"
                                         : "text-muted-foreground hover:text-primary"
@@ -110,11 +110,6 @@ export function Navbar() {
                                         activeSection === section.id ? "opacity-100" : "group-hover:opacity-50"
                                     )}
                                 />
-
-                                {/* Active indicator */}
-                                {activeSection === section.id && (
-                                    <div className="absolute bottom-1 left-1/2 transform -translate-x-1/2 w-1 h-1 bg-primary rounded-full animate-pulse" />
-                                )}
                             </button>
                         ))}
                     </div>

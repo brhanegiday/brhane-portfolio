@@ -1,6 +1,6 @@
+import { ScrollToTop } from "@/components/common/scroll-to-top";
 import { Footer } from "@/components/layout/footer";
 import { Navbar } from "@/components/layout/navbar";
-import { ScrollToTop } from "@/components/common/scroll-to-top";
 import { AboutSection } from "@/components/sections/about-section";
 import { ContactSection } from "@/components/sections/contact-section";
 import { ExperienceSection } from "@/components/sections/experience-section";

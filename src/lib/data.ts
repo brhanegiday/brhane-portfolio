@@ -582,7 +582,7 @@ export const seoConfig = {
         "Kigali Rwanda",
     ],
     ogImage: "/images/og-image.jpg",
-    canonicalUrl: "https://brhane-giday.vercel.app",
+    canonicalUrl: "https://brhane.vercel.app",
 };
 
 // Statistics for hero section

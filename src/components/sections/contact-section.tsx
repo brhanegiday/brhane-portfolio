@@ -79,13 +79,22 @@ export function ContactSection() {
                                         <Mail className="w-6 h-6 sm:w-8 sm:h-8 text-primary" />
                                     </div>
                                     <div className="flex-1 min-w-0">
-                                        <h3 className="font-bold text-lg sm:text-xl mb-1 group-hover:text-primary transition-colors">Email</h3>
-                                        <p className="text-muted-foreground text-sm sm:text-base font-medium break-all">{contactInfo.email}</p>
+                                        <h3 className="font-bold text-lg sm:text-xl mb-1 group-hover:text-primary transition-colors">
+                                            Email
+                                        </h3>
+                                        <p className="text-muted-foreground text-sm sm:text-base font-medium break-all">
+                                            {contactInfo.email}
+                                        </p>
                                     </div>
                                 </div>
                                 {/* Buttons stack on mobile, inline on larger screens */}
                                 <div className="flex flex-col sm:flex-row gap-2 sm:gap-3">
-                                    <Button variant="outline" size="sm" onClick={copyEmail} className="gap-2 hover:bg-primary/10 hover:text-primary hover:border-primary/50 transition-all flex-1 sm:flex-none">
+                                    <Button
+                                        variant="outline"
+                                        size="sm"
+                                        onClick={copyEmail}
+                                        className="gap-2 hover:bg-primary/10 hover:text-primary hover:border-primary/50 transition-all flex-1 sm:flex-none"
+                                    >
                                         {copiedEmail ? (
                                             <>
                                                 <Check className="w-4 h-4" />
@@ -98,7 +107,11 @@ export function ContactSection() {
                                             </>
                                         )}
                                     </Button>
-                                    <Button size="sm" className="gap-2 shadow-lg hover:shadow-xl transition-all flex-1 sm:flex-none" asChild>
+                                    <Button
+                                        size="sm"
+                                        className="gap-2 shadow-lg hover:shadow-xl transition-all flex-1 sm:flex-none"
+                                        asChild
+                                    >
                                         <a href={`mailto:${contactInfo.email}`}>
                                             <Send className="w-4 h-4" />
                                             Send Email
@@ -116,11 +129,12 @@ export function ContactSection() {
                                         <Phone className="w-5 h-5 sm:w-7 sm:h-7 text-blue-500" />
                                     </div>
                                     <div className="flex-1 min-w-0">
-                                        <h3 className="font-bold text-base sm:text-lg mb-2 group-hover:text-blue-500 transition-colors">Phone</h3>
-                                        <p className="text-muted-foreground text-sm sm:text-base font-medium mb-3 break-all">{contactInfo.phone}</p>
-                                        <Button variant="link" size="sm" className="px-0 h-auto text-blue-500 hover:text-blue-600 text-sm" asChild>
-                                            <a href={`tel:${contactInfo.phone}`}>📞 Call me</a>
-                                        </Button>
+                                        <h3 className="font-bold text-base sm:text-lg mb-2 group-hover:text-blue-500 transition-colors">
+                                            Phone
+                                        </h3>
+                                        <p className="text-muted-foreground text-sm sm:text-base font-medium mb-3 break-all">
+                                            {contactInfo.phone}
+                                        </p>
                                     </div>
                                 </div>
                             </div>
@@ -131,9 +145,12 @@ export function ContactSection() {
                                         <MapPin className="w-5 h-5 sm:w-7 sm:h-7 text-green-500" />
                                     </div>
                                     <div className="flex-1 min-w-0">
-                                        <h3 className="font-bold text-base sm:text-lg mb-2 group-hover:text-green-500 transition-colors">Location</h3>
-                                        <p className="text-muted-foreground text-sm sm:text-base font-medium mb-1 break-words">{contactInfo.location}</p>
-                                        <p className="text-xs sm:text-sm text-muted-foreground bg-green-500/5 px-2 sm:px-3 py-1 rounded-full inline-block">🌍 Remote worldwide</p>
+                                        <h3 className="font-bold text-base sm:text-lg mb-2 group-hover:text-green-500 transition-colors">
+                                            Location
+                                        </h3>
+                                        <p className="text-muted-foreground text-sm sm:text-base font-medium mb-1 break-words">
+                                            {contactInfo.location}
+                                        </p>
                                     </div>
                                 </div>
                             </div>
@@ -148,11 +165,11 @@ export function ContactSection() {
                                 </div>
                                 <div className="flex-1 min-w-0">
                                     <h4 className="font-bold text-green-700 dark:text-green-300 mb-2 sm:mb-3 text-base sm:text-lg group-hover:text-green-600 transition-colors">
-                                        🚀 Available for Opportunities
+                                        Available for Opportunities
                                     </h4>
                                     <p className="text-green-600 dark:text-green-400 leading-relaxed text-sm sm:text-base">
-                                        Open to staff-level engineering roles, technical leadership positions, and
-                                        consulting engagements. Let&apos;s build something amazing together!
+                                        Open to staff-level engineering roles, leadership opportunities, and consulting
+                                        projects. Let&apos;s build something amazing together!
                                     </p>
                                 </div>
                             </div>
@@ -174,8 +191,12 @@ export function ContactSection() {
                                         {getSocialIcon(social.platform)}
                                     </div>
                                     <div className="flex-1 min-w-0">
-                                        <div className="font-bold text-base sm:text-lg group-hover:text-primary transition-colors">{social.platform}</div>
-                                        <div className="text-muted-foreground font-medium text-sm sm:text-base break-all">{social.username}</div>
+                                        <div className="font-bold text-base sm:text-lg group-hover:text-primary transition-colors">
+                                            {social.platform}
+                                        </div>
+                                        <div className="text-muted-foreground font-medium text-sm sm:text-base break-all">
+                                            {social.username}
+                                        </div>
                                     </div>
                                     <div className="flex items-center gap-1 sm:gap-2 text-primary group-hover:translate-x-1 transition-transform flex-shrink-0">
                                         <span className="text-xs sm:text-sm font-medium hidden sm:inline">Connect</span>
@@ -188,14 +209,19 @@ export function ContactSection() {
                         {/* Quick CTA */}
                         <div className="group p-4 sm:p-6 lg:p-8 rounded-3xl bg-gradient-to-br from-primary/10 to-accent/10 border border-primary/20 hover:from-primary/15 hover:to-accent/15 hover:border-primary/30 transition-all duration-500 hover:shadow-xl hover:shadow-primary/20">
                             <div className="text-center space-y-3 sm:space-y-4">
-                                <div className="w-12 h-12 sm:w-16 sm:h-16 bg-gradient-to-br from-primary/20 to-accent/20 rounded-2xl flex items-center justify-center mx-auto group-hover:scale-110 transition-transform duration-300">
+                                {/* <div className="w-12 h-12 sm:w-16 sm:h-16 bg-gradient-to-br from-primary/20 to-accent/20 rounded-2xl flex items-center justify-center mx-auto group-hover:scale-110 transition-transform duration-300">
                                     <Mail className="w-6 h-6 sm:w-8 sm:h-8 text-primary" />
-                                </div>
-                                <h4 className="font-bold text-lg sm:text-xl mb-2 group-hover:text-primary transition-colors">Let&apos;s Build Something Great</h4>
+                                </div> */}
+                                <h4 className="font-bold text-lg sm:text-xl mb-2 group-hover:text-primary transition-colors">
+                                    Let&apos;s Build Something Great
+                                </h4>
                                 <p className="text-muted-foreground leading-relaxed text-sm sm:text-base">
-                                    Ready to discuss your next project? Let&apos;s collaborate and bring your innovative ideas to life with cutting-edge technology.
+                                    Let&apos;s collaborate and bring your innovative ideas to life
                                 </p>
-                                <Button className="w-full gap-2 h-10 sm:h-12 text-sm sm:text-base font-semibold shadow-lg hover:shadow-xl transition-all" asChild>
+                                <Button
+                                    className="w-full gap-2 h-10 sm:h-12 text-sm sm:text-base font-semibold shadow-lg hover:shadow-xl transition-all"
+                                    asChild
+                                >
                                     <a href={`mailto:${contactInfo.email}`}>
                                         <Mail className="w-4 h-4 sm:w-5 sm:h-5" />
                                         Start the Conversation

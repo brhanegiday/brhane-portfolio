@@ -14,7 +14,7 @@ export const metadata: Metadata = {
     title: seoConfig.title,
     description: seoConfig.description,
     keywords: seoConfig.keywords.join(", "),
-    authors: [{ name: "Brhane Giday", url: "https://brhane-giday.vercel.app" }],
+    authors: [{ name: "Brhane Giday", url: "https://brhane.vercel.app" }],
     creator: "Brhane Giday",
     metadataBase: new URL(seoConfig.canonicalUrl),
     openGraph: {
