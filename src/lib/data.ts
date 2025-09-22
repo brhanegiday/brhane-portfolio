@@ -581,7 +581,7 @@ export const seoConfig = {
         "Upanzi Network",
         "Kigali Rwanda",
     ],
-    ogImage: "/images/og-image.jpg",
+    ogImage: "/images/og.png",
     canonicalUrl: "https://brhane.vercel.app",
 };
 
@@ -589,7 +589,7 @@ export const seoConfig = {
 export const stats = [
     { label: "Years Experience", value: "5+" },
     { label: "Projects Delivered", value: "15+" },
-    { label: "AI Solutions Built", value: "6+" },
+    { label: "AI Solutions Built", value: "4+" },
     { label: "Teams Led", value: "4+" },
 ];
 
