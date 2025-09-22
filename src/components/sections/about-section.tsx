@@ -46,8 +46,16 @@ export function AboutSection() {
 
     return (
         <section id="about" className="relative py-20 lg:py-24">
-            {/* Simple Background */}
-            <div className="absolute inset-0 bg-gradient-to-b from-background to-muted/20" />
+            {/* Enhanced Background with Visual Depth */}
+            <div className="absolute inset-0 bg-gradient-to-br from-background via-muted/10 to-secondary/20" />
+            <div className="absolute inset-0 bg-gradient-to-tl from-primary/5 via-transparent to-accent/8" />
+
+            {/* Geometric patterns */}
+            <div className="absolute inset-0 opacity-20 pointer-events-none">
+                <div className="absolute top-10 right-10 w-32 h-32 border border-primary/20 rounded-full" />
+                <div className="absolute bottom-20 left-20 w-24 h-24 bg-accent/10 rounded-lg rotate-45" />
+                <div className="absolute top-1/2 right-1/4 w-16 h-16 bg-secondary/20 rounded-full" />
+            </div>
 
             <div className="relative container mx-auto max-w-6xl px-4 sm:px-6 lg:px-8">
                 {/* Clean Header */}
@@ -98,9 +106,9 @@ export function AboutSection() {
                                 className="gap-2"
                                 asChild
                             >
-                                <a href={personalInfo.resumeUrl} target="_blank" rel="noopener noreferrer">
+                                <a href={personalInfo.cvUrl} target="_blank" rel="noopener noreferrer">
                                     <Download className="w-4 h-4" />
-                                    Download Resume
+                                    Download CV
                                 </a>
                             </Button>
                         </div>
@@ -113,19 +121,19 @@ export function AboutSection() {
                             </h3>
                             <div className="space-y-3">
                                 {education.map((edu) => (
-                                    <div key={edu.id} className="p-4 rounded-xl border bg-card">
-                                        <div className="space-y-1">
-                                            <h4 className="font-semibold">
+                                    <div key={edu.id} className="group p-6 rounded-2xl border bg-card/80 backdrop-blur-sm hover:bg-card hover:shadow-lg hover:shadow-primary/5 transition-all duration-300">
+                                        <div className="space-y-3">
+                                            <h4 className="font-semibold text-lg group-hover:text-primary transition-colors">
                                                 {edu.degree} - {edu.field}
                                             </h4>
-                                            <p className="text-primary font-medium">{edu.institution}</p>
+                                            <p className="text-primary font-medium text-base">{edu.institution}</p>
                                             <p className="text-sm text-muted-foreground">{edu.location}</p>
                                             <div className="text-sm text-muted-foreground">
                                                 {edu.startDate} - {edu.endDate}
                                             </div>
                                             {edu.thesis && (
-                                                <p className="text-sm text-muted-foreground mt-2">
-                                                    <strong>Thesis:</strong> {edu.thesis}
+                                                <p className="text-sm text-muted-foreground mt-3 p-3 rounded-lg bg-muted/50">
+                                                    <strong className="text-foreground">Thesis:</strong> {edu.thesis}
                                                 </p>
                                             )}
                                         </div>
@@ -142,15 +150,15 @@ export function AboutSection() {
                             </h3>
                             <div className="space-y-3">
                                 {achievements.slice(0, 3).map((achievement) => (
-                                    <div key={achievement.id} className="p-4 rounded-xl border bg-card">
-                                        <div className="flex items-start justify-between">
+                                    <div key={achievement.id} className="group p-6 rounded-2xl border bg-card/80 backdrop-blur-sm hover:bg-card hover:shadow-lg hover:shadow-accent/5 transition-all duration-300">
+                                        <div className="flex items-start justify-between gap-4">
                                             <div className="flex-1">
-                                                <h4 className="font-medium">{achievement.title}</h4>
-                                                <p className="text-sm text-muted-foreground">
+                                                <h4 className="font-semibold text-base group-hover:text-accent transition-colors mb-2">{achievement.title}</h4>
+                                                <p className="text-sm text-muted-foreground leading-relaxed">
                                                     {achievement.description}
                                                 </p>
                                             </div>
-                                            <Badge variant="secondary" className="text-xs">
+                                            <Badge variant="secondary" className="text-xs px-3 py-1 bg-accent/10 text-accent border-accent/20">
                                                 {achievement.date}
                                             </Badge>
                                         </div>
@@ -173,17 +181,19 @@ export function AboutSection() {
                             {Object.entries(skillsByCategory).map(([category, skills]) => {
                                 const IconComponent = categoryIcons[category as SkillCategory] || Code2;
                                 return (
-                                    <div key={category} className="p-4 rounded-xl border bg-card">
-                                        <div className="flex items-center gap-2 mb-3">
-                                            <IconComponent className="w-4 h-4 text-primary" />
-                                            <h4 className="font-semibold text-sm">{category}</h4>
+                                    <div key={category} className="group p-6 rounded-2xl border bg-card/80 backdrop-blur-sm hover:bg-card hover:shadow-lg hover:shadow-primary/5 transition-all duration-300">
+                                        <div className="flex items-center gap-3 mb-4">
+                                            <div className="w-10 h-10 rounded-xl bg-primary/10 flex items-center justify-center group-hover:bg-primary/15 transition-colors">
+                                                <IconComponent className="w-5 h-5 text-primary" />
+                                            </div>
+                                            <h4 className="font-semibold text-base">{category}</h4>
                                         </div>
                                         <div className="flex flex-wrap gap-2">
                                             {skills.map((skill) => (
                                                 <Badge
                                                     key={skill.name}
                                                     variant={skill.proficiency === "expert" ? "default" : "secondary"}
-                                                    className="text-xs"
+                                                    className="text-xs hover:scale-105 transition-transform"
                                                 >
                                                     {skill.name}
                                                     {skill.yearsOfExperience && (

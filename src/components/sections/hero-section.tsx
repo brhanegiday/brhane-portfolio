@@ -29,13 +29,22 @@ export function HeroSection() {
 
     return (
         <section id="home" className="min-h-screen flex items-center justify-center relative overflow-hidden">
-            {/* Subtle Background Gradient */}
-            <div className="absolute inset-0 bg-gradient-to-br from-background via-background to-muted/10" />
-            
-            {/* Animated Background Elements */}
+            {/* Dynamic Background with Mesh Gradient */}
+            <div className="absolute inset-0 bg-gradient-to-br from-background via-primary/5 to-accent/10" />
+            <div className="absolute inset-0 bg-gradient-to-tl from-transparent via-primary/3 to-secondary/8" />
+
+            {/* Animated Background Elements - More Dynamic */}
             <div className="absolute inset-0 overflow-hidden pointer-events-none">
-                <div className="absolute top-1/4 left-1/4 w-96 h-96 bg-primary/5 rounded-full blur-3xl animate-pulse" />
-                <div className="absolute bottom-1/4 right-1/4 w-96 h-96 bg-purple-500/5 rounded-full blur-3xl animate-pulse delay-1000" />
+                {/* Primary floating orbs */}
+                <div className="absolute top-1/4 left-1/4 w-96 h-96 bg-gradient-to-br from-primary/20 to-primary/5 rounded-full blur-3xl animate-pulse" />
+                <div className="absolute bottom-1/4 right-1/4 w-80 h-80 bg-gradient-to-br from-accent/15 to-accent/5 rounded-full blur-3xl animate-pulse delay-1000" />
+                <div className="absolute top-1/2 right-1/3 w-64 h-64 bg-gradient-to-br from-secondary/15 to-secondary/5 rounded-full blur-2xl animate-pulse delay-2000" />
+
+                {/* Grid pattern overlay */}
+                <div className="absolute inset-0 bg-[linear-gradient(rgba(var(--primary-rgb),0.02)_1px,transparent_1px),linear-gradient(90deg,rgba(var(--primary-rgb),0.02)_1px,transparent_1px)] bg-[size:50px_50px]" />
+
+                {/* Noise texture for depth */}
+                <div className="absolute inset-0 opacity-30 bg-[radial-gradient(circle_at_20%_50%,rgba(var(--primary-rgb),0.1),transparent_50%)] dark:opacity-20" />
             </div>
 
             <div className="relative container mx-auto max-w-6xl px-4 sm:px-6 lg:px-8 py-20">
@@ -43,7 +52,7 @@ export function HeroSection() {
                     {/* Main Content */}
                     <div className="text-center space-y-6">
                         {/* Greeting Badge */}
-                        <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-primary/10 text-primary text-sm font-medium backdrop-blur-sm">
+                        <div className="inline-flex items-center gap-2 px-4 py-2 mt-8 md:mt-4 rounded-full bg-primary/10 text-primary text-sm font-medium backdrop-blur-sm">
                             <Sparkles className="w-4 h-4" />
                             Welcome to my portfolio
                         </div>
@@ -96,7 +105,7 @@ export function HeroSection() {
                             className="gap-2 px-8" 
                             asChild
                         >
-                            <a href={personalInfo.resumeUrl} target="_blank" rel="noopener noreferrer">
+                            <a href={personalInfo.cvUrl} target="_blank" rel="noopener noreferrer">
                                 <Download className="w-4 h-4" />
                                 Resume
                             </a>

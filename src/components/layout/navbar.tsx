@@ -50,59 +50,84 @@ export function Navbar() {
     return (
         <header
             className={cn(
-                "fixed top-0 w-full z-50 transition-all duration-300",
-                isScrolled ? "bg-background/80 backdrop-blur-md shadow-sm border-b" : "bg-transparent"
+                "fixed top-0 w-full z-50 transition-all duration-500",
+                isScrolled
+                    ? "bg-background/90 backdrop-blur-xl shadow-lg shadow-primary/5 border-b border-border/50"
+                    : "bg-transparent"
             )}
         >
             <nav className="container mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-                <div className="flex items-center justify-between h-16">
-                    {/* Logo */}
+                <div className="flex items-center justify-between h-20">
+                    {/* Enhanced Logo */}
                     <Link
                         href="#home"
                         onClick={(e) => {
                             e.preventDefault();
                             scrollToSection("home");
                         }}
-                        className="flex items-center space-x-3 group"
+                        className="flex items-center space-x-4 group"
                     >
-                        <div className="w-10 h-10 bg-primary rounded-full flex items-center justify-center shadow-lg border border-white/20 transition-transform group-hover:scale-105">
-                            <span className="text-white font-semibold text-xl tracking-tight select-none">
-                                {personalInfo.name
-                                    .split(" ")
-                                    .map((n) => n[0])
-                                    .join("")
-                                    .toUpperCase()}
-                            </span>
+                        <div className="relative">
+                            <div className="w-12 h-12 bg-gradient-to-br from-primary to-primary/80 rounded-2xl flex items-center justify-center shadow-lg shadow-primary/25 border border-primary/20 transition-all duration-300 group-hover:scale-110 group-hover:shadow-xl group-hover:shadow-primary/40">
+                                <span className="text-white font-bold text-lg tracking-tight select-none">
+                                    {personalInfo.name
+                                        .split(" ")
+                                        .map((n) => n[0])
+                                        .join("")
+                                        .toUpperCase()}
+                                </span>
+                            </div>
+                            {/* Glow effect */}
+                            <div className="absolute inset-0 w-12 h-12 bg-gradient-to-br from-primary to-primary/80 rounded-2xl opacity-0 group-hover:opacity-30 transition-opacity duration-300 blur-md -z-10" />
                         </div>
                         <div className="hidden sm:block">
-                            <h1 className="text-xl font-bold text-foreground">{personalInfo.name}</h1>
-                            <p className="text-xs text-muted-foreground">Software Engineer</p>
+                            <h1 className="text-xl font-bold text-foreground group-hover:text-primary transition-colors duration-300">
+                                {personalInfo.name}
+                            </h1>
+                            <p className="text-sm text-muted-foreground font-medium">Software Engineer</p>
                         </div>
                     </Link>
 
-                    {/* Desktop Navigation */}
-                    <div className="hidden md:flex items-center space-x-8">
+                    {/* Enhanced Desktop Navigation */}
+                    <div className="hidden md:flex items-center space-x-2">
                         {navSections.map((section) => (
                             <button
                                 key={section.id}
                                 onClick={() => scrollToSection(section.id)}
                                 className={cn(
-                                    "text-sm font-medium transition-colors duration-200 hover:text-primary relative py-2",
-                                    activeSection === section.id ? "text-primary" : "text-muted-foreground"
+                                    "relative px-4 py-3 text-sm font-medium transition-all duration-300 rounded-xl group hover:bg-primary/10",
+                                    activeSection === section.id
+                                        ? "text-primary bg-primary/10"
+                                        : "text-muted-foreground hover:text-primary"
                                 )}
                             >
-                                {section.label}
+                                <span className="relative z-10">{section.label}</span>
+
+                                {/* Animated background */}
+                                <div
+                                    className={cn(
+                                        "absolute inset-0 rounded-xl bg-gradient-to-r from-primary/20 to-accent/20 opacity-0 transition-opacity duration-300",
+                                        activeSection === section.id ? "opacity-100" : "group-hover:opacity-50"
+                                    )}
+                                />
+
+                                {/* Active indicator */}
                                 {activeSection === section.id && (
-                                    <span className="absolute bottom-0 left-0 w-full h-0.5 bg-primary rounded-full" />
+                                    <div className="absolute bottom-1 left-1/2 transform -translate-x-1/2 w-1 h-1 bg-primary rounded-full animate-pulse" />
                                 )}
                             </button>
                         ))}
                     </div>
 
-                    {/* Desktop CTA Buttons */}
-                    <div className="hidden md:flex items-center space-x-4">
-                        <Button variant="ghost" size="sm" asChild>
-                            <Link href={personalInfo.resumeUrl!} target="_blank" rel="noopener noreferrer">
+                    {/* Enhanced Desktop CTA Buttons */}
+                    <div className="hidden md:flex items-center space-x-3">
+                        <Button
+                            variant="ghost"
+                            size="sm"
+                            className="hover:bg-primary/10 hover:text-primary transition-all duration-300 border border-transparent hover:border-primary/20"
+                            asChild
+                        >
+                            <Link href={personalInfo.cvUrl!} target="_blank" rel="noopener noreferrer">
                                 <FileText className="w-4 h-4 mr-2" />
                                 Resume
                             </Link>
@@ -110,81 +135,98 @@ export function Navbar() {
                         <Button
                             size="sm"
                             onClick={() => scrollToSection("contact")}
-                            className="bg-primary hover:bg-primary/90"
+                            className="bg-gradient-to-r from-primary to-primary/90 hover:from-primary/90 hover:to-primary/80 shadow-lg shadow-primary/25 hover:shadow-xl hover:shadow-primary/40 transition-all duration-300 hover:scale-105"
                         >
                             <Mail className="w-4 h-4 mr-2" />
                             Let&apos;s Talk
                         </Button>
                     </div>
 
-                    {/* Mobile Menu */}
+                    {/* Enhanced Mobile Menu */}
                     <div className="md:hidden">
                         <Sheet open={isOpen} onOpenChange={setIsOpen}>
                             <SheetTrigger asChild>
-                                <Button variant="ghost" size="sm">
-                                    <Menu className="w-5 h-5" />
+                                <Button
+                                    variant="ghost"
+                                    size="sm"
+                                    className="relative w-10 h-10 p-0 hover:bg-primary/10 border border-transparent hover:border-primary/20 transition-all duration-300"
+                                >
+                                    <Menu className="w-5 h-5 text-muted-foreground hover:text-primary transition-colors" />
                                 </Button>
                             </SheetTrigger>
-                            <SheetContent side="right" className="w-80">
-                                <div className="flex flex-col h-full">
-                                    {/* Mobile Logo */}
-                                    <div className="flex items-center space-x-3 pb-8 border-b">
-                                        <div className="w-12 h-12 bg-gradient-to-r from-primary to-blue-600 rounded-full flex items-center justify-center">
-                                            <span className="text-white font-bold text-lg">BG</span>
+                            <SheetContent
+                                side="right"
+                                className="w-80 bg-background/98 backdrop-blur-2xl border-l border-border/30"
+                            >
+                                <div className="flex flex-col h-full px-2">
+                                    {/* Minimalistic Mobile Header */}
+                                    <div className="flex items-center justify-start py-8 border-b px-3 gap-5 border-border/20">
+                                        <div className="text-center">
+                                            <div className="w-12 h-12 bg-primary rounded-xl flex items-center justify-center mb-3 mx-auto">
+                                                <span className="text-white font-semibold text-base">
+                                                    {personalInfo.name
+                                                        .split(" ")
+                                                        .map((n) => n[0])
+                                                        .join("")
+                                                        .toUpperCase()}
+                                                </span>
+                                            </div>
                                         </div>
-                                        <div>
-                                            <h2 className="font-bold text-lg">{personalInfo.name}</h2>
-                                            <p className="text-sm text-muted-foreground">Software Engineer</p>
-                                        </div>
+                                        <h2 className="font-semibold text-lg text-foreground">{personalInfo.name}</h2>
                                     </div>
 
-                                    {/* Mobile Navigation Links */}
-                                    <div className="flex-1 py-8">
-                                        <nav className="space-y-6">
+                                    {/* Clean Mobile Navigation Links */}
+                                    <div className="flex-1 py-6">
+                                        <nav className="space-y-1">
                                             {navSections.map((section) => (
                                                 <button
                                                     key={section.id}
                                                     onClick={() => scrollToSection(section.id)}
                                                     className={cn(
-                                                        "block w-full text-left text-lg font-medium transition-colors duration-200 hover:text-primary",
+                                                        "w-full text-left px-4 py-3 rounded-lg transition-all duration-200 group",
                                                         activeSection === section.id
-                                                            ? "text-primary"
-                                                            : "text-muted-foreground"
+                                                            ? "text-primary bg-primary/8 font-medium"
+                                                            : "text-muted-foreground hover:text-foreground hover:bg-muted/50"
                                                     )}
                                                 >
-                                                    {section.label}
+                                                    <div className="flex items-center justify-between">
+                                                        <span className="text-base">{section.label}</span>
+                                                        {activeSection === section.id && (
+                                                            <div className="w-1.5 h-1.5 bg-primary rounded-full" />
+                                                        )}
+                                                    </div>
                                                 </button>
                                             ))}
                                         </nav>
                                     </div>
 
-                                    {/* Mobile CTA Buttons */}
-                                    <div className="space-y-4 border-t pt-6">
-                                        <Button variant="outline" className="w-full" asChild>
-                                            <Link
-                                                href={personalInfo.resumeUrl!}
-                                                target="_blank"
-                                                rel="noopener noreferrer"
-                                            >
-                                                <FileText className="w-4 h-4 mr-2" />
+                                    {/* Clean Mobile CTA Buttons */}
+                                    <div className="space-y-3 border-t border-border/20 pt-6">
+                                        <Button variant="outline" className="w-full justify-start font-normal" asChild>
+                                            <Link href={personalInfo.cvUrl!} target="_blank" rel="noopener noreferrer">
+                                                <FileText className="w-4 h-4 mr-3" />
                                                 Download Resume
                                             </Link>
                                         </Button>
-                                        <Button className="w-full" onClick={() => scrollToSection("contact")}>
-                                            <Mail className="w-4 h-4 mr-2" />
+                                        <Button
+                                            className="w-full justify-start font-normal"
+                                            onClick={() => scrollToSection("contact")}
+                                        >
+                                            <Mail className="w-4 h-4 mr-3" />
                                             Get In Touch
                                         </Button>
                                     </div>
 
-                                    {/* Mobile Social Links */}
-                                    <div className="flex items-center justify-center space-x-6 pt-6 border-t">
+                                    {/* Clean Mobile Social Links */}
+                                    <div className="flex items-center justify-center space-x-6 pt-4 border-t border-border/20">
                                         {contactInfo.socialLinks.slice(0, 3).map((social) => (
                                             <Link
                                                 key={social.platform}
                                                 href={social.url}
                                                 target="_blank"
                                                 rel="noopener noreferrer"
-                                                className="text-muted-foreground hover:text-primary transition-colors"
+                                                className="w-10 h-10 rounded-lg flex items-center justify-center text-muted-foreground hover:text-primary transition-colors duration-200"
+                                                aria-label={social.platform}
                                             >
                                                 {social.platform === "GitHub" && <Github className="w-5 h-5" />}
                                                 {social.platform === "LinkedIn" && <Linkedin className="w-5 h-5" />}

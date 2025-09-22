@@ -44,10 +44,12 @@ export function Footer() {
                                 </div>
                             </div>
                             <p className="text-sm text-muted-foreground leading-relaxed max-w-sm">
-                                Fullstack engineer and AI researcher specializing in LLM applications, healthcare
-                                technology, and scalable systems. Currently conducting research at Carnegie Mellon
-                                University Africa.
+                                I’m Brhane Giday — a Software Engineer and AI researcher passionate about building
+                                scalable systems and AI-powered solutions that create real impact. From full-stack apps
+                                to DevOps pipelines and applied AI research, I bridge design, code, and data to deliver
+                                technology that matters.
                             </p>
+
                             <div className="flex items-center space-x-2 text-sm text-muted-foreground">
                                 <MapPin className="w-4 h-4" />
                                 <span>{contactInfo.location}</span>
@@ -75,7 +77,7 @@ export function Footer() {
                             <h4 className="font-semibold text-sm text-foreground">Resources</h4>
                             <div className="flex flex-col space-y-2.5">
                                 <a
-                                    href={personalInfo.resumeUrl}
+                                    href={personalInfo.cvUrl}
                                     target="_blank"
                                     rel="noopener noreferrer"
                                     className="text-sm text-muted-foreground hover:text-primary transition-colors inline-flex items-center gap-1.5"

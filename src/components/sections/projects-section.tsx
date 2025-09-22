@@ -27,9 +27,19 @@ export default function ProjectsSection() {
     const categories = ["all", ...Array.from(new Set(projects.map(p => p.category)))];
 
     return (
-        <section id="projects" className="relative py-20">
-            {/* Simple Background */}
-            <div className="absolute inset-0 bg-gradient-to-b from-background to-muted/20" />
+        <section id="projects" className="relative py-20 lg:py-24">
+            {/* Creative Background for Innovation */}
+            <div className="absolute inset-0 bg-gradient-to-br from-background via-secondary/8 to-primary/15" />
+            <div className="absolute inset-0 bg-gradient-to-tl from-accent/10 via-transparent to-muted/20" />
+
+            {/* Tech-inspired background elements */}
+            <div className="absolute inset-0 opacity-15 pointer-events-none">
+                <div className="absolute top-16 right-20 w-40 h-40 border border-primary/30 rounded-2xl rotate-12 animate-pulse" />
+                <div className="absolute bottom-24 left-16 w-32 h-32 bg-accent/20 rounded-full blur-xl" />
+                <div className="absolute top-1/3 left-1/3 w-6 h-6 bg-primary/40 rotate-45" />
+                <div className="absolute bottom-1/3 right-1/4 w-8 h-8 border-2 border-secondary/40 rounded-full" />
+                <div className="absolute top-3/4 right-1/2 w-12 h-12 bg-gradient-to-br from-primary/20 to-accent/20 rounded-lg rotate-45" />
+            </div>
 
             <div className="relative container mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
                 {/* Clean Header */}
@@ -66,58 +76,79 @@ export default function ProjectsSection() {
                 </div>
 
                 {/* Projects Grid */}
-                <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6 mb-16">
-                    {filteredProjects.map((project) => (
+                <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8 mb-16">
+                    {filteredProjects.map((project, index) => (
                         <div
                             key={project.id}
                             className="group cursor-pointer"
                             onClick={() => setSelectedProject(project)}
                         >
-                            <div className="h-full p-6 rounded-2xl border bg-card hover:shadow-lg transition-all duration-300 hover:-translate-y-1">
-                                <div className="space-y-4">
+                            <div className="h-full relative overflow-hidden rounded-3xl border bg-card/90 backdrop-blur-sm hover:bg-card hover:shadow-2xl hover:shadow-primary/20 transition-all duration-500 hover:-translate-y-2 hover:border-primary/30">
+                                {/* Gradient overlay */}
+                                <div className="absolute inset-0 bg-gradient-to-br from-primary/5 via-transparent to-accent/5 opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
+
+                                <div className="relative p-8 space-y-6">
                                     {/* Project Header */}
                                     <div className="flex items-start justify-between">
-                                        <div className="w-10 h-10 rounded-xl bg-primary/10 flex items-center justify-center">
-                                            <Code2 className="w-5 h-5 text-primary" />
+                                        <div className="w-14 h-14 rounded-2xl bg-gradient-to-br from-primary/20 to-primary/10 flex items-center justify-center group-hover:scale-110 transition-transform duration-300">
+                                            <Code2 className="w-6 h-6 text-primary" />
                                         </div>
-                                        <Badge variant="secondary" className="text-xs">
-                                            {project.status === "completed" ? "Live" : "In Progress"}
-                                        </Badge>
+                                        <div className="flex flex-col items-end gap-2">
+                                            <Badge
+                                                variant="secondary"
+                                                className={`text-xs px-3 py-1 ${
+                                                    project.status === "completed"
+                                                        ? "bg-green-500/10 text-green-600 border-green-500/20"
+                                                        : "bg-blue-500/10 text-blue-600 border-blue-500/20"
+                                                }`}
+                                            >
+                                                {project.status === "completed" ? "✅ Live" : "🚧 In Progress"}
+                                            </Badge>
+                                            <Badge variant="outline" className="text-xs px-2 py-1">
+                                                {project.category}
+                                            </Badge>
+                                        </div>
                                     </div>
 
                                     {/* Content */}
-                                    <div>
-                                        <h3 className="font-semibold text-lg mb-2 line-clamp-2">
+                                    <div className="space-y-3">
+                                        <h3 className="font-bold text-xl mb-3 line-clamp-2 group-hover:text-primary transition-colors">
                                             {project.title}
                                         </h3>
-                                        <p className="text-muted-foreground text-sm leading-relaxed line-clamp-3">
+                                        <p className="text-muted-foreground leading-relaxed line-clamp-3">
                                             {project.description.split('📈')[0].replace(/🎯|⚡/g, '').trim()}
                                         </p>
                                     </div>
 
                                     {/* Tech Stack */}
-                                    <div className="flex flex-wrap gap-1">
-                                        {project.technologies.slice(0, 3).map((tech, i) => (
-                                            <span key={i} className="px-2 py-1 text-xs bg-muted rounded-md">
+                                    <div className="flex flex-wrap gap-2">
+                                        {project.technologies.slice(0, 4).map((tech, i) => (
+                                            <span key={i} className="px-3 py-1.5 text-xs bg-muted/80 rounded-xl font-medium hover:bg-primary/10 hover:text-primary transition-colors">
                                                 {tech}
                                             </span>
                                         ))}
-                                        {project.technologies.length > 3 && (
-                                            <span className="px-2 py-1 text-xs bg-muted rounded-md">
-                                                +{project.technologies.length - 3}
+                                        {project.technologies.length > 4 && (
+                                            <span className="px-3 py-1.5 text-xs bg-accent/10 text-accent rounded-xl font-medium">
+                                                +{project.technologies.length - 4}
                                             </span>
                                         )}
                                     </div>
 
                                     {/* Footer */}
-                                    <div className="flex items-center justify-between pt-2">
-                                        <div className="flex items-center gap-1 text-xs text-muted-foreground">
-                                            <Calendar className="w-3 h-3" />
-                                            {project.startDate}
+                                    <div className="flex items-center justify-between pt-4 border-t border-border/50">
+                                        <div className="flex items-center gap-2 text-xs text-muted-foreground">
+                                            <Calendar className="w-4 h-4" />
+                                            <span className="font-medium">{project.startDate}</span>
                                         </div>
-                                        <ArrowUpRight className="w-4 h-4 text-muted-foreground group-hover:text-primary transition-colors" />
+                                        <div className="flex items-center gap-2 text-primary group-hover:translate-x-1 transition-transform">
+                                            <span className="text-xs font-medium">View Details</span>
+                                            <ArrowUpRight className="w-4 h-4" />
+                                        </div>
                                     </div>
                                 </div>
+
+                                {/* Hover effect border */}
+                                <div className="absolute inset-0 rounded-3xl bg-gradient-to-r from-primary/50 to-accent/50 opacity-0 group-hover:opacity-20 transition-opacity duration-500 pointer-events-none" />
                             </div>
                         </div>
                     ))}
