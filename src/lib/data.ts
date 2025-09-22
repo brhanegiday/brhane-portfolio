@@ -31,12 +31,12 @@ export const contactInfo: ContactInfo = {
             username: "brhane-giday",
             icon: "linkedin",
         },
-        {
-            platform: "YouTube",
-            url: "https://youtube.com/@bashandbeyond",
-            username: "Bash & Beyond",
-            icon: "youtube",
-        },
+        // {
+        //     platform: "YouTube",
+        //     url: "https://youtube.com/@bashandbeyond",
+        //     username: "Bash & Beyond",
+        //     icon: "youtube",
+        // },
         {
             platform: "Instagram",
             url: "https://instagram.com/brhane_giday",
@@ -501,17 +501,17 @@ export const skills: Skill[] = [
     { name: "Linux", category: "Cloud/DevOps", proficiency: "advanced", yearsOfExperience: 4 },
 
     // Design & Tools
-    { name: "Figma", category: "Design", proficiency: "intermediate", yearsOfExperience: 3 },
-    { name: "Adobe XD", category: "Design", proficiency: "intermediate", yearsOfExperience: 2 },
-    { name: "WordPress", category: "Tools", proficiency: "advanced", yearsOfExperience: 3 },
-    { name: "Webflow", category: "Tools", proficiency: "intermediate", yearsOfExperience: 2 },
+    // { name: "Figma", category: "Design", proficiency: "intermediate", yearsOfExperience: 3 },
+    // { name: "Adobe XD", category: "Design", proficiency: "intermediate", yearsOfExperience: 2 },
+    // { name: "WordPress", category: "Tools", proficiency: "advanced", yearsOfExperience: 3 },
+    // { name: "Webflow", category: "Tools", proficiency: "intermediate", yearsOfExperience: 2 },
 
     // Leadership & Core
     { name: "Fullstack Engineering", category: "Core", proficiency: "expert", yearsOfExperience: 5 },
     { name: "Software Architecture", category: "Core", proficiency: "advanced", yearsOfExperience: 4 },
-    { name: "Technical Leadership", category: "Leadership", proficiency: "advanced", yearsOfExperience: 3 },
+    // { name: "Technical Leadership", category: "Leadership", proficiency: "advanced", yearsOfExperience: 3 },
     { name: "DevOps Automation", category: "Core", proficiency: "advanced", yearsOfExperience: 3 },
-    { name: "Team Leadership", category: "Leadership", proficiency: "advanced", yearsOfExperience: 3 },
+    // { name: "Team Leadership", category: "Leadership", proficiency: "advanced", yearsOfExperience: 3 },
 ];
 
 export const achievements: Achievement[] = [

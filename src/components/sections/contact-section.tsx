@@ -1,35 +1,9 @@
-// src/components/sections/contact-section.tsx
-
 "use client";
 
-import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
-import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
-import { Separator } from "@/components/ui/separator";
-import { contactInfo, personalInfo } from "@/lib/data";
-import {
-    Calendar,
-    Check,
-    Copy,
-    ExternalLink,
-    Github,
-    Instagram,
-    Linkedin,
-    Mail,
-    MapPin,
-    MessageCircle,
-    Phone,
-    Send,
-    Youtube,
-} from "lucide-react";
+import { contactInfo } from "@/lib/data";
+import { Check, Copy, Github, Instagram, Linkedin, Mail, MapPin, Phone, Send, Youtube } from "lucide-react";
 import { useState } from "react";
-
-const socialIcons = {
-    GitHub: Github,
-    LinkedIn: Linkedin,
-    YouTube: Youtube,
-    Instagram: Instagram,
-};
 
 export function ContactSection() {
     const [copiedEmail, setCopiedEmail] = useState(false);
@@ -44,281 +18,166 @@ export function ContactSection() {
         }
     };
 
-    const scrollToSection = (sectionId: string) => {
-        const element = document.getElementById(sectionId);
-        if (element) {
-            element.scrollIntoView({ behavior: "smooth", block: "start" });
+    const getSocialIcon = (platform: string) => {
+        switch (platform) {
+            case "GitHub":
+                return <Github className="w-5 h-5" />;
+            case "LinkedIn":
+                return <Linkedin className="w-5 h-5" />;
+            case "YouTube":
+                return <Youtube className="w-5 h-5" />;
+            case "Instagram":
+                return <Instagram className="w-5 h-5" />;
+            default:
+                return null;
         }
     };
 
     return (
-        <section id="contact" className="py-20 lg:py-32 bg-background">
+        <section id="contact" className="py-20 lg:py-20 bg-background">
             <div className="container mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-                {/* Section Header */}
-                <div className="text-center mb-16">
-                    <Badge variant="secondary" className="mb-4">
-                        Get In Touch
-                    </Badge>
-                    <h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold tracking-tight mb-6">
-                        Let&apos;s Build Something{" "}
-                        <span className="bg-gradient-to-r from-primary to-blue-600 bg-clip-text text-transparent">
-                            Amazing Together
+                {/* Header */}
+                <div className="text-center mb-16 space-y-4">
+                    <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-primary/10 text-primary text-sm font-medium">
+                        <Send className="w-4 h-4" />
+                        Contact
+                    </div>
+                    <h2 className="text-4xl md:text-5xl lg:text-6xl font-bold tracking-tight">
+                        Let&apos;s{" "}
+                        <span className="bg-gradient-to-r from-primary via-primary/70 to-primary/50 bg-clip-text text-transparent">
+                            Connect
                         </span>
                     </h2>
-                    <p className="text-xl text-muted-foreground max-w-3xl mx-auto leading-relaxed">
-                        Ready to bring your ideas to life? I&apos;m always interested in hearing about new projects and
-                        opportunities.
+                    <p className="text-muted-foreground text-lg max-w-2xl mx-auto">
+                        Open to new opportunities, collaborations, and interesting conversations
                     </p>
                 </div>
 
-                <div className="grid lg:grid-cols-2 gap-16 items-start">
-                    {/* Contact Information */}
-                    <div className="space-y-8">
-                        <div>
-                            <h3 className="text-2xl font-bold text-foreground mb-6">Let&apos;s start a conversation</h3>
-                            <p className="text-muted-foreground text-lg leading-relaxed mb-8">
-                                I&apos;m available for staff-level engineering roles, technical leadership positions,
-                                and strategic consulting engagements. Whether you need someone to architect scalable
-                                systems, lead engineering teams, or build AI-powered solutions, I&apos;d love to discuss
-                                how we can work together.
-                            </p>
+                {/* Main Content Grid */}
+                <div className="grid lg:grid-cols-2 gap-10 lg:gap-20">
+                    {/* Left: Contact Info */}
+                    <div className="space-y-6">
+                        {/* Email Card */}
+                        <div className="group p-6 rounded-2xl border bg-card hover:shadow-lg transition-all duration-300">
+                            <div className="flex items-center justify-between mb-4">
+                                <div className="flex items-center gap-4">
+                                    <div className="w-12 h-12 bg-primary/10 rounded-xl flex items-center justify-center group-hover:scale-110 transition-transform">
+                                        <Mail className="w-6 h-6 text-primary" />
+                                    </div>
+                                    <div>
+                                        <h3 className="font-semibold text-lg">Email</h3>
+                                        <p className="text-muted-foreground">{contactInfo.email}</p>
+                                    </div>
+                                </div>
+                                <div className="flex gap-2">
+                                    <Button variant="outline" size="sm" onClick={copyEmail} className="gap-2">
+                                        {copiedEmail ? (
+                                            <>
+                                                <Check className="w-4 h-4" />
+                                                Copied
+                                            </>
+                                        ) : (
+                                            <>
+                                                <Copy className="w-4 h-4" />
+                                                Copy
+                                            </>
+                                        )}
+                                    </Button>
+                                    <Button size="sm" asChild>
+                                        <a href={`mailto:${contactInfo.email}`}>
+                                            <Send className="w-4 h-4 mr-2" />
+                                            Send
+                                        </a>
+                                    </Button>
+                                </div>
+                            </div>
                         </div>
 
-                        {/* Contact Methods */}
-                        <div className="space-y-6">
-                            {/* Email */}
-                            <Card className="hover:shadow-lg transition-all duration-300 hover:scale-[1.02]">
-                                <CardContent className="p-6">
-                                    <div className="flex items-center justify-between">
-                                        <div className="flex items-center space-x-4">
-                                            <div className="w-12 h-12 bg-primary/10 rounded-full flex items-center justify-center">
-                                                <Mail className="w-6 h-6 text-primary" />
-                                            </div>
-                                            <div>
-                                                <h4 className="font-semibold text-foreground">Email Me</h4>
-                                                <p className="text-muted-foreground">{contactInfo.email}</p>
-                                            </div>
-                                        </div>
-                                        <div className="flex space-x-2">
-                                            <Button
-                                                variant="outline"
-                                                size="sm"
-                                                onClick={copyEmail}
-                                                className="transition-all hover:scale-105"
-                                            >
-                                                {copiedEmail ? (
-                                                    <Check className="w-4 h-4" />
-                                                ) : (
-                                                    <Copy className="w-4 h-4" />
-                                                )}
-                                            </Button>
-                                            <Button size="sm" asChild className="transition-all hover:scale-105">
-                                                <a href={`mailto:${contactInfo.email}`}>
-                                                    <Send className="w-4 h-4 mr-2" />
-                                                    Send
-                                                </a>
-                                            </Button>
-                                        </div>
+                        {/* Phone & Location */}
+                        <div className="grid sm:grid-cols-2 gap-6">
+                            <div className="p-6 rounded-2xl border bg-card hover:shadow-lg transition-all duration-300">
+                                <div className="flex items-start gap-4">
+                                    <div className="w-12 h-12 bg-blue-500/10 rounded-xl flex items-center justify-center flex-shrink-0">
+                                        <Phone className="w-6 h-6 text-blue-500" />
                                     </div>
-                                </CardContent>
-                            </Card>
-
-                            {/* Phone */}
-                            <Card className="hover:shadow-lg transition-all duration-300 hover:scale-[1.02]">
-                                <CardContent className="p-6">
-                                    <div className="flex items-center justify-between">
-                                        <div className="flex items-center space-x-4">
-                                            <div className="w-12 h-12 bg-blue-500/10 rounded-full flex items-center justify-center">
-                                                <Phone className="w-6 h-6 text-blue-500" />
-                                            </div>
-                                            <div>
-                                                <h4 className="font-semibold text-foreground">Call Me</h4>
-                                                <p className="text-muted-foreground">{contactInfo.phone}</p>
-                                            </div>
-                                        </div>
-                                        <Button
-                                            variant="outline"
-                                            size="sm"
-                                            asChild
-                                            className="transition-all hover:scale-105"
-                                        >
-                                            <a href={`tel:${contactInfo.phone}`}>
-                                                <Phone className="w-4 h-4 mr-2" />
-                                                Call
-                                            </a>
+                                    <div className="flex-1 min-w-0">
+                                        <h3 className="font-semibold mb-1">Phone</h3>
+                                        <p className="text-muted-foreground text-sm">{contactInfo.phone}</p>
+                                        <Button variant="link" size="sm" className="px-0 h-auto mt-2" asChild>
+                                            <a href={`tel:${contactInfo.phone}`}>Call me</a>
                                         </Button>
                                     </div>
-                                </CardContent>
-                            </Card>
+                                </div>
+                            </div>
 
-                            {/* Location */}
-                            <Card className="hover:shadow-lg transition-all duration-300 hover:scale-[1.02]">
-                                <CardContent className="p-6">
-                                    <div className="flex items-center space-x-4">
-                                        <div className="w-12 h-12 bg-green-500/10 rounded-full flex items-center justify-center">
-                                            <MapPin className="w-6 h-6 text-green-500" />
-                                        </div>
-                                        <div>
-                                            <h4 className="font-semibold text-foreground">Location</h4>
-                                            <p className="text-muted-foreground">{contactInfo.location}</p>
-                                            <p className="text-xs text-muted-foreground mt-1">
-                                                Available for remote work worldwide
-                                            </p>
-                                        </div>
+                            <div className="p-6 rounded-2xl border bg-card hover:shadow-lg transition-all duration-300">
+                                <div className="flex items-start gap-4">
+                                    <div className="w-12 h-12 bg-green-500/10 rounded-xl flex items-center justify-center flex-shrink-0">
+                                        <MapPin className="w-6 h-6 text-green-500" />
                                     </div>
-                                </CardContent>
-                            </Card>
+                                    <div>
+                                        <h3 className="font-semibold mb-1">Location</h3>
+                                        <p className="text-muted-foreground text-sm">{contactInfo.location}</p>
+                                        <p className="text-xs text-muted-foreground mt-1">Remote worldwide</p>
+                                    </div>
+                                </div>
+                            </div>
                         </div>
 
                         {/* Availability Status */}
-                        <Card className="bg-gradient-to-r from-green-50 to-emerald-50 border-green-200 dark:from-green-950/20 dark:to-emerald-950/20 dark:border-green-800">
-                            <CardContent className="p-6">
-                                <div className="flex items-center space-x-3">
-                                    <div className="w-3 h-3 bg-green-500 rounded-full animate-pulse" />
-                                    <div>
-                                        <h4 className="font-semibold text-green-800 dark:text-green-300">
-                                            Available for New Projects
-                                        </h4>
-                                        <p className="text-green-600 dark:text-green-400 text-sm">
-                                            Currently accepting new opportunities and collaborations
-                                        </p>
-                                    </div>
+                        <div className="p-6 rounded-2xl bg-gradient-to-br from-green-500/10 to-emerald-500/10 border border-green-500/20">
+                            <div className="flex items-start gap-3">
+                                <div className="w-3 h-3 bg-green-500 rounded-full animate-pulse mt-1" />
+                                <div>
+                                    <h4 className="font-semibold text-green-700 dark:text-green-300 mb-1">
+                                        Available for Opportunities
+                                    </h4>
+                                    <p className="text-sm text-green-600 dark:text-green-400">
+                                        Open to staff-level engineering roles, technical leadership positions, and
+                                        consulting engagements
+                                    </p>
                                 </div>
-                            </CardContent>
-                        </Card>
+                            </div>
+                        </div>
                     </div>
 
-                    {/* Right Column */}
-                    <div className="space-y-8">
-                        {/* Social Links */}
-                        <Card>
-                            <CardHeader>
-                                <CardTitle className="flex items-center">
-                                    <MessageCircle className="w-5 h-5 mr-2 text-primary" />
-                                    Connect With Me
-                                </CardTitle>
-                            </CardHeader>
-                            <CardContent>
-                                <div className="grid grid-cols-2 gap-4">
-                                    {contactInfo.socialLinks.map((social) => {
-                                        const IconComponent = socialIcons[social.platform as keyof typeof socialIcons];
-                                        return (
-                                            <Button
-                                                key={social.platform}
-                                                variant="outline"
-                                                asChild
-                                                className="justify-start h-auto p-4 transition-all hover:scale-105 hover:shadow-md"
-                                            >
-                                                <a href={social.url} target="_blank" rel="noopener noreferrer">
-                                                    <IconComponent className="w-5 h-5 mr-3" />
-                                                    <div className="text-left">
-                                                        <div className="font-medium">{social.platform}</div>
-                                                        {social.username && (
-                                                            <div className="text-xs text-muted-foreground">
-                                                                @{social.username}
-                                                            </div>
-                                                        )}
-                                                    </div>
-                                                </a>
-                                            </Button>
-                                        );
-                                    })}
-                                </div>
-                            </CardContent>
-                        </Card>
-
-                        {/* Quick Actions */}
-                        <Card>
-                            <CardHeader>
-                                <CardTitle className="flex items-center">
-                                    <Calendar className="w-5 h-5 mr-2 text-primary" />
-                                    Quick Actions
-                                </CardTitle>
-                            </CardHeader>
-                            <CardContent className="space-y-4">
-                                <Button
-                                    className="w-full justify-start h-auto p-4 bg-primary hover:bg-primary/90 transition-all hover:scale-105"
-                                    onClick={() =>
-                                        window.open(
-                                            `mailto:${contactInfo.email}?subject=Project Collaboration&body=Hi Brhane,%0A%0AI'm interested in discussing a project collaboration with you.`
-                                        )
-                                    }
+                    {/* Right: Social Links */}
+                    <div className="space-y-6">
+                        <div className="space-y-3">
+                            {contactInfo.socialLinks.map((social) => (
+                                <a
+                                    key={social.platform}
+                                    href={social.url}
+                                    target="_blank"
+                                    rel="noopener noreferrer"
+                                    className="flex items-center gap-4 p-4 rounded-xl border bg-card hover:bg-muted/50 hover:border-primary/50 transition-all duration-300 group"
                                 >
-                                    <Mail className="w-5 h-5 mr-3" />
-                                    <div className="text-left">
-                                        <div className="font-medium">Start a Project</div>
-                                        <div className="text-xs opacity-90">Send a project inquiry</div>
+                                    <div className="w-10 h-10 bg-muted rounded-lg flex items-center justify-center group-hover:bg-primary/10 group-hover:scale-110 transition-all">
+                                        {getSocialIcon(social.platform)}
                                     </div>
-                                </Button>
-
-                                <Button
-                                    variant="outline"
-                                    className="w-full justify-start h-auto p-4 transition-all hover:scale-105"
-                                    asChild
-                                >
-                                    <a href={personalInfo.resumeUrl} target="_blank" rel="noopener noreferrer">
-                                        <ExternalLink className="w-5 h-5 mr-3" />
-                                        <div className="text-left">
-                                            <div className="font-medium">Download Resume</div>
-                                            <div className="text-xs text-muted-foreground">View my full background</div>
-                                        </div>
-                                    </a>
-                                </Button>
-
-                                <Button
-                                    variant="outline"
-                                    className="w-full justify-start h-auto p-4 transition-all hover:scale-105"
-                                    onClick={() => scrollToSection("projects")}
-                                >
-                                    <ExternalLink className="w-5 h-5 mr-3" />
-                                    <div className="text-left">
-                                        <div className="font-medium">View My Work</div>
-                                        <div className="text-xs text-muted-foreground">See my recent projects</div>
+                                    <div className="flex-1">
+                                        <div className="font-medium">{social.platform}</div>
+                                        <div className="text-sm text-muted-foreground">{social.username}</div>
                                     </div>
-                                </Button>
-                            </CardContent>
-                        </Card>
+                                    <Send className="w-4 h-4 text-muted-foreground group-hover:text-primary transition-colors" />
+                                </a>
+                            ))}
+                        </div>
 
-                        {/* Response Time */}
-                        <Card className="bg-gradient-to-r from-blue-50 to-indigo-50 border-blue-200 dark:from-blue-950/20 dark:to-indigo-950/20 dark:border-blue-800">
-                            <CardContent className="p-6">
-                                <h4 className="font-semibold text-blue-800 dark:text-blue-300 mb-2">
-                                    Fast Response Time
-                                </h4>
-                                <p className="text-blue-600 dark:text-blue-400 text-sm">
-                                    I typically respond to emails within 24 hours. For urgent matters, feel free to
-                                    mention &quot;URGENT&quot; in your subject line.
-                                </p>
-                            </CardContent>
-                        </Card>
-                    </div>
-                </div>
-
-                {/* Bottom CTA */}
-                <div className="mt-20 text-center">
-                    <Separator className="mb-8" />
-                    <h3 className="text-2xl font-bold text-foreground mb-4">Ready to get started?</h3>
-                    <p className="text-muted-foreground mb-6 max-w-2xl mx-auto">
-                        Whether you have a clear vision or just an idea, I&apos;m here to help bring it to life.
-                        Let&apos;s discuss how we can work together to create something amazing.
-                    </p>
-                    <div className="flex flex-col sm:flex-row gap-4 justify-center">
-                        <Button
-                            size="lg"
-                            onClick={() => window.open(`mailto:${contactInfo?.email}?subject=Let's work together!`)}
-                            className="bg-primary hover:bg-primary/90 px-8 py-3 rounded-full font-medium transition-all hover:shadow-lg hover:scale-105"
-                        >
-                            <Mail className="mr-2 w-5 h-5" />
-                            Send Message
-                        </Button>
-                        <Button
-                            variant="outline"
-                            size="lg"
-                            onClick={() => scrollToSection("about")}
-                            className="px-8 py-3 rounded-full font-medium transition-all hover:shadow-lg hover:scale-105"
-                        >
-                            Learn More About Me
-                        </Button>
+                        {/* Quick CTA */}
+                        <div className="p-6 rounded-2xl bg-gradient-to-br from-primary/5 to-purple-500/5 border">
+                            <h4 className="font-semibold mb-2">Let&apos;s Build Something Great</h4>
+                            <p className="text-sm text-muted-foreground mb-4">
+                                Let&apos;s discuss how we can work together to bring your ideas
+                                to life.
+                            </p>
+                            <Button className="w-full gap-2" asChild>
+                                <a href={`mailto:${contactInfo.email}`}>
+                                    <Mail className="w-4 h-4" />
+                                    Get in Touch
+                                </a>
+                            </Button>
+                        </div>
                     </div>
                 </div>
             </div>

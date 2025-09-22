@@ -3,12 +3,12 @@
 import { Button } from "@/components/ui/button";
 import { Separator } from "@/components/ui/separator";
 import { contactInfo, navSections, personalInfo } from "@/lib/data";
-import { ArrowUp, ExternalLink, Github, Heart, Instagram, Linkedin, Mail, MapPin, Twitter } from "lucide-react";
+import { ArrowUp, ExternalLink, Github, Instagram, Linkedin, Mail, MapPin, Youtube } from "lucide-react";
 
 const socialIcons = {
     GitHub: Github,
     LinkedIn: Linkedin,
-    Twitter: Twitter,
+    YouTube: Youtube,
     Instagram: Instagram,
 };
 
@@ -30,22 +30,23 @@ export function Footer() {
         <footer className="bg-muted/30 border-t">
             <div className="container mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
                 {/* Main Footer Content */}
-                <div className="py-16">
-                    <div className="grid lg:grid-cols-4 gap-8">
+                <div className="py-12 lg:py-16">
+                    <div className="grid lg:grid-cols-12 gap-8 lg:gap-12">
                         {/* Brand Column */}
-                        <div className="lg:col-span-1 space-y-4">
+                        <div className="lg:col-span-4 space-y-4">
                             <div className="flex items-center space-x-3">
-                                <div className="w-12 h-12 bg-gradient-to-r from-primary to-blue-600 rounded-full flex items-center justify-center">
+                                <div className="w-10 h-10 bg-gradient-to-br from-primary to-primary/70 rounded-xl flex items-center justify-center">
                                     <span className="text-white font-bold text-lg">BG</span>
                                 </div>
                                 <div>
-                                    <h3 className="font-bold text-xl text-foreground">{personalInfo.name}</h3>
-                                    <p className="text-sm text-muted-foreground">Software Engineer & AI Researcher</p>
+                                    <h3 className="font-bold text-lg text-foreground">{personalInfo.name}</h3>
+                                    <p className="text-xs text-muted-foreground">Software Engineer & AI Researcher</p>
                                 </div>
                             </div>
-                            <p className="text-muted-foreground leading-relaxed">
-                                Building innovative solutions at the intersection of AI and healthcare technology.
-                                Passionate about creating meaningful impact through code.
+                            <p className="text-sm text-muted-foreground leading-relaxed max-w-sm">
+                                Fullstack engineer and AI researcher specializing in LLM applications, healthcare
+                                technology, and scalable systems. Currently conducting research at Carnegie Mellon
+                                University Africa.
                             </p>
                             <div className="flex items-center space-x-2 text-sm text-muted-foreground">
                                 <MapPin className="w-4 h-4" />
@@ -53,15 +54,15 @@ export function Footer() {
                             </div>
                         </div>
 
-                        {/* Navigation Links */}
-                        <div className="space-y-4">
-                            <h4 className="font-semibold text-foreground">Navigation</h4>
-                            <nav className="flex flex-col space-y-2">
+                        {/* Quick Links */}
+                        <div className="lg:col-span-2 space-y-4">
+                            <h4 className="font-semibold text-sm text-foreground">Quick Links</h4>
+                            <nav className="flex flex-col space-y-2.5">
                                 {navSections.map((section) => (
                                     <button
                                         key={section.id}
                                         onClick={() => scrollToSection(section.id)}
-                                        className="text-muted-foreground hover:text-primary transition-colors text-sm text-left"
+                                        className="text-sm text-muted-foreground hover:text-primary transition-colors text-left"
                                     >
                                         {section.label}
                                     </button>
@@ -70,59 +71,62 @@ export function Footer() {
                         </div>
 
                         {/* Resources */}
-                        <div className="space-y-4">
-                            <h4 className="font-semibold text-foreground">Resources</h4>
-                            <div className="flex flex-col space-y-2">
+                        <div className="lg:col-span-3 space-y-4">
+                            <h4 className="font-semibold text-sm text-foreground">Resources</h4>
+                            <div className="flex flex-col space-y-2.5">
                                 <a
                                     href={personalInfo.resumeUrl}
                                     target="_blank"
                                     rel="noopener noreferrer"
-                                    className="text-muted-foreground hover:text-primary transition-colors text-sm flex items-center"
+                                    className="text-sm text-muted-foreground hover:text-primary transition-colors inline-flex items-center gap-1.5"
                                 >
                                     Resume
-                                    <ExternalLink className="w-3 h-3 ml-1" />
+                                    <ExternalLink className="w-3 h-3" />
                                 </a>
                                 <a
                                     href={personalInfo.cvUrl}
                                     target="_blank"
                                     rel="noopener noreferrer"
-                                    className="text-muted-foreground hover:text-primary transition-colors text-sm flex items-center"
+                                    className="text-sm text-muted-foreground hover:text-primary transition-colors inline-flex items-center gap-1.5"
                                 >
-                                    Full CV
-                                    <ExternalLink className="w-3 h-3 ml-1" />
+                                    Curriculum Vitae
+                                    <ExternalLink className="w-3 h-3" />
                                 </a>
                                 <a
                                     href="https://github.com/brhanegiday"
                                     target="_blank"
                                     rel="noopener noreferrer"
-                                    className="text-muted-foreground hover:text-primary transition-colors text-sm flex items-center"
+                                    className="text-sm text-muted-foreground hover:text-primary transition-colors inline-flex items-center gap-1.5"
                                 >
-                                    GitHub Profile
-                                    <ExternalLink className="w-3 h-3 ml-1" />
+                                    GitHub
+                                    <ExternalLink className="w-3 h-3" />
                                 </a>
-                                <button
-                                    onClick={() => window.open(`mailto:${contactInfo.email}`)}
-                                    className="text-muted-foreground hover:text-primary transition-colors text-sm text-left"
+                                <a
+                                    href="https://youtube.com/@bashandbeyond"
+                                    target="_blank"
+                                    rel="noopener noreferrer"
+                                    className="text-sm text-muted-foreground hover:text-primary transition-colors inline-flex items-center gap-1.5"
                                 >
-                                    Email Me
-                                </button>
+                                    Bash & Beyond
+                                    <ExternalLink className="w-3 h-3" />
+                                </a>
                             </div>
                         </div>
 
                         {/* Contact & Social */}
-                        <div className="space-y-4">
-                            <h4 className="font-semibold text-foreground">Connect</h4>
+                        <div className="lg:col-span-3 space-y-4">
+                            <h4 className="font-semibold text-sm text-foreground">Get in Touch</h4>
                             <div className="space-y-3">
                                 <a
                                     href={`mailto:${contactInfo.email}`}
-                                    className="flex items-center space-x-2 text-muted-foreground hover:text-primary transition-colors text-sm"
+                                    className="flex items-center space-x-2 text-sm text-muted-foreground hover:text-primary transition-colors"
                                 >
-                                    <Mail className="w-4 h-4" />
-                                    <span>{contactInfo.email}</span>
+                                    <Mail className="w-4 h-4 flex-shrink-0" />
+                                    <span className="truncate">{contactInfo.email}</span>
                                 </a>
 
                                 {/* Social Links */}
-                                <div className="flex space-x-4 pt-2">
+                                <div className="flex items-center space-x-3 pt-1">
                                     {contactInfo.socialLinks.map((social) => {
                                         const IconComponent = socialIcons[social.platform as keyof typeof socialIcons];
                                         if (!IconComponent) return null;
@@ -133,10 +137,10 @@ export function Footer() {
                                                 href={social.url}
                                                 target="_blank"
                                                 rel="noopener noreferrer"
-                                                className="text-muted-foreground hover:text-primary transition-all hover:scale-110"
-                                                aria-label={`Follow on ${social.platform}`}
+                                                className="w-9 h-9 rounded-lg bg-muted flex items-center justify-center text-muted-foreground hover:text-primary hover:bg-primary/10 transition-all"
+                                                aria-label={social.platform}
                                             >
-                                                <IconComponent className="w-5 h-5" />
+                                                <IconComponent className="w-4 h-4" />
                                             </a>
                                         );
                                     })}
@@ -150,36 +154,34 @@ export function Footer() {
 
                 {/* Bottom Footer */}
                 <div className="py-6">
-                    <div className="flex flex-col sm:flex-row justify-between items-center space-y-4 sm:space-y-0">
+                    <div className="flex flex-col sm:flex-row justify-between items-center gap-4">
                         {/* Copyright */}
-                        <div className="flex items-center space-x-4 text-sm text-muted-foreground">
+                        <div className="text-sm text-muted-foreground text-center sm:text-left">
                             <span>
                                 © {currentYear} {personalInfo.name}. All rights reserved.
                             </span>
                         </div>
 
-                        {/* Built With */}
-                        <div className="flex items-center space-x-4">
-                            <div className="flex items-center space-x-1 text-xs text-muted-foreground">
-                                <span>Built with</span>
-                                <Heart className="w-3 h-3 text-red-500" />
-                                <span>using</span>
+                        {/* Built With & Back to Top */}
+                        <div className="flex items-center gap-6">
+                            <div className="text-xs text-muted-foreground">
+                                Built with{" "}
                                 <a
                                     href="https://nextjs.org"
                                     target="_blank"
                                     rel="noopener noreferrer"
-                                    className="text-primary hover:underline"
+                                    className="text-foreground hover:text-primary transition-colors"
                                 >
                                     Next.js
                                 </a>
-                                <span>&</span>
+                                {" & "}
                                 <a
                                     href="https://tailwindcss.com"
                                     target="_blank"
                                     rel="noopener noreferrer"
-                                    className="text-primary hover:underline"
+                                    className="text-foreground hover:text-primary transition-colors"
                                 >
-                                    Tailwind CSS
+                                    Tailwind
                                 </a>
                             </div>
 
@@ -188,21 +190,12 @@ export function Footer() {
                                 variant="ghost"
                                 size="sm"
                                 onClick={scrollToTop}
-                                className="text-muted-foreground hover:text-primary transition-all hover:scale-110"
+                                className="h-8 w-8 p-0"
                                 aria-label="Back to top"
                             >
                                 <ArrowUp className="w-4 h-4" />
                             </Button>
                         </div>
-                    </div>
-                </div>
-
-                {/* Legal Links (if needed) */}
-                <div className="pb-6">
-                    <div className="flex justify-center space-x-6 text-xs text-muted-foreground">
-                        <button className="hover:text-primary transition-colors">Privacy Policy</button>
-                        <button className="hover:text-primary transition-colors">Terms of Service</button>
-                        <button className="hover:text-primary transition-colors">Cookie Policy</button>
                     </div>
                 </div>
             </div>
