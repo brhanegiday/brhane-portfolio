@@ -61,7 +61,7 @@ export const experiences: Experience[] = [
             "Developed LLM-powered analysis tools for healthcare and policy applications",
             "Created scalable solutions for data harmonization and policy analysis",
         ],
-        technologies: ["Python", "LLMs", "OpenAI APIs", "Data Processing", "Healthcare Analytics", "Policy Analysis"],
+        technologies: ["DevOps Engineering", "LLMs", "AI Chatbot Integration", "Fullstack Development", "Software Engineering", "Policy Analysis"],
         type: "research",
     },
     {
