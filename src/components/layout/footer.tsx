@@ -1,9 +1,8 @@
 "use client";
 
-import { Button } from "@/components/ui/button";
 import { Separator } from "@/components/ui/separator";
 import { contactInfo, navSections, personalInfo } from "@/lib/data";
-import { ArrowUp, ExternalLink, Github, Instagram, Linkedin, Mail, MapPin, Youtube } from "lucide-react";
+import { ExternalLink, Github, Instagram, Linkedin, Mail, MapPin, Youtube } from "lucide-react";
 
 const socialIcons = {
     GitHub: Github,
@@ -20,10 +19,6 @@ export function Footer() {
         if (element) {
             element.scrollIntoView({ behavior: "smooth", block: "start" });
         }
-    };
-
-    const scrollToTop = () => {
-        window.scrollTo({ top: 0, behavior: "smooth" });
     };
 
     return (

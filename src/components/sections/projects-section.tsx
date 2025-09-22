@@ -4,27 +4,16 @@ import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
 import { projects } from "@/lib/data";
 import type { Project } from "@/types";
-import {
-    ExternalLink,
-    Github,
-    ArrowUpRight,
-    Calendar,
-    Layers,
-    X,
-    Code2,
-    Zap
-} from "lucide-react";
+import { ExternalLink, Github, ArrowUpRight, Calendar, Layers, X, Code2, Zap } from "lucide-react";
 import { useState } from "react";
 
 export default function ProjectsSection() {
     const [selectedProject, setSelectedProject] = useState<Project | null>(null);
     const [filter, setFilter] = useState("all");
 
-    const filteredProjects = filter === "all"
-        ? projects
-        : projects.filter(p => p.category === filter);
+    const filteredProjects = filter === "all" ? projects : projects.filter((p) => p.category === filter);
 
-    const categories = ["all", ...Array.from(new Set(projects.map(p => p.category)))];
+    const categories = ["all", ...Array.from(new Set(projects.map((p) => p.category)))];
 
     return (
         <section id="projects" className="relative py-20 lg:py-24">
@@ -48,9 +37,7 @@ export default function ProjectsSection() {
                         <Layers className="w-4 h-4" />
                         Selected Work
                     </div>
-                    <h2 className="text-3xl md:text-4xl font-bold mb-4">
-                        Featured Projects
-                    </h2>
+                    <h2 className="text-3xl md:text-4xl font-bold mb-4">Featured Projects</h2>
                     <p className="text-muted-foreground text-lg max-w-2xl mx-auto">
                         A curated selection of projects showcasing technical excellence and innovation
                     </p>
@@ -59,7 +46,7 @@ export default function ProjectsSection() {
                 {/* Clean Filter */}
                 <div className="flex justify-center mb-12">
                     <div className="flex gap-2 p-1 rounded-2xl bg-muted/50">
-                        {categories.map(cat => (
+                        {categories.map((cat) => (
                             <button
                                 key={cat}
                                 onClick={() => setFilter(cat)}
@@ -76,8 +63,8 @@ export default function ProjectsSection() {
                 </div>
 
                 {/* Projects Grid */}
-                <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8 mb-16">
-                    {filteredProjects.map((project, index) => (
+                <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6 mb-10">
+                    {filteredProjects.map((project) => (
                         <div
                             key={project.id}
                             className="group cursor-pointer"
@@ -94,16 +81,6 @@ export default function ProjectsSection() {
                                             <Code2 className="w-6 h-6 text-primary" />
                                         </div>
                                         <div className="flex flex-col items-end gap-2">
-                                            <Badge
-                                                variant="secondary"
-                                                className={`text-xs px-3 py-1 ${
-                                                    project.status === "completed"
-                                                        ? "bg-green-500/10 text-green-600 border-green-500/20"
-                                                        : "bg-blue-500/10 text-blue-600 border-blue-500/20"
-                                                }`}
-                                            >
-                                                {project.status === "completed" ? "✅ Live" : "🚧 In Progress"}
-                                            </Badge>
                                             <Badge variant="outline" className="text-xs px-2 py-1">
                                                 {project.category}
                                             </Badge>
@@ -116,14 +93,17 @@ export default function ProjectsSection() {
                                             {project.title}
                                         </h3>
                                         <p className="text-muted-foreground leading-relaxed line-clamp-3">
-                                            {project.description.split('📈')[0].replace(/🎯|⚡/g, '').trim()}
+                                            {project.description.split("📈")[0].replace(/🎯|⚡/g, "").trim()}
                                         </p>
                                     </div>
 
                                     {/* Tech Stack */}
                                     <div className="flex flex-wrap gap-2">
                                         {project.technologies.slice(0, 4).map((tech, i) => (
-                                            <span key={i} className="px-3 py-1.5 text-xs bg-muted/80 rounded-xl font-medium hover:bg-primary/10 hover:text-primary transition-colors">
+                                            <span
+                                                key={i}
+                                                className="px-3 py-1.5 text-xs bg-muted/80 rounded-xl font-medium hover:bg-primary/10 hover:text-primary transition-colors"
+                                            >
                                                 {tech}
                                             </span>
                                         ))}
@@ -200,11 +180,13 @@ export default function ProjectsSection() {
                                 <h3 className="font-semibold mb-3">Overview</h3>
                                 <div className="text-muted-foreground leading-relaxed">
                                     {selectedProject.longDescription ? (
-                                        selectedProject.longDescription.split('\n\n').map((para, i) => (
-                                            <p key={i} className="mb-3">{para.replace(/\*\*/g, '')}</p>
+                                        selectedProject.longDescription.split("\n\n").map((para, i) => (
+                                            <p key={i} className="mb-3">
+                                                {para.replace(/\*\*/g, "")}
+                                            </p>
                                         ))
                                     ) : (
-                                        <p>{selectedProject.description.split('📈')[0].replace(/🎯|⚡/g, '').trim()}</p>
+                                        <p>{selectedProject.description.split("📈")[0].replace(/🎯|⚡/g, "").trim()}</p>
                                     )}
                                 </div>
                             </div>
@@ -214,7 +196,9 @@ export default function ProjectsSection() {
                                 <h3 className="font-semibold mb-3">Technologies</h3>
                                 <div className="flex flex-wrap gap-2">
                                     {selectedProject.technologies.map((tech, i) => (
-                                        <Badge key={i} variant="secondary">{tech}</Badge>
+                                        <Badge key={i} variant="secondary">
+                                            {tech}
+                                        </Badge>
                                     ))}
                                 </div>
                             </div>
@@ -253,11 +237,11 @@ export default function ProjectsSection() {
                                     </Button>
                                 )}
                                 {(!selectedProject.liveUrl || selectedProject.liveUrl === "#") &&
-                                 (!selectedProject.githubUrl || selectedProject.githubUrl === "#") && (
-                                    <Button variant="outline" disabled>
-                                        Private Project
-                                    </Button>
-                                )}
+                                    (!selectedProject.githubUrl || selectedProject.githubUrl === "#") && (
+                                        <Button variant="outline" disabled>
+                                            Private Project
+                                        </Button>
+                                    )}
                             </div>
                         </div>
                     </div>

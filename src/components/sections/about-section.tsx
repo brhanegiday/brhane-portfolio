@@ -1,11 +1,9 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
-// src/components/sections/about-section.tsx
 
 "use client";
 
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
-import { Card, CardContent } from "@/components/ui/card";
 import { achievements, education, personalInfo, skillsByCategory } from "@/lib/data";
 import { SkillCategory } from "@/types";
 import {
