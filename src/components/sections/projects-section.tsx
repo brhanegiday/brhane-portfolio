@@ -12,47 +12,33 @@ export default function ProjectsSection() {
     const [filter, setFilter] = useState("all");
 
     const filteredProjects = filter === "all" ? projects : projects.filter((p) => p.category === filter);
-
     const categories = ["all", ...Array.from(new Set(projects.map((p) => p.category)))];
 
     return (
-        <section id="projects" className="relative py-20 lg:py-24">
-            {/* Creative Background for Innovation */}
-            <div className="absolute inset-0 bg-gradient-to-br from-background via-secondary/8 to-primary/15" />
-            <div className="absolute inset-0 bg-gradient-to-tl from-accent/10 via-transparent to-muted/20" />
-
-            {/* Tech-inspired background elements */}
-            <div className="absolute inset-0 opacity-15 pointer-events-none">
-                <div className="absolute top-16 right-20 w-40 h-40 border border-primary/30 rounded-2xl rotate-12 animate-pulse" />
-                <div className="absolute bottom-24 left-16 w-32 h-32 bg-accent/20 rounded-full blur-xl" />
-                <div className="absolute top-1/3 left-1/3 w-6 h-6 bg-primary/40 rotate-45" />
-                <div className="absolute bottom-1/3 right-1/4 w-8 h-8 border-2 border-secondary/40 rounded-full" />
-                <div className="absolute top-3/4 right-1/2 w-12 h-12 bg-gradient-to-br from-primary/20 to-accent/20 rounded-lg rotate-45" />
-            </div>
-
-            <div className="relative container mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-                {/* Clean Header */}
+        <section id="projects" className="relative py-20 lg:py-24 bg-muted/30">
+            <div className="container mx-auto max-w-6xl px-4 sm:px-6 lg:px-8">
+                {/* Header */}
                 <div className="text-center mb-16">
-                    <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-primary/10 text-primary text-sm font-medium mb-6">
-                        <Layers className="w-4 h-4" />
+                    <div className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-primary/10 text-primary text-sm font-medium mb-4">
+                        <Layers className="w-3.5 h-3.5" />
                         Selected Work
                     </div>
-                    <h2 className="text-3xl md:text-4xl font-bold mb-4">Featured Projects</h2>
+                    <h2 className="text-3xl md:text-4xl font-bold mb-3">Featured Projects</h2>
                     <p className="text-muted-foreground text-lg max-w-2xl mx-auto">
                         A curated selection of projects showcasing technical excellence and innovation
                     </p>
                 </div>
 
-                {/* Clean Filter */}
+                {/* Filter */}
                 <div className="flex justify-center mb-12">
-                    <div className="flex gap-2 p-1 rounded-2xl bg-muted/50">
+                    <div className="flex gap-1 p-1 rounded-xl bg-muted/60 border">
                         {categories.map((cat) => (
                             <button
                                 key={cat}
                                 onClick={() => setFilter(cat)}
-                                className={`px-4 py-2 rounded-xl text-sm font-medium transition-all ${
+                                className={`px-4 py-2 rounded-lg text-sm font-medium transition-colors ${
                                     filter === cat
-                                        ? "bg-primary text-primary-foreground shadow-sm"
+                                        ? "bg-primary text-primary-foreground"
                                         : "text-muted-foreground hover:text-foreground"
                                 }`}
                             >
@@ -63,72 +49,67 @@ export default function ProjectsSection() {
                 </div>
 
                 {/* Projects Grid */}
-                <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6 mb-10">
+                <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-5 mb-10">
                     {filteredProjects.map((project) => (
                         <div
                             key={project.id}
                             className="group cursor-pointer"
                             onClick={() => setSelectedProject(project)}
                         >
-                            <div className="h-full relative overflow-hidden rounded-3xl border bg-card/90 backdrop-blur-sm hover:bg-card hover:shadow-2xl hover:shadow-primary/20 transition-all duration-500 hover:-translate-y-2 hover:border-primary/30">
-                                {/* Gradient overlay */}
-                                <div className="absolute inset-0 bg-gradient-to-br from-primary/5 via-transparent to-accent/5 opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
+                            <div className="h-full relative overflow-hidden rounded-xl border bg-card hover:shadow-lg hover:-translate-y-1 hover:border-primary/30 transition-all duration-300">
+                                {/* Hover gradient overlay */}
+                                <div className="absolute inset-0 bg-gradient-to-br from-primary/5 via-transparent to-accent/5 opacity-0 group-hover:opacity-100 transition-opacity duration-300 pointer-events-none" />
 
-                                <div className="relative p-8 space-y-6">
+                                <div className="relative p-6 space-y-4">
                                     {/* Project Header */}
                                     <div className="flex items-start justify-between">
-                                        <div className="w-14 h-14 rounded-2xl bg-gradient-to-br from-primary/20 to-primary/10 flex items-center justify-center group-hover:scale-110 transition-transform duration-300">
-                                            <Code2 className="w-6 h-6 text-primary" />
+                                        <div className="w-11 h-11 rounded-xl bg-primary/10 flex items-center justify-center">
+                                            <Code2 className="w-5 h-5 text-primary" />
                                         </div>
-                                        <div className="flex flex-col items-end gap-2">
-                                            <Badge variant="outline" className="text-xs px-2 py-1">
-                                                {project.category}
-                                            </Badge>
-                                        </div>
+                                        <Badge variant="outline" className="text-xs">
+                                            {project.category}
+                                        </Badge>
                                     </div>
 
                                     {/* Content */}
-                                    <div className="space-y-3">
-                                        <h3 className="font-bold text-xl mb-3 line-clamp-2 group-hover:text-primary transition-colors">
+                                    <div>
+                                        <h3 className="font-bold text-base mb-2 line-clamp-2 group-hover:text-primary transition-colors">
                                             {project.title}
                                         </h3>
-                                        <p className="text-muted-foreground leading-relaxed line-clamp-3">
-                                            {project.description.split("📈")[0].replace(/🎯|⚡/g, "").trim()}
+                                        <p className="text-muted-foreground text-sm leading-relaxed line-clamp-3">
+                                            {project.description}
                                         </p>
                                     </div>
 
                                     {/* Tech Stack */}
-                                    <div className="flex flex-wrap gap-2">
+                                    <div className="flex flex-wrap gap-1.5">
                                         {project.technologies.slice(0, 4).map((tech, i) => (
                                             <span
                                                 key={i}
-                                                className="px-3 py-1.5 text-xs bg-muted/80 rounded-xl font-medium hover:bg-primary/10 hover:text-primary transition-colors"
+                                                className="px-2.5 py-1 text-xs bg-muted rounded-lg font-medium"
                                             >
                                                 {tech}
                                             </span>
                                         ))}
                                         {project.technologies.length > 4 && (
-                                            <span className="px-3 py-1.5 text-xs bg-accent/10 text-accent rounded-xl font-medium">
+                                            <span className="px-2.5 py-1 text-xs bg-muted text-muted-foreground rounded-lg font-medium">
                                                 +{project.technologies.length - 4}
                                             </span>
                                         )}
                                     </div>
 
                                     {/* Footer */}
-                                    <div className="flex items-center justify-between pt-4 border-t border-border/50">
-                                        <div className="flex items-center gap-2 text-xs text-muted-foreground">
-                                            <Calendar className="w-4 h-4" />
-                                            <span className="font-medium">{project.startDate}</span>
+                                    <div className="flex items-center justify-between pt-3 border-t">
+                                        <div className="flex items-center gap-1.5 text-xs text-muted-foreground">
+                                            <Calendar className="w-3.5 h-3.5" />
+                                            <span>{project.startDate}</span>
                                         </div>
-                                        <div className="flex items-center gap-2 text-primary group-hover:translate-x-1 transition-transform">
-                                            <span className="text-xs font-medium">View Details</span>
-                                            <ArrowUpRight className="w-4 h-4" />
+                                        <div className="flex items-center gap-1 text-primary text-xs font-medium group-hover:translate-x-0.5 transition-transform">
+                                            <span>Details</span>
+                                            <ArrowUpRight className="w-3.5 h-3.5" />
                                         </div>
                                     </div>
                                 </div>
-
-                                {/* Hover effect border */}
-                                <div className="absolute inset-0 rounded-3xl bg-gradient-to-r from-primary/50 to-accent/50 opacity-0 group-hover:opacity-20 transition-opacity duration-500 pointer-events-none" />
                             </div>
                         </div>
                     ))}
@@ -145,23 +126,23 @@ export default function ProjectsSection() {
                 </div>
             </div>
 
-            {/* Clean Modal */}
+            {/* Modal */}
             {selectedProject && (
                 <div
                     className="fixed inset-0 bg-black/50 backdrop-blur-sm z-50 flex items-center justify-center p-4"
                     onClick={() => setSelectedProject(null)}
                 >
                     <div
-                        className="bg-background rounded-2xl max-w-4xl w-full max-h-[90vh] overflow-y-auto shadow-xl"
+                        className="bg-background rounded-xl border max-w-3xl w-full max-h-[90vh] overflow-y-auto shadow-xl"
                         onClick={(e) => e.stopPropagation()}
                     >
                         {/* Modal Header */}
-                        <div className="sticky top-0 bg-background border-b p-6 flex items-start justify-between">
+                        <div className="sticky top-0 bg-background border-b p-6 flex items-start justify-between rounded-t-xl">
                             <div className="flex-1">
-                                <h2 className="text-2xl font-bold mb-2">{selectedProject.title}</h2>
-                                <div className="flex items-center gap-4 text-sm text-muted-foreground">
+                                <h2 className="text-xl font-bold mb-1">{selectedProject.title}</h2>
+                                <div className="flex items-center gap-3 text-sm text-muted-foreground">
                                     <span>{selectedProject.category}</span>
-                                    <span>•</span>
+                                    <span>·</span>
                                     <span>{selectedProject.startDate}</span>
                                 </div>
                             </div>
@@ -174,11 +155,11 @@ export default function ProjectsSection() {
                         </div>
 
                         {/* Modal Content */}
-                        <div className="p-6 space-y-8">
+                        <div className="p-6 space-y-6">
                             {/* Description */}
                             <div>
-                                <h3 className="font-semibold mb-3">Overview</h3>
-                                <div className="text-muted-foreground leading-relaxed">
+                                <h3 className="font-semibold mb-2 text-sm">Overview</h3>
+                                <div className="text-muted-foreground text-sm leading-relaxed">
                                     {selectedProject.longDescription ? (
                                         selectedProject.longDescription.split("\n\n").map((para, i) => (
                                             <p key={i} className="mb-3">
@@ -186,17 +167,17 @@ export default function ProjectsSection() {
                                             </p>
                                         ))
                                     ) : (
-                                        <p>{selectedProject.description.split("📈")[0].replace(/🎯|⚡/g, "").trim()}</p>
+                                        <p>{selectedProject.description}</p>
                                     )}
                                 </div>
                             </div>
 
                             {/* Technologies */}
                             <div>
-                                <h3 className="font-semibold mb-3">Technologies</h3>
-                                <div className="flex flex-wrap gap-2">
+                                <h3 className="font-semibold mb-2 text-sm">Technologies</h3>
+                                <div className="flex flex-wrap gap-1.5">
                                     {selectedProject.technologies.map((tech, i) => (
-                                        <Badge key={i} variant="secondary">
+                                        <Badge key={i} variant="secondary" className="text-xs">
                                             {tech}
                                         </Badge>
                                     ))}
@@ -206,12 +187,12 @@ export default function ProjectsSection() {
                             {/* Features */}
                             {selectedProject.features && selectedProject.features.length > 0 && (
                                 <div>
-                                    <h3 className="font-semibold mb-3">Key Features</h3>
-                                    <div className="grid sm:grid-cols-2 gap-3">
+                                    <h3 className="font-semibold mb-2 text-sm">Key Features</h3>
+                                    <div className="grid sm:grid-cols-2 gap-2">
                                         {selectedProject.features.map((feature, i) => (
-                                            <div key={i} className="flex items-start gap-2 p-3 rounded-lg bg-muted/50">
-                                                <Zap className="w-4 h-4 text-primary mt-0.5 flex-shrink-0" />
-                                                <span className="text-sm">{feature}</span>
+                                            <div key={i} className="flex items-start gap-2 p-3 rounded-lg bg-muted/50 text-sm">
+                                                <Zap className="w-3.5 h-3.5 text-primary mt-0.5 shrink-0" />
+                                                <span>{feature}</span>
                                             </div>
                                         ))}
                                     </div>
@@ -219,9 +200,9 @@ export default function ProjectsSection() {
                             )}
 
                             {/* Action Buttons */}
-                            <div className="flex gap-3 pt-4">
+                            <div className="flex gap-3 pt-2">
                                 {selectedProject.liveUrl && selectedProject.liveUrl !== "#" && (
-                                    <Button className="gap-2" asChild>
+                                    <Button className="gap-2" size="sm" asChild>
                                         <a href={selectedProject.liveUrl} target="_blank" rel="noopener noreferrer">
                                             <ExternalLink className="w-4 h-4" />
                                             Live Demo
@@ -229,7 +210,7 @@ export default function ProjectsSection() {
                                     </Button>
                                 )}
                                 {selectedProject.githubUrl && selectedProject.githubUrl !== "#" && (
-                                    <Button variant="outline" className="gap-2" asChild>
+                                    <Button variant="outline" className="gap-2" size="sm" asChild>
                                         <a href={selectedProject.githubUrl} target="_blank" rel="noopener noreferrer">
                                             <Github className="w-4 h-4" />
                                             Source Code
@@ -238,7 +219,7 @@ export default function ProjectsSection() {
                                 )}
                                 {(!selectedProject.liveUrl || selectedProject.liveUrl === "#") &&
                                     (!selectedProject.githubUrl || selectedProject.githubUrl === "#") && (
-                                        <Button variant="outline" disabled>
+                                        <Button variant="outline" size="sm" disabled>
                                             Private Project
                                         </Button>
                                     )}

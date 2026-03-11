@@ -5,7 +5,7 @@ import Link from "next/link";
 import { cn } from "@/lib/utils";
 import { Button } from "@/components/ui/button";
 import { Sheet, SheetContent, SheetTrigger } from "@/components/ui/sheet";
-import { Menu, FileText, Github, Linkedin, Mail } from "lucide-react";
+import { Menu, FileText, Mail } from "lucide-react";
 import { personalInfo, navSections, contactInfo } from "@/lib/data";
 
 export function Navbar() {
@@ -17,7 +17,6 @@ export function Navbar() {
         const handleScroll = () => {
             setIsScrolled(window.scrollY > 10);
 
-            // Update active section based on scroll position
             const sections = navSections.map((section) => section.id);
             const scrollPosition = window.scrollY + 100;
 
@@ -50,184 +49,140 @@ export function Navbar() {
     return (
         <header
             className={cn(
-                "fixed top-0 w-full z-50 transition-all duration-500",
+                "fixed top-0 w-full z-50 transition-all duration-300",
                 isScrolled
-                    ? "bg-background/90 backdrop-blur-xl shadow-lg shadow-primary/5 border-b border-border/50"
+                    ? "bg-background/95 backdrop-blur-md border-b"
                     : "bg-transparent"
             )}
         >
-            <nav className="container mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-                <div className="flex items-center justify-between h-20">
-                    {/* Enhanced Logo */}
+            <nav className="container mx-auto max-w-6xl px-4 sm:px-6 lg:px-8">
+                <div className="flex items-center justify-between h-16">
+                    {/* Logo */}
                     <Link
                         href="#home"
                         onClick={(e) => {
                             e.preventDefault();
                             scrollToSection("home");
                         }}
-                        className="flex items-center space-x-4 group"
+                        className="flex items-center space-x-3 group"
                     >
-                        <div className="relative">
-                            <div className="w-12 h-12 bg-gradient-to-br from-primary to-primary/80 rounded-2xl flex items-center justify-center shadow-lg shadow-primary/25 border border-primary/20 transition-all duration-300 group-hover:scale-110 group-hover:shadow-xl group-hover:shadow-primary/40">
-                                <span className="text-white font-bold text-lg tracking-tight select-none">
-                                    {personalInfo.name
-                                        .split(" ")
-                                        .map((n) => n[0])
-                                        .join("")
-                                        .toUpperCase()}
-                                </span>
-                            </div>
-                            {/* Glow effect */}
-                            <div className="absolute inset-0 w-12 h-12 bg-gradient-to-br from-primary to-primary/80 rounded-2xl opacity-0 group-hover:opacity-30 transition-opacity duration-300 blur-md -z-10" />
+                        <div className="w-9 h-9 bg-primary rounded-lg flex items-center justify-center">
+                            <span className="text-primary-foreground font-bold text-sm select-none">
+                                {personalInfo.name
+                                    .split(" ")
+                                    .map((n) => n[0])
+                                    .join("")
+                                    .toUpperCase()}
+                            </span>
                         </div>
                         <div className="hidden sm:block">
-                            <h1 className="text-xl font-bold text-foreground group-hover:text-primary transition-colors duration-300">
+                            <h1 className="text-base font-bold text-foreground">
                                 {personalInfo.name}
                             </h1>
-                            <p className="text-sm text-muted-foreground font-medium">Software Engineer</p>
+                            <p className="text-xs text-muted-foreground">Software Engineer</p>
                         </div>
                     </Link>
 
-                    {/* Enhanced Desktop Navigation */}
-                    <div className="hidden md:flex items-center space-x-2">
+                    {/* Desktop Navigation */}
+                    <div className="hidden md:flex items-center space-x-1">
                         {navSections.map((section) => (
                             <button
                                 key={section.id}
                                 onClick={() => scrollToSection(section.id)}
                                 className={cn(
-                                    "relative cursor-pointer px-4 py-3 text-sm font-medium transition-all duration-300 rounded-xl group hover:bg-primary/10",
+                                    "px-3 py-2 text-sm font-medium transition-colors rounded-lg",
                                     activeSection === section.id
-                                        ? "text-primary bg-primary/10"
-                                        : "text-muted-foreground hover:text-primary"
+                                        ? "text-primary bg-primary/8"
+                                        : "text-muted-foreground hover:text-foreground"
                                 )}
                             >
-                                <span className="relative z-10">{section.label}</span>
-
-                                {/* Animated background */}
-                                <div
-                                    className={cn(
-                                        "absolute inset-0 rounded-xl bg-gradient-to-r from-primary/20 to-accent/20 opacity-0 transition-opacity duration-300",
-                                        activeSection === section.id ? "opacity-100" : "group-hover:opacity-50"
-                                    )}
-                                />
+                                {section.label}
                             </button>
                         ))}
                     </div>
 
-                    {/* Enhanced Desktop CTA Buttons */}
-                    <div className="hidden md:flex items-center space-x-3">
+                    {/* Desktop CTA Buttons */}
+                    <div className="hidden md:flex items-center space-x-2">
                         <Button
                             variant="ghost"
                             size="sm"
-                            className="hover:bg-primary/10 hover:text-primary transition-all duration-300 border border-transparent hover:border-primary/20"
+                            className="text-muted-foreground hover:text-foreground"
                             asChild
                         >
                             <Link href={personalInfo.cvUrl!} target="_blank" rel="noopener noreferrer">
-                                <FileText className="w-4 h-4 mr-2" />
+                                <FileText className="w-4 h-4 mr-1.5" />
                                 Resume
                             </Link>
                         </Button>
                         <Button
                             size="sm"
                             onClick={() => scrollToSection("contact")}
-                            className="bg-gradient-to-r from-primary to-primary/90 hover:from-primary/90 hover:to-primary/80 shadow-lg shadow-primary/25 hover:shadow-xl hover:shadow-primary/40 transition-all duration-300 hover:scale-105"
                         >
-                            <Mail className="w-4 h-4 mr-2" />
+                            <Mail className="w-4 h-4 mr-1.5" />
                             Let&apos;s Talk
                         </Button>
                     </div>
 
-                    {/* Enhanced Mobile Menu */}
+                    {/* Mobile Menu */}
                     <div className="md:hidden">
                         <Sheet open={isOpen} onOpenChange={setIsOpen}>
                             <SheetTrigger asChild>
-                                <Button
-                                    variant="ghost"
-                                    size="sm"
-                                    className="relative w-10 h-10 p-0 hover:bg-primary/10 border border-transparent hover:border-primary/20 transition-all duration-300"
-                                >
-                                    <Menu className="w-5 h-5 text-muted-foreground hover:text-primary transition-colors" />
+                                <Button variant="ghost" size="sm" className="w-9 h-9 p-0">
+                                    <Menu className="w-5 h-5" />
                                 </Button>
                             </SheetTrigger>
-                            <SheetContent
-                                side="right"
-                                className="w-80 bg-background/98 backdrop-blur-2xl border-l border-border/30"
-                            >
+                            <SheetContent side="right" className="w-72 bg-background border-l">
                                 <div className="flex flex-col h-full px-2">
-                                    {/* Minimalistic Mobile Header */}
-                                    <div className="flex items-center justify-start py-8 border-b px-3 gap-5 border-border/20">
-                                        <div className="text-center">
-                                            <div className="w-12 h-12 bg-primary rounded-xl flex items-center justify-center mb-3 mx-auto">
-                                                <span className="text-white font-semibold text-base">
-                                                    {personalInfo.name
-                                                        .split(" ")
-                                                        .map((n) => n[0])
-                                                        .join("")
-                                                        .toUpperCase()}
-                                                </span>
-                                            </div>
+                                    {/* Mobile Header */}
+                                    <div className="flex items-center gap-3 py-6 border-b">
+                                        <div className="w-9 h-9 bg-primary rounded-lg flex items-center justify-center">
+                                            <span className="text-primary-foreground font-semibold text-sm">
+                                                {personalInfo.name
+                                                    .split(" ")
+                                                    .map((n) => n[0])
+                                                    .join("")
+                                                    .toUpperCase()}
+                                            </span>
                                         </div>
-                                        <h2 className="font-semibold text-lg text-foreground">{personalInfo.name}</h2>
+                                        <h2 className="font-semibold text-base">{personalInfo.name}</h2>
                                     </div>
 
-                                    {/* Clean Mobile Navigation Links */}
-                                    <div className="flex-1 py-6">
+                                    {/* Mobile Navigation Links */}
+                                    <div className="flex-1 py-4">
                                         <nav className="space-y-1">
                                             {navSections.map((section) => (
                                                 <button
                                                     key={section.id}
                                                     onClick={() => scrollToSection(section.id)}
                                                     className={cn(
-                                                        "w-full text-left px-4 py-3 rounded-lg transition-all duration-200 group",
+                                                        "w-full text-left px-3 py-2.5 rounded-lg text-sm transition-colors",
                                                         activeSection === section.id
                                                             ? "text-primary bg-primary/8 font-medium"
                                                             : "text-muted-foreground hover:text-foreground hover:bg-muted/50"
                                                     )}
                                                 >
-                                                    <div className="flex items-center justify-between">
-                                                        <span className="text-base">{section.label}</span>
-                                                        {activeSection === section.id && (
-                                                            <div className="w-1.5 h-1.5 bg-primary rounded-full" />
-                                                        )}
-                                                    </div>
+                                                    {section.label}
                                                 </button>
                                             ))}
                                         </nav>
                                     </div>
 
-                                    {/* Clean Mobile CTA Buttons */}
-                                    <div className="space-y-3 border-t border-border/20 pt-6">
-                                        <Button variant="outline" className="w-full justify-start font-normal" asChild>
+                                    {/* Mobile CTA Buttons */}
+                                    <div className="space-y-2 border-t pt-4 pb-6">
+                                        <Button variant="outline" className="w-full justify-start text-sm" size="sm" asChild>
                                             <Link href={personalInfo.cvUrl!} target="_blank" rel="noopener noreferrer">
-                                                <FileText className="w-4 h-4 mr-3" />
+                                                <FileText className="w-4 h-4 mr-2" />
                                                 Download Resume
                                             </Link>
                                         </Button>
                                         <Button
-                                            className="w-full justify-start font-normal"
+                                            className="w-full justify-start text-sm"
+                                            size="sm"
                                             onClick={() => scrollToSection("contact")}
                                         >
-                                            <Mail className="w-4 h-4 mr-3" />
+                                            <Mail className="w-4 h-4 mr-2" />
                                             Get In Touch
                                         </Button>
-                                    </div>
-
-                                    {/* Clean Mobile Social Links */}
-                                    <div className="flex items-center justify-center space-x-6 pt-4 border-t border-border/20">
-                                        {contactInfo.socialLinks.slice(0, 3).map((social) => (
-                                            <Link
-                                                key={social.platform}
-                                                href={social.url}
-                                                target="_blank"
-                                                rel="noopener noreferrer"
-                                                className="w-10 h-10 rounded-lg flex items-center justify-center text-muted-foreground hover:text-primary transition-colors duration-200"
-                                                aria-label={social.platform}
-                                            >
-                                                {social.platform === "GitHub" && <Github className="w-5 h-5" />}
-                                                {social.platform === "LinkedIn" && <Linkedin className="w-5 h-5" />}
-                                                {social.platform === "Twitter" && <Mail className="w-5 h-5" />}
-                                            </Link>
-                                        ))}
                                     </div>
                                 </div>
                             </SheetContent>

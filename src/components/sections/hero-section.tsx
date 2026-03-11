@@ -2,7 +2,7 @@
 
 import { Button } from "@/components/ui/button";
 import { contactInfo, personalInfo, stats } from "@/lib/data";
-import { ArrowDown, Download, Github, Instagram, Linkedin, Mail, MapPin, Sparkles, Youtube } from "lucide-react";
+import { ArrowDown, Download, Github, Instagram, Linkedin, Mail, MapPin } from "lucide-react";
 
 export function HeroSection() {
     const scrollToSection = (sectionId: string) => {
@@ -15,94 +15,62 @@ export function HeroSection() {
     const getSocialIcon = (platform: string) => {
         switch (platform) {
             case "GitHub":
-                return <Github className="w-5 h-5" />;
+                return <Github className="w-4 h-4" />;
             case "LinkedIn":
-                return <Linkedin className="w-5 h-5" />;
-            case "YouTube":
-                return <Youtube className="w-5 h-5" />;
+                return <Linkedin className="w-4 h-4" />;
             case "Instagram":
-                return <Instagram className="w-5 h-5" />;
+                return <Instagram className="w-4 h-4" />;
             default:
                 return null;
         }
     };
 
     return (
-        <section id="home" className="min-h-screen flex items-center justify-center relative overflow-hidden">
-            {/* Dynamic Background with Mesh Gradient */}
-            <div className="absolute inset-0 bg-gradient-to-br from-background via-primary/5 to-accent/10" />
-            <div className="absolute inset-0 bg-gradient-to-tl from-transparent via-primary/3 to-secondary/8" />
-
-            {/* Animated Background Elements - More Dynamic */}
-            <div className="absolute inset-0 overflow-hidden pointer-events-none">
-                {/* Primary floating orbs */}
-                <div className="absolute top-1/4 left-1/4 w-96 h-96 bg-gradient-to-br from-primary/20 to-primary/5 rounded-full blur-3xl animate-pulse" />
-                <div className="absolute bottom-1/4 right-1/4 w-80 h-80 bg-gradient-to-br from-accent/15 to-accent/5 rounded-full blur-3xl animate-pulse delay-1000" />
-                <div className="absolute top-1/2 right-1/3 w-64 h-64 bg-gradient-to-br from-secondary/15 to-secondary/5 rounded-full blur-2xl animate-pulse delay-2000" />
-
-                {/* Grid pattern overlay */}
-                <div className="absolute inset-0 bg-[linear-gradient(rgba(var(--primary-rgb),0.02)_1px,transparent_1px),linear-gradient(90deg,rgba(var(--primary-rgb),0.02)_1px,transparent_1px)] bg-[size:50px_50px]" />
-
-                {/* Noise texture for depth */}
-                <div className="absolute inset-0 opacity-30 bg-[radial-gradient(circle_at_20%_50%,rgba(var(--primary-rgb),0.1),transparent_50%)] dark:opacity-20" />
-            </div>
-
-            <div className="relative container mx-auto max-w-6xl px-4 sm:px-6 lg:px-8 py-20">
-                <div className="space-y-12">
+        <section id="home" className="min-h-screen flex items-center justify-center relative">
+            <div className="relative container mx-auto max-w-5xl px-4 sm:px-6 lg:px-8 py-20">
+                <div className="space-y-10">
                     {/* Main Content */}
-                    <div className="text-center space-y-6">
-                        {/* Greeting Badge */}
-                        <div className="inline-flex items-center gap-2 px-4 py-2 mt-8 md:mt-4 rounded-full bg-primary/10 text-primary text-sm font-medium backdrop-blur-sm">
-                            <Sparkles className="w-4 h-4" />
-                            Welcome to my portfolio
-                        </div>
-
+                    <div className="text-center space-y-5">
                         {/* Name & Title */}
-                        <div className="space-y-4">
-                            <h1 className="text-5xl sm:text-6xl lg:text-7xl font-bold tracking-tight">
-                                <span className="bg-gradient-to-r from-foreground to-foreground/70 bg-clip-text text-transparent">
-                                    {personalInfo.name}
-                                </span>
+                        <div className="space-y-3">
+                            <h1 className="text-5xl sm:text-6xl lg:text-7xl font-bold tracking-tight text-foreground">
+                                {personalInfo.name}
                             </h1>
-                            <p className="text-xl sm:text-2xl lg:text-3xl font-medium">
-                                <span className="bg-gradient-to-r from-primary via-purple-500 to-pink-500 bg-clip-text text-transparent">
-                                    {personalInfo.title}
-                                </span>
+                            <p className="text-xl sm:text-2xl lg:text-3xl font-medium text-primary">
+                                {personalInfo.title}
                             </p>
                         </div>
 
                         {/* Tagline */}
-                        <p className="text-lg sm:text-xl text-muted-foreground max-w-2xl mx-auto leading-relaxed">
+                        <p className="text-lg text-muted-foreground max-w-2xl mx-auto leading-relaxed">
                             {personalInfo.tagline}
                         </p>
 
                         {/* Meta Info */}
                         <div className="flex flex-wrap justify-center items-center gap-3 text-sm text-muted-foreground">
-                            <div className="flex items-center gap-1.5 px-3 py-1 rounded-full bg-muted/50">
-                                <MapPin className="w-4 h-4" />
+                            <div className="flex items-center gap-1.5">
+                                <MapPin className="w-3.5 h-3.5" />
                                 <span>{contactInfo.location}</span>
                             </div>
-                            <div className="w-1 h-1 bg-muted-foreground/50 rounded-full hidden sm:block" />
+                            <span className="hidden sm:inline text-border">·</span>
                             <span className="hidden sm:inline">Carnegie Mellon University Africa</span>
-                            <div className="w-1 h-1 bg-muted-foreground/50 rounded-full hidden sm:block" />
-                            <span className="hidden sm:inline">AI Research & Engineering</span>
                         </div>
                     </div>
 
                     {/* CTA Buttons */}
-                    <div className="flex flex-wrap justify-center gap-4">
-                        <Button 
-                            size="lg" 
+                    <div className="flex flex-wrap justify-center gap-3">
+                        <Button
+                            size="lg"
                             onClick={() => scrollToSection("projects")}
                             className="gap-2 px-8"
                         >
                             View My Work
                             <ArrowDown className="w-4 h-4" />
                         </Button>
-                        <Button 
-                            variant="outline" 
+                        <Button
+                            variant="outline"
                             size="lg"
-                            className="gap-2 px-8" 
+                            className="gap-2 px-8"
                             asChild
                         >
                             <a href={personalInfo.cvUrl} target="_blank" rel="noopener noreferrer">
@@ -110,10 +78,10 @@ export function HeroSection() {
                                 Resume
                             </a>
                         </Button>
-                        <Button 
-                            variant="outline" 
+                        <Button
+                            variant="outline"
                             size="lg"
-                            className="gap-2" 
+                            className="gap-2"
                             asChild
                         >
                             <a href={`mailto:${contactInfo.email}`}>
@@ -124,31 +92,29 @@ export function HeroSection() {
                     </div>
 
                     {/* Social Links */}
-                    <div className="flex justify-center items-center gap-3">
+                    <div className="flex justify-center items-center gap-2">
                         {contactInfo.socialLinks.map((social) => (
                             <a
                                 key={social.platform}
                                 href={social.url}
                                 target="_blank"
                                 rel="noopener noreferrer"
-                                className="w-11 h-11 rounded-xl border bg-card/50 backdrop-blur-sm hover:bg-muted/50 hover:border-primary/50 transition-all flex items-center justify-center group"
+                                className="w-10 h-10 rounded-xl border hover:border-primary/50 hover:text-primary transition-colors flex items-center justify-center text-muted-foreground"
                                 aria-label={social.platform}
                             >
-                                <div className="group-hover:scale-110 transition-transform">
-                                    {getSocialIcon(social.platform)}
-                                </div>
+                                {getSocialIcon(social.platform)}
                             </a>
                         ))}
                     </div>
 
                     {/* Stats Grid */}
-                    <div className="grid grid-cols-2 lg:grid-cols-4 gap-4 lg:gap-6 max-w-4xl mx-auto pt-8">
+                    <div className="grid grid-cols-2 lg:grid-cols-4 gap-4 max-w-3xl mx-auto pt-4">
                         {stats.map((stat, index) => (
-                            <div 
-                                key={index} 
-                                className="group p-6 rounded-2xl border bg-card/50 backdrop-blur-sm hover:shadow-lg hover:border-primary/50 transition-all duration-300"
+                            <div
+                                key={index}
+                                className="p-5 rounded-xl border bg-card hover:shadow-md transition-shadow text-center"
                             >
-                                <div className="text-3xl lg:text-4xl font-bold bg-gradient-to-r from-primary to-purple-600 bg-clip-text text-transparent mb-2">
+                                <div className="text-3xl font-bold text-primary mb-1">
                                     {stat.value}
                                 </div>
                                 <div className="text-sm text-muted-foreground">
@@ -160,10 +126,10 @@ export function HeroSection() {
                 </div>
 
                 {/* Scroll Indicator */}
-                <div className="absolute bottom-8 left-1/2 transform -translate-x-1/2 animate-bounce">
+                <div className="absolute bottom-8 left-1/2 transform -translate-x-1/2">
                     <button
                         onClick={() => scrollToSection("about")}
-                        className="w-10 h-10 rounded-full border bg-card/50 backdrop-blur-sm hover:bg-muted/50 hover:border-primary/50 transition-all flex items-center justify-center"
+                        className="w-10 h-10 rounded-full border hover:border-primary/50 hover:text-primary transition-colors flex items-center justify-center text-muted-foreground"
                         aria-label="Scroll to next section"
                     >
                         <ArrowDown className="w-4 h-4" />

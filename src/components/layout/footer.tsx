@@ -2,12 +2,11 @@
 
 import { Separator } from "@/components/ui/separator";
 import { contactInfo, navSections, personalInfo } from "@/lib/data";
-import { ExternalLink, Github, Instagram, Linkedin, Mail, MapPin, Youtube } from "lucide-react";
+import { ExternalLink, Github, Instagram, Linkedin, Mail, MapPin } from "lucide-react";
 
 const socialIcons = {
     GitHub: Github,
     LinkedIn: Linkedin,
-    YouTube: Youtube,
     Instagram: Instagram,
 };
 
@@ -23,18 +22,18 @@ export function Footer() {
 
     return (
         <footer className="bg-muted/30 border-t">
-            <div className="container mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+            <div className="container mx-auto max-w-6xl px-4 sm:px-6 lg:px-8">
                 {/* Main Footer Content */}
-                <div className="py-12 lg:py-16">
-                    <div className="grid lg:grid-cols-12 gap-8 lg:gap-12">
+                <div className="py-12">
+                    <div className="grid lg:grid-cols-12 gap-8">
                         {/* Brand Column */}
-                        <div className="lg:col-span-4 space-y-4">
+                        <div className="lg:col-span-4 space-y-3">
                             <div className="flex items-center space-x-3">
-                                <div className="w-10 h-10 bg-gradient-to-br from-primary to-primary/70 rounded-xl flex items-center justify-center">
-                                    <span className="text-white font-bold text-lg">BG</span>
+                                <div className="w-8 h-8 bg-primary rounded-lg flex items-center justify-center">
+                                    <span className="text-primary-foreground font-bold text-xs">BG</span>
                                 </div>
                                 <div>
-                                    <h3 className="font-bold text-lg text-foreground">{personalInfo.name}</h3>
+                                    <h3 className="font-bold text-sm">{personalInfo.name}</h3>
                                     <p className="text-xs text-muted-foreground">Software Engineer & AI Researcher</p>
                                 </div>
                             </div>
@@ -42,17 +41,16 @@ export function Footer() {
                                 From full-stack apps to DevOps pipelines and applied AI research, I bridge design, code,
                                 and data to deliver technology that matters.
                             </p>
-
-                            <div className="flex items-center space-x-2 text-sm text-muted-foreground">
-                                <MapPin className="w-4 h-4" />
+                            <div className="flex items-center space-x-1.5 text-sm text-muted-foreground">
+                                <MapPin className="w-3.5 h-3.5" />
                                 <span>{contactInfo.location}</span>
                             </div>
                         </div>
 
                         {/* Quick Links */}
-                        <div className="lg:col-span-2 space-y-4">
-                            <h4 className="font-semibold text-sm text-foreground">Quick Links</h4>
-                            <nav className="flex flex-col space-y-2.5">
+                        <div className="lg:col-span-2 space-y-3">
+                            <h4 className="font-semibold text-sm">Quick Links</h4>
+                            <nav className="flex flex-col space-y-2">
                                 {navSections.map((section) => (
                                     <button
                                         key={section.id}
@@ -66,9 +64,9 @@ export function Footer() {
                         </div>
 
                         {/* Resources */}
-                        <div className="lg:col-span-3 space-y-4">
-                            <h4 className="font-semibold text-sm text-foreground">Resources</h4>
-                            <div className="flex flex-col space-y-2.5">
+                        <div className="lg:col-span-3 space-y-3">
+                            <h4 className="font-semibold text-sm">Resources</h4>
+                            <div className="flex flex-col space-y-2">
                                 <a
                                     href={personalInfo.resumeUrl}
                                     target="_blank"
@@ -96,32 +94,23 @@ export function Footer() {
                                     GitHub
                                     <ExternalLink className="w-3 h-3" />
                                 </a>
-                                <a
-                                    href="https://youtube.com/@bashandbeyond"
-                                    target="_blank"
-                                    rel="noopener noreferrer"
-                                    className="text-sm text-muted-foreground hover:text-primary transition-colors inline-flex items-center gap-1.5"
-                                >
-                                    Bash & Beyond
-                                    <ExternalLink className="w-3 h-3" />
-                                </a>
                             </div>
                         </div>
 
                         {/* Contact & Social */}
-                        <div className="lg:col-span-3 space-y-4">
-                            <h4 className="font-semibold text-sm text-foreground">Get in Touch</h4>
+                        <div className="lg:col-span-3 space-y-3">
+                            <h4 className="font-semibold text-sm">Get in Touch</h4>
                             <div className="space-y-3">
                                 <a
                                     href={`mailto:${contactInfo.email}`}
                                     className="flex items-center space-x-2 text-sm text-muted-foreground hover:text-primary transition-colors"
                                 >
-                                    <Mail className="w-4 h-4 flex-shrink-0" />
+                                    <Mail className="w-3.5 h-3.5 shrink-0" />
                                     <span className="truncate">{contactInfo.email}</span>
                                 </a>
 
                                 {/* Social Links */}
-                                <div className="flex items-center space-x-3 pt-1">
+                                <div className="flex items-center space-x-2">
                                     {contactInfo.socialLinks.map((social) => {
                                         const IconComponent = socialIcons[social.platform as keyof typeof socialIcons];
                                         if (!IconComponent) return null;
@@ -132,7 +121,7 @@ export function Footer() {
                                                 href={social.url}
                                                 target="_blank"
                                                 rel="noopener noreferrer"
-                                                className="w-9 h-9 rounded-lg bg-muted flex items-center justify-center text-muted-foreground hover:text-primary hover:bg-primary/10 transition-all"
+                                                className="w-8 h-8 rounded-lg bg-muted flex items-center justify-center text-muted-foreground hover:text-primary hover:bg-primary/10 transition-colors"
                                                 aria-label={social.platform}
                                             >
                                                 <IconComponent className="w-4 h-4" />
@@ -148,14 +137,11 @@ export function Footer() {
                 <Separator />
 
                 {/* Bottom Footer */}
-                <div className="py-6">
-                    <div className="flex justify-center">
-                        {/* Copyright */}
-                        <div className="text-sm text-muted-foreground text-center sm:text-left">
-                            <span>
-                                © {currentYear} {personalInfo.name}. All rights reserved.
-                            </span>
-                        </div>
+                <div className="py-5">
+                    <div className="text-center">
+                        <p className="text-xs text-muted-foreground">
+                            © {currentYear} {personalInfo.name}. All rights reserved.
+                        </p>
                     </div>
                 </div>
             </div>

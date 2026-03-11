@@ -187,6 +187,36 @@ export const education: Education[] = [
 
 export const projects: Project[] = [
     {
+        id: "0",
+        title: "Nabayt — Professional Storytelling Platform",
+        description:
+            "A platform for authentic storytelling where real voices thrive. Features AI-powered content moderation that scans every post in under 10 seconds, instant publishing, and a safe community for writers and readers.",
+        longDescription:
+            "**The Challenge:** Existing content platforms often lack safe, respectful spaces for authentic storytelling. Writers face noise, judgment, and slow moderation processes that stifle meaningful expression.\n\n**My Role:** As AI/Software Engineer, I built the AI moderation pipeline, backend services, and contributed to the full-stack architecture powering the platform.\n\n**Technical Innovation:** Developed an advanced AI moderation system that scans every post in under 10 seconds, flagging inappropriate content for human review while automatically approving 99% of submissions. Built scalable backend services with NestJS and PostgreSQL, ensuring reliable performance as the community grows.\n\n**Impact:** Nabayt provides a calm, respectful space where storytellers can share experiences without pressure or judgment, supported by responsible AI moderation that keeps the community safe and welcoming.",
+        technologies: ["Next.js", "NestJS", "PostgreSQL", "AI Moderation", "TypeScript", "Telegram Bot", "REST APIs"],
+        category: "Full-Stack Development",
+        features: [
+            "AI-Powered Content Moderation",
+            "Instant Publishing (99% auto-approved)",
+            "Anonymous Storytelling",
+            "Community Safety & Guidelines",
+            "Responsive Web Platform",
+            "Telegram Bot Integration",
+        ],
+        status: "completed",
+        startDate: "Oct 2024",
+        endDate: "Present",
+        highlights: [
+            "AI moderation scans posts in under 10 seconds",
+            "99% of content approved automatically",
+            "Built with modern full-stack architecture",
+            "Focus on community safety and authentic expression",
+        ],
+        imageUrl: undefined,
+        liveUrl: "https://www.nabayt.com",
+        githubUrl: "#",
+    },
+    {
         id: "1",
         title: "Curricula - AI-Powered Academic Advisor",
         description:
