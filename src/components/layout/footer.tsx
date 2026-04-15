@@ -3,6 +3,7 @@
 import { Separator } from "@/components/ui/separator";
 import { contactInfo, navSections, personalInfo } from "@/lib/data";
 import { ExternalLink, Github, Instagram, Linkedin, Mail, MapPin } from "lucide-react";
+import { BrandLogo } from "@/components/common/brand-logo";
 
 const socialIcons = {
     GitHub: Github,
@@ -28,15 +29,7 @@ export function Footer() {
                     <div className="grid lg:grid-cols-12 gap-8">
                         {/* Brand Column */}
                         <div className="lg:col-span-4 space-y-3">
-                            <div className="flex items-center space-x-3">
-                                <div className="w-8 h-8 bg-primary rounded-lg flex items-center justify-center">
-                                    <span className="text-primary-foreground font-bold text-xs">BG</span>
-                                </div>
-                                <div>
-                                    <h3 className="font-bold text-sm">{personalInfo.name}</h3>
-                                    <p className="text-xs text-muted-foreground">Software Engineer & AI Researcher</p>
-                                </div>
-                            </div>
+                            <BrandLogo className="text-primary" />
                             <p className="text-sm text-muted-foreground leading-relaxed max-w-sm">
                                 From full-stack apps to DevOps pipelines and applied AI research, I bridge design, code,
                                 and data to deliver technology that matters.

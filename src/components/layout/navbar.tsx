@@ -7,6 +7,7 @@ import { Button } from "@/components/ui/button";
 import { Sheet, SheetContent, SheetTrigger } from "@/components/ui/sheet";
 import { Menu, FileText, Mail } from "lucide-react";
 import { personalInfo, navSections, contactInfo } from "@/lib/data";
+import { BrandLogo } from "@/components/common/brand-logo";
 
 export function Navbar() {
     const [isScrolled, setIsScrolled] = useState(false);
@@ -64,23 +65,9 @@ export function Navbar() {
                             e.preventDefault();
                             scrollToSection("home");
                         }}
-                        className="flex items-center space-x-3 group"
+                        className="flex items-center group"
                     >
-                        <div className="w-9 h-9 bg-primary rounded-lg flex items-center justify-center">
-                            <span className="text-primary-foreground font-bold text-sm select-none">
-                                {personalInfo.name
-                                    .split(" ")
-                                    .map((n) => n[0])
-                                    .join("")
-                                    .toUpperCase()}
-                            </span>
-                        </div>
-                        <div className="hidden sm:block">
-                            <h1 className="text-base font-bold text-foreground">
-                                {personalInfo.name}
-                            </h1>
-                            <p className="text-xs text-muted-foreground">Software Engineer</p>
-                        </div>
+                        <BrandLogo className="text-primary" />
                     </Link>
 
                     {/* Desktop Navigation */}
@@ -135,16 +122,7 @@ export function Navbar() {
                                 <div className="flex flex-col h-full px-2">
                                     {/* Mobile Header */}
                                     <div className="flex items-center gap-3 py-6 border-b">
-                                        <div className="w-9 h-9 bg-primary rounded-lg flex items-center justify-center">
-                                            <span className="text-primary-foreground font-semibold text-sm">
-                                                {personalInfo.name
-                                                    .split(" ")
-                                                    .map((n) => n[0])
-                                                    .join("")
-                                                    .toUpperCase()}
-                                            </span>
-                                        </div>
-                                        <h2 className="font-semibold text-base">{personalInfo.name}</h2>
+                                        <BrandLogo className="text-primary" />
                                     </div>
 
                                     {/* Mobile Navigation Links */}
