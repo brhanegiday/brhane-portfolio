@@ -1,6 +1,4 @@
-"use client";
-
-import { cn } from "@/lib/utils";
+﻿import { cn } from "@/lib/utils";
 
 interface BrandLogoProps {
     className?: string;
@@ -13,28 +11,34 @@ interface BrandLogoProps {
 export function BrandLogo({ className }: BrandLogoProps) {
     return (
         <span
-            aria-label="brhane.giday"
-            className={cn(
-                "inline-flex items-center gap-2 select-none leading-none",
-                className
-            )}
+            role="img"
+            aria-label="Brhane Giday"
+            className={cn("inline-flex select-none items-center gap-2.5 leading-none", className)}
         >
-            {/* Terminal cursor — blinks continuously */}
-            <span className="w-[2px] h-[1em] bg-current rounded-sm animate-cursor-blink opacity-80" />
-
-            {/* First name — light weight, wide tracking */}
-            <span className="text-[15px] font-light tracking-[0.07em]">
-                brhane
-            </span>
-
-            {/* Accent diamond — subtle pulse */}
-            <span className="inline-flex items-center justify-center shrink-0">
-                <span className="block w-[5px] h-[5px] rotate-45 bg-current rounded-[1px] animate-diamond-pulse opacity-75" />
-            </span>
-
-            {/* Last name — semibold, tighter tracking */}
-            <span className="text-[15px] font-semibold tracking-[0.03em]">
-                giday
+            <svg
+                aria-hidden="true"
+                viewBox="0 0 40 40"
+                fill="none"
+                className="h-9 w-9 shrink-0"
+            >
+                <rect x="0.75" y="0.75" width="38.5" height="38.5" rx="11" fill="currentColor" fillOpacity="0.08" stroke="currentColor" strokeOpacity="0.25" strokeWidth="1.5" />
+                <path
+                    d="M10 12h5a4 4 0 0 1 0 8h-5m0-8v16h5a4 4 0 0 0 0-8"
+                    stroke="currentColor"
+                    strokeWidth="2.25"
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                />
+                <path
+                    d="M30 14a7.5 7.5 0 1 0 0 12v-6h-5"
+                    stroke="currentColor"
+                    strokeWidth="2.25"
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                />
+            </svg>
+            <span aria-hidden="true" className="text-[17px] font-semibold tracking-[-0.045em] text-foreground">
+                Brhane<span className="ml-1 font-normal text-muted-foreground">Giday</span>
             </span>
         </span>
     );

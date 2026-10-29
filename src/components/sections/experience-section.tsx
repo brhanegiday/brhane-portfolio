@@ -1,126 +1,129 @@
-"use client";
+﻿"use client";
 
-import { Badge } from "@/components/ui/badge";
-import { Button } from "@/components/ui/button";
+import { Reveal } from "@/components/common/reveal";
 import { experiences, personalInfo } from "@/lib/data";
-import { Briefcase, Building, Calendar, CheckCircle, ExternalLink, MapPin } from "lucide-react";
+import { ArrowDownRight, ArrowUpRight, Plus } from "lucide-react";
+
+function formatDate(date: string) {
+    return new Intl.DateTimeFormat("en", { month: "short", year: "numeric", timeZone: "UTC" })
+        .format(new Date(`${date}-01T00:00:00Z`));
+}
 
 export function ExperienceSection() {
     return (
-        <section id="experience" className="relative py-20 lg:py-24">
-            <div className="container mx-auto max-w-6xl px-4 sm:px-6 lg:px-8">
-                {/* Header */}
-                <div className="text-center mb-16">
-                    <div className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-primary/10 text-primary text-sm font-medium mb-4">
-                        <Briefcase className="w-3.5 h-3.5" />
-                        Experience
-                    </div>
-                    <h2 className="text-3xl md:text-4xl font-bold mb-3">
-                        Professional Journey
-                    </h2>
-                    <p className="text-muted-foreground text-lg max-w-2xl mx-auto">
-                        Staff-level engineering experience leading teams and architecting scalable systems
-                    </p>
-                </div>
-
-                {/* Experience List */}
-                <div className="space-y-6 mb-10">
-                    {experiences.map((experience) => (
-                        <div
-                            key={experience.id}
-                            className="p-6 lg:p-8 rounded-xl border bg-card hover:shadow-md transition-shadow"
+        <section
+            id="experience"
+            aria-labelledby="experience-heading"
+            className="relative scroll-mt-20 border-y border-border/60 bg-card/30 py-20 sm:py-24 lg:py-32"
+        >
+            <div className="container mx-auto grid max-w-6xl gap-12 px-4 sm:px-6 lg:grid-cols-[0.85fr_1.65fr] lg:gap-20 lg:px-8">
+                <div>
+                    <Reveal className="lg:sticky lg:top-28">
+                        <p className="mb-6 flex items-center gap-3 font-mono text-[11px] uppercase tracking-[0.2em] text-muted-foreground">
+                            <span aria-hidden className="h-px w-8 bg-primary" />
+                            Experience
+                        </p>
+                        <h2
+                            id="experience-heading"
+                            className="max-w-sm text-4xl font-medium leading-[1.08] tracking-[-0.05em] sm:text-5xl lg:text-[3.5rem]"
                         >
-                            {/* Header row */}
-                            <div className="flex flex-col lg:flex-row lg:items-start lg:justify-between gap-4 mb-4">
-                                <div className="flex-1">
-                                    <div className="flex items-center gap-2 mb-2">
-                                        {!experience.endDate && (
-                                            <Badge className="text-xs bg-green-500/10 text-green-600 dark:text-green-400 border-green-500/20">
-                                                <div className="w-1.5 h-1.5 bg-green-500 rounded-full mr-1.5" />
-                                                Current
-                                            </Badge>
-                                        )}
-                                        <Badge variant="secondary" className="text-xs">
-                                            {experience.type.replace("-", " ")}
-                                        </Badge>
-                                    </div>
-                                    <h3 className="text-xl font-bold mb-2">
-                                        {experience.title}
-                                    </h3>
-                                    <div className="flex flex-col sm:flex-row sm:items-center gap-3 text-sm text-muted-foreground">
-                                        <div className="flex items-center gap-1.5">
-                                            <Building className="w-4 h-4 text-primary" />
-                                            <span className="text-primary font-medium">
-                                                {experience.company}
-                                            </span>
-                                        </div>
-                                        <div className="flex items-center gap-1.5">
-                                            <MapPin className="w-3.5 h-3.5" />
-                                            {experience.location}
-                                        </div>
-                                    </div>
-                                </div>
-                                <div className="flex items-center gap-1.5 text-sm text-muted-foreground bg-muted/50 px-3 py-1.5 rounded-lg shrink-0">
-                                    <Calendar className="w-3.5 h-3.5" />
-                                    <span className="font-medium">
-                                        {experience.startDate} – {experience.endDate || "Present"}
-                                    </span>
-                                </div>
-                            </div>
-
-                            {/* Description */}
-                            <p className="text-muted-foreground leading-relaxed mb-5">
-                                {experience.description}
-                            </p>
-
-                            {/* Technologies */}
-                            {experience.technologies && experience.technologies.length > 0 && (
-                                <div className="mb-5">
-                                    <h4 className="text-sm font-semibold mb-2 text-foreground">Technologies</h4>
-                                    <div className="flex flex-wrap gap-1.5">
-                                        {experience.technologies.map((tech, techIndex) => (
-                                            <Badge
-                                                key={techIndex}
-                                                variant="secondary"
-                                                className="text-xs"
-                                            >
-                                                {tech}
-                                            </Badge>
-                                        ))}
-                                    </div>
-                                </div>
-                            )}
-
-                            {/* Achievements */}
-                            {experience.achievements && experience.achievements.length > 0 && (
-                                <div>
-                                    <h4 className="text-sm font-semibold mb-2 text-foreground">Key Achievements</h4>
-                                    <div className="grid gap-2">
-                                        {experience.achievements.slice(0, 4).map((achievement, i) => (
-                                            <div
-                                                key={i}
-                                                className="flex items-start gap-2 text-sm text-muted-foreground"
-                                            >
-                                                <CheckCircle className="w-4 h-4 text-primary mt-0.5 shrink-0" />
-                                                <span className="leading-relaxed">{achievement}</span>
-                                            </div>
-                                        ))}
-                                    </div>
-                                </div>
-                            )}
-                        </div>
-                    ))}
-                </div>
-
-                {/* CTA */}
-                <div className="text-center">
-                    <Button variant="outline" className="gap-2" asChild>
-                        <a href={personalInfo.cvUrl} target="_blank" rel="noopener noreferrer">
-                            <ExternalLink className="w-4 h-4" />
-                            View Full Resume
+                            Professional<br />
+                            <span className="text-primary">journey.</span>
+                        </h2>
+                        <p className="mt-6 max-w-xs text-base leading-relaxed text-muted-foreground">
+                            Building interfaces. Leading teams. Turning research into tools people can use.
+                        </p>
+                        <a
+                            href={personalInfo.cvUrl}
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            className="group mt-8 inline-flex items-center gap-3 border-b border-primary/40 pb-2 text-sm font-medium text-foreground transition-colors hover:border-primary hover:text-primary"
+                        >
+                            View full resume
+                            <ArrowUpRight aria-hidden className="h-4 w-4 transition-transform motion-safe:group-hover:-translate-y-0.5 motion-safe:group-hover:translate-x-0.5" />
                         </a>
-                    </Button>
+                        <div aria-hidden className="mt-16 hidden items-end justify-between border-t border-border pt-5 lg:flex">
+                            <span className="font-mono text-xs text-muted-foreground">2019 — Present</span>
+                            <ArrowDownRight className="h-8 w-8 text-primary/60" strokeWidth={1} />
+                        </div>
+                    </Reveal>
                 </div>
+
+                <ol className="min-w-0 border-t border-border">
+                    {experiences.map((experience, index) => {
+                        const isCurrent = !experience.endDate;
+                        const [company, ...affiliation] = experience.company.split(", ");
+
+                        return (
+                            <li key={experience.id} className="border-b border-border">
+                                <details open={index === 0} className="group/role">
+                                    <summary className="group/summary relative grid cursor-pointer list-none grid-cols-[1fr_auto] gap-x-5 py-7 transition-colors marker:content-none hover:bg-primary/[0.025] sm:py-8 [&::-webkit-details-marker]:hidden">
+                                        <div className="min-w-0">
+                                            <div className="mb-4 flex flex-wrap items-center gap-x-3 gap-y-2 font-mono text-[11px] text-muted-foreground sm:text-xs">
+                                                <span>
+                                                    <time dateTime={experience.startDate}>{formatDate(experience.startDate)}</time>
+                                                    {" — "}
+                                                    {experience.endDate
+                                                        ? <time dateTime={experience.endDate}>{formatDate(experience.endDate)}</time>
+                                                        : "Present"}
+                                                </span>
+                                                {isCurrent && (
+                                                    <span className="inline-flex items-center gap-1.5 rounded-full bg-primary/10 px-2 py-0.5 text-primary">
+                                                        <span aria-hidden className="h-1.5 w-1.5 rounded-full bg-primary" />
+                                                        Current
+                                                    </span>
+                                                )}
+                                            </div>
+                                            <h3 className="text-xl font-medium leading-snug tracking-tight transition-colors group-hover/summary:text-primary sm:text-2xl">
+                                                {experience.title}
+                                            </h3>
+                                            <p className="mt-2 text-sm text-muted-foreground">
+                                                <span className="font-medium text-foreground/85">{company}</span>
+                                                {affiliation.length > 0 && (
+                                                    <span className="mt-1 block text-xs leading-relaxed">{affiliation.join(", ")}</span>
+                                                )}
+                                            </p>
+                                        </div>
+                                        <span className="mt-0.5 flex h-8 w-8 shrink-0 items-center justify-center rounded-full border border-border text-muted-foreground transition-colors group-open/role:border-primary/25 group-open/role:bg-primary/10 group-open/role:text-primary group-hover/summary:border-primary/50 group-hover/summary:text-primary">
+                                            <Plus aria-hidden className="h-4 w-4 transition-transform duration-200 group-open/role:rotate-45 motion-reduce:transition-none" />
+                                            <span className="sr-only">Role details</span>
+                                        </span>
+                                    </summary>
+
+                                    <div className="pb-8 sm:pr-10">
+                                        <p className="mb-5 font-mono text-[11px] capitalize text-muted-foreground">
+                                            {experience.location} <span aria-hidden className="mx-2 text-primary/50">/</span> {experience.type.replaceAll("-", " ")}
+                                        </p>
+                                        <p className="text-sm leading-7 text-muted-foreground">{experience.description}</p>
+
+                                        {experience.achievements && experience.achievements.length > 0 && (
+                                            <div className="mt-6 border-l-2 border-primary/25 pl-5">
+                                                <h4 className="mb-3 text-xs font-medium text-foreground">Selected contributions</h4>
+                                                <ul className="space-y-3">
+                                                    {experience.achievements.map((achievement) => (
+                                                        <li key={achievement} className="relative pl-3 text-sm leading-relaxed text-muted-foreground before:absolute before:left-0 before:top-2 before:h-1 before:w-1 before:rounded-full before:bg-primary/60">
+                                                            {achievement}
+                                                        </li>
+                                                    ))}
+                                                </ul>
+                                            </div>
+                                        )}
+
+                                        {experience.technologies && experience.technologies.length > 0 && (
+                                            <ul aria-label="Technologies and skills" className="mt-6 flex flex-wrap gap-2">
+                                                {experience.technologies.map((tech) => (
+                                                    <li key={tech} className="rounded-md border border-border/70 bg-background/60 px-2.5 py-1 font-mono text-[10px] text-muted-foreground sm:text-[11px]">
+                                                        {tech}
+                                                    </li>
+                                                ))}
+                                            </ul>
+                                        )}
+                                    </div>
+                                </details>
+                            </li>
+                        );
+                    })}
+                </ol>
             </div>
         </section>
     );

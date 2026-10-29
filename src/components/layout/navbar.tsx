@@ -1,13 +1,14 @@
 "use client";
 
-import { useState, useEffect } from "react";
-import Link from "next/link";
-import { cn } from "@/lib/utils";
+import { BrandLogo } from "@/components/common/brand-logo";
+import { ThemeToggle } from "@/components/common/theme-toggle";
 import { Button } from "@/components/ui/button";
 import { Sheet, SheetContent, SheetTrigger } from "@/components/ui/sheet";
-import { Menu, FileText, Mail } from "lucide-react";
-import { personalInfo, navSections, contactInfo } from "@/lib/data";
-import { BrandLogo } from "@/components/common/brand-logo";
+import { navSections, personalInfo } from "@/lib/data";
+import { cn } from "@/lib/utils";
+import { FileText, Mail, Menu } from "lucide-react";
+import Link from "next/link";
+import { useEffect, useState } from "react";
 
 export function Navbar() {
     const [isScrolled, setIsScrolled] = useState(false);
@@ -90,6 +91,7 @@ export function Navbar() {
 
                     {/* Desktop CTA Buttons */}
                     <div className="hidden md:flex items-center space-x-2">
+                        <ThemeToggle />
                         <Button
                             variant="ghost"
                             size="sm"
@@ -111,7 +113,8 @@ export function Navbar() {
                     </div>
 
                     {/* Mobile Menu */}
-                    <div className="md:hidden">
+                    <div className="flex items-center gap-1 md:hidden">
+                        <ThemeToggle />
                         <Sheet open={isOpen} onOpenChange={setIsOpen}>
                             <SheetTrigger asChild>
                                 <Button variant="ghost" size="sm" className="w-9 h-9 p-0">

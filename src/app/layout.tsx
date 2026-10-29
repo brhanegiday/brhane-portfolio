@@ -1,13 +1,20 @@
 import type { Metadata } from "next";
-import { Inter } from "next/font/google";
+import { JetBrains_Mono, Space_Grotesk } from "next/font/google";
 import { cn } from "@/lib/utils";
 import { seoConfig } from "@/lib/data";
 import "./globals.css";
 import { ThemeProvider } from "@/components/theme-provider";
 
-const inter = Inter({
+// The CSS variables are wired into Tailwind's font-sans / font-mono in globals.css.
+const spaceGrotesk = Space_Grotesk({
     subsets: ["latin"],
-    variable: "--font-sans",
+    variable: "--font-space-grotesk",
+    display: "swap",
+});
+
+const jetBrainsMono = JetBrains_Mono({
+    subsets: ["latin"],
+    variable: "--font-jetbrains-mono",
     display: "swap",
 });
 
@@ -57,8 +64,8 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
                 <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png" />
                 <link rel="manifest" href="/site.webmanifest" />
             </head>
-            <body className={cn("min-h-screen bg-background font-sans antialiased scroll-smooth", inter.variable)}>
-                <ThemeProvider attribute="class" defaultTheme="light" enableSystem disableTransitionOnChange>
+            <body className={cn("min-h-screen bg-background font-sans antialiased scroll-smooth", spaceGrotesk.variable, jetBrainsMono.variable)}>
+                <ThemeProvider attribute="class" defaultTheme="dark" enableSystem disableTransitionOnChange>
                     {children}
                 </ThemeProvider>
             </body>

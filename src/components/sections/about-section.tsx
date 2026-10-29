@@ -1,5 +1,8 @@
 "use client";
 
+import { Reveal } from "@/components/common/reveal";
+import { SectionHeading } from "@/components/common/section-heading";
+import { SKILL_COLORS } from "@/components/three/skill-cloud";
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
 import { achievements, education, personalInfo, skillsByCategory } from "@/lib/data";
@@ -16,9 +19,15 @@ import {
     Palette,
     Settings,
     Target,
-    User,
     Users
 } from "lucide-react";
+import dynamic from "next/dynamic";
+import { useState } from "react";
+
+const SkillCloud = dynamic(() => import("@/components/three/skill-cloud").then((m) => m.SkillCloud), {
+    ssr: false,
+    loading: () => <div className="h-full w-full animate-pulse bg-muted/20" />,
+});
 
 /* eslint-disable @typescript-eslint/no-explicit-any */
 const categoryIcons: Record<SkillCategory, any> = {
@@ -34,6 +43,7 @@ const categoryIcons: Record<SkillCategory, any> = {
 };
 
 export function AboutSection() {
+    const [highlight, setHighlight] = useState<SkillCategory | null>(null);
     const scrollToSection = (sectionId: string) => {
         const element = document.getElementById(sectionId);
         if (element) {
@@ -42,39 +52,32 @@ export function AboutSection() {
     };
 
     return (
-        <section id="about" className="relative py-20 lg:py-24 bg-muted/30">
-            <div className="container mx-auto max-w-6xl px-4 sm:px-6 lg:px-8">
-                {/* Header */}
-                <div className="text-center mb-16">
-                    <div className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-primary/10 text-primary text-sm font-medium mb-4">
-                        <User className="w-3.5 h-3.5" />
-                        About Me
-                    </div>
-                    <h2 className="text-3xl md:text-4xl font-bold mb-3">
-                        Engineering at Scale
-                    </h2>
-                    <p className="text-muted-foreground text-lg max-w-2xl mx-auto">
-                        Staff-level engineer specializing in AI-powered healthcare solutions and system architecture
-                    </p>
-                </div>
+        <section id="about" className="relative py-24 lg:py-32">
+            <div aria-hidden className="bg-circuit absolute inset-0" />
+            <div className="container relative z-10 mx-auto max-w-6xl px-4 sm:px-6 lg:px-8">
+                <SectionHeading
+                    title="Code, data and applied AI"
+                    description="Software engineer and AI researcher building tools for healthcare and policy."
+                />
 
                 <div className="grid lg:grid-cols-2 gap-12 items-start">
                     {/* About Content */}
                     <div className="space-y-8">
                         <div className="space-y-4">
                             <p className="text-muted-foreground leading-relaxed">
-                                <span className="text-foreground font-semibold">Staff Software Engineer</span> with
-                                proven expertise architecting scalable systems and leading cross-functional teams that
-                                deliver measurable impact.
+                                <span className="text-foreground font-semibold">Software engineer</span> with 7+ years
+                                in fullstack development, DevOps and cloud-native systems, and an MSc in Information
+                                Technology from Carnegie Mellon University Africa.
                             </p>
                             <p className="text-muted-foreground leading-relaxed">
-                                Currently leading AI research initiatives at Carnegie Mellon University&apos;s Upanzi Network,
-                                where I architect LLM-powered healthcare platforms serving 1,000+ researchers globally.
-                                My work achieves 40% reduction in biomarker assay variability.
+                                I am a research associate at the Upanzi Network, where I work on LLM-powered analysis of
+                                policy and healthcare data and design the pipelines that harmonise datasets from across
+                                Africa.
                             </p>
                             <p className="text-muted-foreground leading-relaxed">
-                                I&lsquo;ve built and mentored engineering teams across three countries, consistently
-                                delivering systems with 99.9% uptime while maintaining rapid development velocity.
+                                I like turning hard problems into products people can use: scalable architectures, CI/CD
+                                pipelines, and interfaces that make complex information easy to explore, including
+                                immersive 3D ones.
                             </p>
                         </div>
 
@@ -107,7 +110,7 @@ export function AboutSection() {
                             </h3>
                             <div className="space-y-3">
                                 {education.map((edu) => (
-                                    <div key={edu.id} className="p-5 rounded-xl border bg-card hover:shadow-md transition-shadow">
+                                    <div key={edu.id} className="glass rounded-xl p-5 transition-transform duration-300 hover:-translate-y-0.5">
                                         <h4 className="font-semibold text-base mb-1">
                                             {edu.degree} — {edu.field}
                                         </h4>
@@ -134,7 +137,7 @@ export function AboutSection() {
                             </h3>
                             <div className="space-y-3">
                                 {achievements.slice(0, 3).map((achievement) => (
-                                    <div key={achievement.id} className="p-5 rounded-xl border bg-card hover:shadow-md transition-shadow">
+                                    <div key={achievement.id} className="glass rounded-xl p-5 transition-transform duration-300 hover:-translate-y-0.5">
                                         <div className="flex items-start justify-between gap-4">
                                             <div className="flex-1">
                                                 <h4 className="font-semibold text-sm mb-1">{achievement.title}</h4>
@@ -161,10 +164,33 @@ export function AboutSection() {
                             </p>
                         </div>
 
+                        {/* 3D skill sphere: drag to turn it, pick a category to light it up */}
+                        <Reveal>
+                            <div className="glass relative overflow-hidden rounded-2xl">
+                                <div aria-hidden className="bg-dots absolute inset-0 opacity-60" />
+                                <div className="relative h-[380px]">
+                                    <SkillCloud className="absolute inset-0" highlight={highlight} />
+                                </div>
+                                <div className="relative flex flex-wrap justify-center gap-1.5 border-t p-3">
+                                    {(Object.keys(SKILL_COLORS) as SkillCategory[]).map((category) => (
+                                        <button
+                                            key={category}
+                                            onClick={() => setHighlight(highlight === category ? null : category)}
+                                            aria-pressed={highlight === category}
+                                            className="flex items-center gap-1.5 rounded-full border px-2.5 py-1 text-xs transition-colors hover:bg-muted/60 aria-pressed:bg-muted"
+                                        >
+                                            <span className="h-2 w-2 rounded-full" style={{ background: SKILL_COLORS[category] }} />
+                                            {category}
+                                        </button>
+                                    ))}
+                                </div>
+                            </div>
+                        </Reveal>
+
                         {Object.entries(skillsByCategory).map(([category, skills]) => {
                             const IconComponent = categoryIcons[category as SkillCategory] || Code2;
                             return (
-                                <div key={category} className="p-5 rounded-xl border bg-card hover:shadow-md transition-shadow">
+                                <div key={category} className="glass rounded-xl p-5 transition-transform duration-300 hover:-translate-y-0.5">
                                     <div className="flex items-center gap-3 mb-3">
                                         <div className="w-9 h-9 rounded-lg bg-primary/10 flex items-center justify-center">
                                             <IconComponent className="w-4 h-4 text-primary" />

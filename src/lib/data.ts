@@ -4,7 +4,7 @@ export const personalInfo: PersonalInfo = {
     name: "Brhane Giday",
     title: "Software Engineer & AI Researcher",
     tagline: "Building AI-Powered Solutions for Real-World Impact",
-    bio: `Software engineer with 5+ years of experience in fullstack development, DevOps, and cloud-native solutions. 
+    bio: `Software engineer with 7+ years of experience in fullstack development, DevOps, and cloud-native solutions. 
         MSc in Information Technology from Carnegie Mellon University Africa. Currently conducting research on 
         Large Language Models at the Upanzi Network, specializing in LLM-powered policy and healthcare data analysis. 
         Passionate about architecting scalable applications, building CI/CD pipelines, and applying AI to solve 
@@ -187,6 +187,35 @@ export const education: Education[] = [
 
 export const projects: Project[] = [
     {
+        id: "virtual-dec",
+        title: "Virtual DEC — Immersive 3D Experience Centre",
+        description:
+            "A browser-based, self-guided 3D tour of a physical experience centre, available in English and French.",
+        longDescription:
+            "**The Challenge:** The centre is a physical lab. Partners and visitors who cannot travel have no way to walk through it and see the work.\n\n**My Role:** Software engineer on the web experience, the 3D scene and the deployment pipeline, working with the Upanzi Network team.\n\n**Technical Innovation:** A 3D room built with React Three Fiber where visitors check in and explore the stations at their own pace, with captions and recorded narration. The tour is bilingual and keeps working with the AI features switched off.\n\n**Delivery:** Packaged as a Docker image that reads its configuration at start-up, and deployed with GitHub Actions. Visitor journeys are tracked against a backend API.",
+        technologies: ["Next.js", "React Three Fiber", "Three.js", "TypeScript", "GSAP", "Zustand", "next-intl", "Docker", "GitHub Actions", "Python"],
+        category: "Immersive 3D Web",
+        features: [
+            "Walkable 3D model of the centre",
+            "Interactive stations with demos and guided content",
+            "English and French captions and narration",
+            "Check-in, guest mode and resume-where-you-left-off",
+            "Visitor-journey tracking against a backend API",
+            "Runs with the AI features switched off",
+        ],
+        status: "in-progress",
+        startDate: "Jul 2026",
+        endDate: "Present",
+        highlights: [
+            "Real-time 3D in the browser",
+            "Bilingual: English and French",
+            "Containerised, with CI/CD",
+        ],
+        imageUrl: undefined,
+        liveUrl: "#",
+        githubUrl: "#",
+    },
+    {
         id: "0",
         title: "Nabayt — Professional Storytelling Platform",
         description:
@@ -218,29 +247,90 @@ export const projects: Project[] = [
     },
     {
         id: "1",
-        title: "Curricula - AI-Powered Academic Advisor",
+        title: "OLGA — AI-Powered Academic Planning",
         description:
-            "AI-powered platform helping students plan academic paths aligned with career goals using LLM-based recommendation engine.",
+            "AI-powered academic planning for CMU-Africa graduate students: build a degree plan, have it checked against program policy, get LLM course recommendations, and send it for staff approval.",
         longDescription:
-            "**The Challenge:** Students spend countless hours trying to navigate complex university catalogs and prerequisite chains, often making suboptimal course selections that delay graduation or don't align with career goals.\n\n**My Solution:** Architected a comprehensive AI platform leveraging Large Language Models to parse university catalogs and provide personalized academic recommendations. Built both frontend and backend systems with CI/CD pipelines for seamless deployment.\n\n**Technical Innovation:** Designed recommendation engine using advanced NLP techniques to understand course relationships and career alignment. Implemented scalable architecture with Next.js frontend, Node.js backend, and MongoDB for data persistence.\n\n**Recognition:** Platform was successfully incubated at CMU-Africa's Industry Innovation Lab, demonstrating its potential for real-world impact in educational technology.",
-        technologies: ["Next.js", "Node.js", "MongoDB", "OpenAI API", "LLMs", "CI/CD", "Academic Analytics"],
+            "**The Challenge:** Graduate students plan their degrees across program rules, curriculum versions and tracks that are hard to read in a handbook, and staff spend time checking plans by hand.\n\n**My Role:** Built OLGA (Optimized Learning and Guidance Assistant) end to end: the student app, the admin dashboard, the API and the AI recommendation service.\n\n**Technical Innovation:** A policy engine encodes the requirements of four programs (MSIT, MSEAI, MSECE and MSECE-AD) across curriculum versions and tracks. Every plan runs through a validation pipeline that categorises courses, finds issues and suggests fixes. A separate FastAPI service uses an LLM with retrieval over the course catalogue to recommend electives and generate degree plans.\n\n**Delivery:** Students use a drag-and-drop plan builder with a degree audit and progress tracker. Plans move from draft to pending to approved or rejected, with live status updates to students and staff. Sign-in is restricted to university Google accounts.\n\n**Recognition:** The platform was incubated at CMU-Africa's Industry Innovation Lab.",
+        technologies: ["Next.js", "React", "TypeScript", "Redux Toolkit", "Node.js", "Express", "MongoDB", "Socket.IO", "FastAPI", "LLMs", "RAG"],
         category: "AI/ML Application",
         features: [
-            "AI-Powered Course Recommendations",
-            "University Catalog Parsing",
-            "Academic Path Planning",
-            "Career Goal Alignment",
-            "Student and Faculty Workflows",
-            "Scalable Microservices Architecture",
+            "Drag-and-drop degree plan builder",
+            "Policy engine for four programs and multiple curriculum versions",
+            "Plan validation with issues and suggested fixes",
+            "LLM and RAG elective recommendations",
+            "Degree audit and progress tracker",
+            "Draft, review and approval workflow with live updates",
+            "Separate admin dashboard for staff",
         ],
-        status: "completed",
-        startDate: "Jan 2024",
-        endDate: "Jun 2024",
+        status: "in-progress",
+        startDate: "Feb 2025",
+        endDate: "Present",
         highlights: [
-            "Successfully incubated at CMU-Africa's Industry Innovation Lab",
-            "AI-driven recommendations using Large Language Models",
-            "Full-stack development with modern web technologies",
-            "Comprehensive CI/CD pipeline implementation",
+            "Built end to end: student app, admin dashboard, API and AI service",
+            "Four programs validated against their own policies",
+            "LLM recommendations grounded in the course catalogue",
+            "Incubated at CMU-Africa's Industry Innovation Lab",
+        ],
+        imageUrl: undefined,
+        liveUrl: "#",
+        githubUrl: "#",
+    },
+    {
+        id: "kazidata-insights",
+        title: "KaziData Insights — Labour-Market Dashboard",
+        description:
+            "A dashboard for Rwanda's labour-market intelligence: which occupations and skills employers want, where, and where supply falls short of demand.",
+        longDescription:
+            "**The Challenge:** Rwanda's job market data is scattered across boards, government pages and feeds. Planners and researchers need one place to see which occupations and skills are in demand, in which regions, and where the shortages are.\n\n**My Role:** Built the dashboard end to end, working against the KaziData API.\n\n**Technical Innovation:** A server-rendered Next.js app with pages for overview, skills, regions, occupations and the supply and demand gap. Each section streams in on its own behind a matching skeleton, so a slow query never blocks the page. An occupation opens as a slide-over without leaving the list, and the overview shows data freshness and source health.\n\n**Access:** The whole dashboard sits behind a shared password and a signed, expiring session cookie checked on every request.",
+        technologies: ["Next.js", "React Server Components", "TypeScript", "Tailwind CSS", "Recharts", "base-ui"],
+        category: "Full-Stack Development",
+        features: [
+            "Occupation and skill demand, including trending skills",
+            "Demand by region",
+            "Supply and demand gap: shortage or oversupply",
+            "Pipeline freshness and source health overview",
+            "Streaming sections with skeleton fallbacks",
+            "Occupation detail as a slide-over route",
+            "Signed session-cookie access gate",
+        ],
+        status: "in-progress",
+        startDate: "Sep 2026",
+        endDate: "Present",
+        highlights: [
+            "Reads live labour-market data from the KaziData API",
+            "Sections stream independently, never one big spinner",
+            "Covers demand and the supply and demand gap",
+        ],
+        imageUrl: undefined,
+        liveUrl: "#",
+        githubUrl: "#",
+    },
+    {
+        id: "kazidata-pipeline",
+        title: "KaziData Pipeline — Rwanda Job-Posting Extraction",
+        description:
+            "A bronze, silver and gold data pipeline that collects Rwandan job postings and LinkedIn profiles and maps them to ESCO skills and ISCO-08 occupations.",
+        longDescription:
+            "**The Challenge:** Job postings in Rwanda are spread across many boards, each with its own format, and the same job is often posted in several places. Without standard names for skills and occupations, the data cannot be compared or trusted.\n\n**My Role:** Engineer on the pipeline and its API, from scrapers to analytics tables.\n\n**Technical Innovation:** Raw data is kept untouched (bronze). A re-runnable step turns it into clean entities (silver), removing duplicates across sources and matching skills and occupations to the ESCO and ISCO-08 standards. Pre-computed demand and supply and demand gap tables (gold) feed dashboards. Eleven registered sources cover job boards, an NGO API, a government API, RSS feeds and a paid aggregator, each with a reliability tier. An LLM suggests occupations for postings the rules cannot map, and its suggestions go to human review before they count.\n\n**Delivery:** A read-only FastAPI service exposes the results to the dashboard. Database changes are versioned in 39 migrations, and offline tests cover scrapers and extraction logic.",
+        technologies: ["Python", "PostgreSQL", "FastAPI", "ESCO", "ISCO-08", "LLMs", "Web Scraping", "ETL Pipelines"],
+        category: "Data Engineering",
+        features: [
+            "Bronze, silver and gold medallion architecture",
+            "Eleven sources: boards, APIs, feeds and an aggregator",
+            "Cross-source duplicate detection",
+            "ESCO skill and ISCO-08 occupation mapping",
+            "LLM occupation suggestions with human review",
+            "Demand and supply and demand gap snapshots",
+            "Read-only API for dashboards",
+        ],
+        status: "in-progress",
+        startDate: "Jul 2026",
+        endDate: "Present",
+        highlights: [
+            "Raw data is never edited, so history can be re-processed at higher quality",
+            "Built on open standards instead of invented categories",
+            "Covers both demand (postings) and supply (profiles)",
         ],
         imageUrl: undefined,
         liveUrl: "#",
@@ -569,7 +659,7 @@ export const achievements: Achievement[] = [
     {
         id: "4",
         title: "CMU-Africa Industry Innovation Lab Incubation",
-        description: "Curricula platform successfully incubated at Carnegie Mellon University Africa's Innovation Lab",
+        description: "OLGA platform successfully incubated at Carnegie Mellon University Africa's Innovation Lab",
         date: "2024",
         category: "award",
     },
@@ -585,20 +675,20 @@ export const achievements: Achievement[] = [
 // Navigation configuration
 export const navSections = [
     { id: "home", label: "Home", href: "#home" },
+    { id: "showcase", label: "Showcase", href: "#showcase" },
     { id: "about", label: "About", href: "#about" },
     { id: "experience", label: "Experience", href: "#experience" },
     { id: "projects", label: "Projects", href: "#projects" },
-    { id: "contact", label: "Contact", href: "#contact" },
 ];
 
 // SEO configuration
 export const seoConfig = {
-    title: "Brhane Giday - Software Engineer & Research Associate",
+    title: "Brhane Giday - Software Engineer & Researcher",
     description:
-        "Software engineer with 5+ years of experience in fullstack development, DevOps, and cloud-native solutions. MS in Information Technology from Carnegie Mellon University Africa. Specializing in AI applications for healthcare and policy analysis.",
+        "Software engineer with 6+ years of experience in fullstack development, DevOps, and cloud-native solutions. MS in Information Technology from Carnegie Mellon University Africa. Specializing in AI applications for healthcare and policy analysis.",
     keywords: [
         "Software Engineer",
-        "Research Associate",
+        "Researcher",
         "Fullstack Development",
         "Large Language Models",
         "Healthcare AI",
@@ -617,7 +707,7 @@ export const seoConfig = {
 
 // Statistics for hero section
 export const stats = [
-    { label: "Years Experience", value: "5+" },
+    { label: "Years Experience", value: "7+" },
     { label: "Projects Delivered", value: "15+" },
     { label: "AI Solutions Built", value: "4+" },
     { label: "Teams Led", value: "4+" },
@@ -639,7 +729,7 @@ export const interests = [
 ];
 
 // Featured project IDs for homepage
-export const featuredProjectIds = ["1", "2", "3", "5"];
+export const featuredProjectIds = ["virtual-dec", "1", "kazidata-insights", "kazidata-pipeline", "3"];
 
 // Skills grouped by category for display
 export const skillsByCategory = skills.reduce((acc, skill) => {

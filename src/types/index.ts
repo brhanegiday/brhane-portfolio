@@ -17,6 +17,8 @@ export interface Project {
 }
 
 export type ProjectCategory =
+    | "Immersive 3D Web"
+    | "Data Engineering"
     | "AI/ML Application"
     | "Full-Stack Development"
     | "Team Leadership"
