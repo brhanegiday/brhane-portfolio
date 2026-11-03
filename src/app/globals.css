@@ -403,7 +403,7 @@
 }
 
 /* ------------------------------------------------------------------ */
-/* Editorial layer: grain, outlined type, spotlight borders, orbits    */
+/* Editorial layer: grain, outlined type, spotlight borders          */
 /* ------------------------------------------------------------------ */
 
 @layer utilities {
@@ -461,17 +461,6 @@
     opacity: 1;
   }
 
-  /* Rings around the hero globe; children counter-rotate to stay upright */
-  .animate-orbit {
-    animation: orbit 70s linear infinite;
-  }
-  .animate-orbit-reverse {
-    animation: orbit 70s linear infinite reverse;
-  }
-  @keyframes orbit {
-    to { transform: rotate(360deg); }
-  }
-
   /* A line that draws down and away: "keep scrolling" */
   .animate-scroll-cue {
     animation: scroll-cue 2.4s cubic-bezier(0.65, 0, 0.35, 1) infinite;
@@ -503,9 +492,19 @@
 }
 
 @media (prefers-reduced-motion: reduce) {
-  .animate-orbit,
-  .animate-orbit-reverse,
-  .animate-scroll-cue {
+  .animate-scroll-cue,
+  .animate-pillar-progress {
     animation: none;
+  }
+}
+
+@layer utilities {
+  /* The line under the active hero shape, filling while it is shown */
+  .animate-pillar-progress {
+    animation: pillar-progress 5s linear forwards;
+  }
+  @keyframes pillar-progress {
+    from { transform: scaleX(0); }
+    to   { transform: scaleX(1); }
   }
 }

@@ -8,22 +8,16 @@ import { cn } from "@/lib/utils";
 import { motion, useReducedMotion } from "framer-motion";
 import { ArrowDownRight, ArrowUpRight, Github, Instagram, Linkedin, Mail } from "lucide-react";
 import dynamic from "next/dynamic";
-import { useRef, type ReactNode } from "react";
+import { useTheme } from "next-themes";
+import { useEffect, useRef, useState, type ReactNode } from "react";
 
 // WebGL cannot render on the server, so the scene is loaded in the browser only.
-const HeroScene = dynamic(() => import("@/components/three/hero-scene").then((m) => m.HeroScene), {
+const PillarMorph = dynamic(() => import("@/components/three/pillar-morph").then((m) => m.PillarMorph), {
     ssr: false,
 });
 
-// Colours match the flows drawn in hero-scene.tsx.
-const GLOBE_KEY = [
-    { color: "#22d3ee", text: "Health and policy data from across Africa, harmonised by LLM pipelines in Kigali." },
-    { color: "#fb923c", text: "My path: Addis Ababa, where I studied and started working, to Kigali." },
-    { color: "#a78bfa", text: "Remote engineering teams in Europe and the USA.", dashed: true },
-];
-
-// One colour per focus area, used for the chips that orbit the globe.
-const ORBIT_COLORS = ["#22d3ee", "#fb923c", "#a78bfa"];
+// How long each shape holds before the particles rebuild into the next one.
+const PILLAR_MS = 5200;
 
 const socialIcons = {
     GitHub: Github,
@@ -65,7 +59,18 @@ function FadeIn({ children, delay, className }: { children: ReactNode; delay: nu
 
 export function HeroSection() {
     const sectionRef = useRef<HTMLElement>(null);
+    const reducedMotion = useReducedMotion();
+    const { resolvedTheme } = useTheme();
+    const [pillar, setPillar] = useState(0);
+    const [paused, setPaused] = useState(false);
     const [firstName, ...rest] = personalInfo.name.split(" ");
+
+    // The particles move on to the next area by themselves, unless the visitor is choosing one.
+    useEffect(() => {
+        if (paused || reducedMotion) return;
+        const timer = setTimeout(() => setPillar((current) => (current + 1) % focusAreas.length), PILLAR_MS);
+        return () => clearTimeout(timer);
+    }, [pillar, paused, reducedMotion]);
     const lastName = rest.join(" ");
 
     const scrollToSection = (sectionId: string) => {
@@ -121,7 +126,7 @@ export function HeroSection() {
 
                     <FadeIn delay={0.5}>
                         <p className="mt-8 text-xl font-medium sm:text-2xl">{personalInfo.title}</p>
-                        <p className="mt-4 max-w-xl text-base leading-relaxed text-muted-foreground sm:text-lg lg:max-w-[29rem]">
+                        <p className="mt-4 max-w-xl text-base leading-relaxed text-muted-foreground sm:text-lg">
                             {personalInfo.tagline}
                         </p>
                     </FadeIn>
@@ -175,39 +180,67 @@ export function HeroSection() {
                     </FadeIn>
                 </div>
 
-                {/* Globe in its orbit */}
+                {/* What I build, drawn in particles */}
                 <motion.div
-                    initial={{ opacity: 0, scale: 0.9 }}
-                    animate={{ opacity: 1, scale: 1 }}
-                    transition={{ duration: 1.4, delay: 0.2, ease: EASE }}
-                    className="relative mx-auto aspect-square w-full max-w-[min(34rem,88vw)] lg:mr-0 lg:w-[90%] lg:max-w-none"
+                    initial={{ opacity: 0 }}
+                    animate={{ opacity: 1 }}
+                    transition={{ duration: 1.2, delay: 0.2, ease: EASE }}
+                    className="relative mx-auto w-full max-w-[min(32rem,90vw)] lg:mr-0 lg:max-w-none"
+                    onPointerEnter={() => setPaused(true)}
+                    onPointerLeave={() => setPaused(false)}
                 >
-                    <div aria-hidden className="animate-orbit absolute inset-[-5%] rounded-full border border-dashed border-foreground/10 [animation-duration:140s]" />
-                    <div aria-hidden className="absolute inset-[3%] rounded-full border border-primary/15" />
+                    <div className="relative aspect-square w-full">
+                        <div
+                            aria-hidden
+                            className="absolute inset-[12%] rounded-full opacity-70 blur-3xl"
+                            style={{ background: "radial-gradient(circle, color-mix(in oklab, var(--primary) 22%, transparent), transparent 70%)" }}
+                        />
+                        <PillarMorph index={pillar} light={resolvedTheme === "light"} className="absolute inset-0" />
+                    </div>
 
-                    <HeroScene className="absolute inset-0" />
-
-                    {/* What I build, circling the continent */}
-                    <div className="animate-orbit pointer-events-none absolute inset-[-5%] hidden sm:block">
+                    <div className="grid grid-cols-3 gap-4 sm:gap-6">
                         {focusAreas.map((area, i) => {
-                            const angle = i * 120 - 50;
+                            const isActive = i === pillar;
                             return (
-                                <div key={area.id} className="absolute inset-0" style={{ transform: `rotate(${angle}deg)` }}>
-                                    <div className="absolute left-1/2 top-0 -translate-x-1/2 -translate-y-1/2">
-                                        <div style={{ transform: `rotate(${-angle}deg)` }}>
-                                            <div className="animate-orbit-reverse">
-                                                <span className="glass flex items-center gap-2 whitespace-nowrap rounded-full px-3.5 py-1.5 text-xs font-medium">
-                                                    <span className="h-1.5 w-1.5 rounded-full" style={{ background: ORBIT_COLORS[i] }} />
-                                                    {area.title}
-                                                </span>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
+                                <button
+                                    key={area.id}
+                                    onClick={() => setPillar(i)}
+                                    aria-pressed={isActive}
+                                    className="group self-start text-left"
+                                >
+                                    <span className="relative block h-px w-full overflow-hidden bg-foreground/15">
+                                        {isActive && (
+                                            <span
+                                                key={pillar}
+                                                className={cn(
+                                                    "absolute inset-0 origin-left bg-primary",
+                                                    !reducedMotion && "animate-pillar-progress",
+                                                    paused && "[animation-play-state:paused]",
+                                                )}
+                                                style={{ animationDuration: `${PILLAR_MS}ms` }}
+                                            />
+                                        )}
+                                    </span>
+                                    <span
+                                        className={cn(
+                                            "mt-3 block text-sm font-medium leading-snug transition-colors",
+                                            isActive ? "text-foreground" : "text-muted-foreground group-hover:text-foreground",
+                                        )}
+                                    >
+                                        {area.title}
+                                    </span>
+                                    <span
+                                        className={cn(
+                                            "mt-1 hidden text-xs leading-relaxed text-muted-foreground transition-opacity duration-500 xl:block",
+                                            isActive ? "opacity-100" : "opacity-40",
+                                        )}
+                                    >
+                                        {area.text}
+                                    </span>
+                                </button>
                             );
                         })}
                     </div>
-
                 </motion.div>
             </div>
 
@@ -229,30 +262,6 @@ export function HeroSection() {
                     </dl>
 
                     <div className="hidden items-center gap-8 font-mono text-xs text-muted-foreground lg:flex">
-                        {/* Key to the globe, opened on hover or focus */}
-                        <div className="group relative">
-                            <button className="underline decoration-foreground/20 underline-offset-4 transition-colors hover:text-foreground focus-visible:text-foreground">
-                                What am I looking at?
-                            </button>
-                            <div className="glass pointer-events-none absolute bottom-full right-0 mb-3 w-80 translate-y-1 rounded-2xl p-4 font-sans opacity-0 transition-all duration-300 group-focus-within:translate-y-0 group-focus-within:opacity-100 group-hover:translate-y-0 group-hover:opacity-100">
-                                <ul className="space-y-2.5 text-xs leading-relaxed text-muted-foreground">
-                                    {GLOBE_KEY.map((item) => (
-                                        <li key={item.text} className="flex gap-3">
-                                            <span
-                                                aria-hidden
-                                                className="mt-1.5 h-0.5 w-5 shrink-0 rounded"
-                                                style={{
-                                                    background: item.dashed
-                                                        ? `repeating-linear-gradient(90deg, ${item.color} 0 4px, transparent 4px 7px)`
-                                                        : item.color,
-                                                }}
-                                            />
-                                            {item.text}
-                                        </li>
-                                    ))}
-                                </ul>
-                            </div>
-                        </div>
                         <span>
                             {contactInfo.location} · <LocalTime className="tabular-nums text-foreground" />
                         </span>
