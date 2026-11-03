@@ -78,7 +78,7 @@ export function Navbar() {
                                 key={section.id}
                                 onClick={() => scrollToSection(section.id)}
                                 className={cn(
-                                    "px-3 py-2 text-sm font-medium transition-colors rounded-lg",
+                                    "px-3 cursor-pointer py-2 text-sm font-medium transition-colors rounded-lg",
                                     activeSection === section.id
                                         ? "text-primary bg-primary/8"
                                         : "text-muted-foreground hover:text-foreground"
@@ -93,22 +93,10 @@ export function Navbar() {
                     <div className="hidden md:flex items-center space-x-2">
                         <ThemeToggle />
                         <Button
-                            variant="ghost"
-                            size="sm"
-                            className="text-muted-foreground hover:text-foreground"
-                            asChild
-                        >
-                            <Link href={personalInfo.cvUrl!} target="_blank" rel="noopener noreferrer">
-                                <FileText className="w-4 h-4 mr-1.5" />
-                                Resume
-                            </Link>
-                        </Button>
-                        <Button
                             size="sm"
                             onClick={() => scrollToSection("contact")}
                         >
-                            <Mail className="w-4 h-4 mr-1.5" />
-                            Let&apos;s Talk
+                            Contact Me
                         </Button>
                     </div>
 
