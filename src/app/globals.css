@@ -401,3 +401,111 @@
     animation: none;
   }
 }
+
+/* ------------------------------------------------------------------ */
+/* Editorial layer: grain, outlined type, spotlight borders, orbits    */
+/* ------------------------------------------------------------------ */
+
+@layer utilities {
+  /* Film grain over large surfaces, so flat gradients do not band */
+  .bg-noise {
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='160' height='160'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='2' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+    opacity: 0.06;
+    mix-blend-mode: overlay;
+    pointer-events: none;
+  }
+
+  /* Hollow display type that fills in on hover */
+  .text-outline {
+    color: transparent;
+    -webkit-text-stroke: 1.5px color-mix(in oklab, var(--foreground) 65%, transparent);
+    transition: color 0.5s ease;
+  }
+  .text-outline:hover {
+    color: color-mix(in oklab, var(--foreground) 92%, transparent);
+  }
+
+  /* A card whose border lights up under the pointer (SpotlightCard sets --mx / --my) */
+  .spotlight {
+    position: relative;
+    isolation: isolate;
+  }
+  .spotlight::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    z-index: 1;
+    border-radius: inherit;
+    padding: 1px;
+    background: radial-gradient(320px circle at var(--mx, 50%) var(--my, 50%), color-mix(in oklab, var(--primary) 75%, transparent), transparent 65%);
+    -webkit-mask: linear-gradient(#000 0 0) content-box, linear-gradient(#000 0 0);
+    -webkit-mask-composite: xor;
+    mask-composite: exclude;
+    opacity: 0;
+    transition: opacity 0.35s ease;
+    pointer-events: none;
+  }
+  .spotlight::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    z-index: -1;
+    border-radius: inherit;
+    background: radial-gradient(480px circle at var(--mx, 50%) var(--my, 50%), color-mix(in oklab, var(--primary) 9%, transparent), transparent 60%);
+    opacity: 0;
+    transition: opacity 0.35s ease;
+    pointer-events: none;
+  }
+  .spotlight:hover::before,
+  .spotlight:hover::after {
+    opacity: 1;
+  }
+
+  /* Rings around the hero globe; children counter-rotate to stay upright */
+  .animate-orbit {
+    animation: orbit 70s linear infinite;
+  }
+  .animate-orbit-reverse {
+    animation: orbit 70s linear infinite reverse;
+  }
+  @keyframes orbit {
+    to { transform: rotate(360deg); }
+  }
+
+  /* A line that draws down and away: "keep scrolling" */
+  .animate-scroll-cue {
+    animation: scroll-cue 2.4s cubic-bezier(0.65, 0, 0.35, 1) infinite;
+  }
+  @keyframes scroll-cue {
+    0%   { transform: scaleY(0); transform-origin: top; }
+    45%  { transform: scaleY(1); transform-origin: top; }
+    55%  { transform: scaleY(1); transform-origin: bottom; }
+    100% { transform: scaleY(0); transform-origin: bottom; }
+  }
+
+  .scrollbar-none {
+    scrollbar-width: none;
+  }
+  .scrollbar-none::-webkit-scrollbar {
+    display: none;
+  }
+
+  /* Left/right inset that lines the project gallery up with the page container */
+  .gallery-gutter {
+    --gutter: 1rem;
+  }
+  @media (min-width: 40rem) {
+    .gallery-gutter { --gutter: 1.5rem; }
+  }
+  @media (min-width: 64rem) {
+    .gallery-gutter { --gutter: calc(max(0px, (100vw - 72rem) / 2) + 2rem); }
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .animate-orbit,
+  .animate-orbit-reverse,
+  .animate-scroll-cue {
+    animation: none;
+  }
+}

@@ -3,8 +3,9 @@ import { Achievement, ContactInfo, Education, Experience, PersonalInfo, Project,
 export const personalInfo: PersonalInfo = {
     name: "Brhane Giday",
     title: "Software Engineer & AI Researcher",
-    tagline: "Building AI-Powered Solutions for Real-World Impact",
-    bio: `Software engineer with 7+ years of experience in fullstack development, DevOps, and cloud-native solutions. 
+    tagline:
+        "I build software and AI for digital public infrastructure in Africa — identity systems, public-service automation, and data platforms.",
+    bio: `Software engineer with 6+ years of experience in fullstack development, DevOps, and cloud-native solutions. 
         MSc in Information Technology from Carnegie Mellon University Africa. Currently conducting research on 
         Large Language Models at the Upanzi Network, specializing in LLM-powered policy and healthcare data analysis. 
         Passionate about architecting scalable applications, building CI/CD pipelines, and applying AI to solve 
@@ -49,37 +50,35 @@ export const contactInfo: ContactInfo = {
 export const experiences: Experience[] = [
     {
         id: "1",
-        title: "Research Associate",
+        title: "Software Engineer & AI Researcher",
         company: "Upanzi Network, Carnegie Mellon University Africa",
         location: "Kigali, Rwanda",
         startDate: "2025-01",
         description:
-            "Conducting cutting-edge research on LLM-powered policy and healthcare data analysis. Designing AI pipelines to process heterogeneous datasets across Africa and collaborating with policy experts, researchers, and engineers to create practical AI tools.",
+            "Building backend services, frontends and AI tools for digital public infrastructure, connecting legacy DPI systems with MOSIP and running frontend, backend and AI research across projects.",
         achievements: [
-            "Designed AI pipelines for processing heterogeneous datasets across African countries",
-            "Collaborated with cross-functional teams of policy experts, researchers, and engineers",
-            "Developed LLM-powered analysis tools for healthcare and policy applications",
-            "Created scalable solutions for data harmonization and policy analysis",
+            "Built backend microservices and REST APIs (Node.js, Python) connecting legacy DPI systems with MOSIP",
+            "Implemented OpenID Connect authentication, secure credential handling and service isolation",
+            "Deployed services with Docker and Kubernetes behind CI/CD pipelines",
+            "Projects include the AI Policy Analyzer and the Fayda National ID chatbot",
         ],
-        technologies: ["DevOps Engineering", "LLMs", "AI Chatbot Integration", "Fullstack Development", "Software Engineering", "Policy Analysis"],
+        technologies: ["Node.js", "Python", "REST APIs", "MOSIP", "OpenID Connect", "Docker", "Kubernetes", "CI/CD", "LLMs", "RAG"],
         type: "research",
     },
     {
         id: "2",
-        title: "Frontend Engineer",
+        title: "Frontend Engineer & Team Lead",
         company: "Better Mobile Security",
-        location: "Remote, USA",
+        location: "Remote (USA)",
         startDate: "2022-09",
-        endDate: "2024-08",
+        endDate: "2023-11",
         description:
-            "Led frontend development teams for large-scale security applications using modern web technologies. Developed secure dashboards, optimized performance for thousands of users, and mentored junior engineers while integrating CI/CD workflows.",
+            "Led the frontend team building security monitoring dashboards for mobile security applications, and set the team's testing and CI/CD standards.",
         achievements: [
-            "Led frontend team for large-scale security applications serving thousands of users",
-            "Developed secure dashboards with advanced security features and user management",
-            "Optimized application performance achieving significant load time improvements",
-            "Integrated comprehensive CI/CD workflows and established development best practices",
-            "Mentored junior engineers and conducted extensive code reviews",
-            "Built scalable React applications with TypeScript and Next.js",
+            "Led the frontend team",
+            "Designed and built security monitoring dashboards for mobile security applications",
+            "Set testing standards and CI/CD workflows for the team",
+            "Mentored engineers on the team",
         ],
         technologies: ["React", "Next.js", "TypeScript", "Security Dashboards", "CI/CD", "Performance Optimization"],
         type: "full-time",
@@ -88,7 +87,7 @@ export const experiences: Experience[] = [
         id: "3",
         title: "Frontend Engineer",
         company: "DoubleDice",
-        location: "Remote, Belgium",
+        location: "Remote (Belgium)",
         startDate: "2022-03",
         endDate: "2022-09",
         description:
@@ -280,7 +279,7 @@ export const projects: Project[] = [
         id: "kazidata-insights",
         title: "KaziData Insights — Labour-Market Dashboard",
         description:
-            "A dashboard for Rwanda's labour-market intelligence: which occupations and skills employers want, where, and where supply falls short of demand.",
+            "A dashboard for Rwanda's labour-market intelligence, in English, French and Kinyarwanda: which occupations and skills employers want, where, and where supply falls short of demand.",
         longDescription:
             "**The Challenge:** Rwanda's job market data is scattered across boards, government pages and feeds. Planners and researchers need one place to see which occupations and skills are in demand, in which regions, and where the shortages are.\n\n**My Role:** Built the dashboard end to end, working against the KaziData API.\n\n**Technical Innovation:** A server-rendered Next.js app with pages for overview, skills, regions, occupations and the supply and demand gap. Each section streams in on its own behind a matching skeleton, so a slow query never blocks the page. An occupation opens as a slide-over without leaving the list, and the overview shows data freshness and source health.\n\n**Access:** The whole dashboard sits behind a shared password and a signed, expiring session cookie checked on every request.",
         technologies: ["Next.js", "React Server Components", "TypeScript", "Tailwind CSS", "Recharts", "base-ui"],
@@ -293,6 +292,7 @@ export const projects: Project[] = [
             "Streaming sections with skeleton fallbacks",
             "Occupation detail as a slide-over route",
             "Signed session-cookie access gate",
+            "Available in English, French and Kinyarwanda",
         ],
         status: "in-progress",
         startDate: "Sep 2026",
@@ -310,7 +310,7 @@ export const projects: Project[] = [
         id: "kazidata-pipeline",
         title: "KaziData Pipeline — Rwanda Job-Posting Extraction",
         description:
-            "A bronze, silver and gold data pipeline that collects Rwandan job postings and LinkedIn profiles and maps them to ESCO skills and ISCO-08 occupations.",
+            "A bronze, silver and gold data pipeline that collects Rwanda's public job postings, curricula and official labour data and maps them to ESCO skills and ISCO-08 occupations.",
         longDescription:
             "**The Challenge:** Job postings in Rwanda are spread across many boards, each with its own format, and the same job is often posted in several places. Without standard names for skills and occupations, the data cannot be compared or trusted.\n\n**My Role:** Engineer on the pipeline and its API, from scrapers to analytics tables.\n\n**Technical Innovation:** Raw data is kept untouched (bronze). A re-runnable step turns it into clean entities (silver), removing duplicates across sources and matching skills and occupations to the ESCO and ISCO-08 standards. Pre-computed demand and supply and demand gap tables (gold) feed dashboards. Eleven registered sources cover job boards, an NGO API, a government API, RSS feeds and a paid aggregator, each with a reliability tier. An LLM suggests occupations for postings the rules cannot map, and its suggestions go to human review before they count.\n\n**Delivery:** A read-only FastAPI service exposes the results to the dashboard. Database changes are versioned in 39 migrations, and offline tests cover scrapers and extraction logic.",
         technologies: ["Python", "PostgreSQL", "FastAPI", "ESCO", "ISCO-08", "LLMs", "Web Scraping", "ETL Pipelines"],
@@ -330,7 +330,35 @@ export const projects: Project[] = [
         highlights: [
             "Raw data is never edited, so history can be re-processed at higher quality",
             "Built on open standards instead of invented categories",
-            "Covers both demand (postings) and supply (profiles)",
+            "Covers both demand (job postings) and supply (curricula and official labour data)",
+        ],
+        imageUrl: undefined,
+        liveUrl: "#",
+        githubUrl: "#",
+    },
+    {
+        id: "fayda-chatbot",
+        title: "Fayda Chatbot System",
+        description:
+            "An FAQ assistant for Ethiopia's National ID (Fayda) on Telegram and WhatsApp that understands Ge'ez-script and Latin-script questions.",
+        longDescription:
+            "**The Challenge:** People registering for or using Ethiopia's National ID (Fayda) have recurring questions, and they ask them on the messaging apps they already use, in Ge'ez script or in Latin script.\n\n**The System:** An FAQ assistant on Telegram and WhatsApp that understands queries in both scripts. Answers come from a grounded RAG pipeline over approved National ID content.\n\n**Human in the Loop:** Staff at the National ID Agency review the assistant's answers, so the knowledge base stays accurate.\n\n**Context:** Built at the Upanzi Network, Carnegie Mellon University Africa. In progress.",
+        technologies: ["RAG Pipelines", "LLMs", "Telegram Bot", "WhatsApp", "Ge'ez Script NLP", "Human-in-the-Loop Review"],
+        category: "AI/ML Application",
+        features: [
+            "FAQ assistant for the Fayda National ID",
+            "Available on Telegram and WhatsApp",
+            "Understands Ge'ez-script and Latin-script queries",
+            "Grounded RAG answers",
+            "Human-in-the-loop review by National ID Agency staff",
+        ],
+        status: "in-progress",
+        startDate: "2025",
+        endDate: "Present",
+        highlights: [
+            "Serves Ethiopia's National ID programme",
+            "Works in both Ge'ez and Latin script",
+            "Answers reviewed by National ID Agency staff",
         ],
         imageUrl: undefined,
         liveUrl: "#",
@@ -338,37 +366,27 @@ export const projects: Project[] = [
     },
     {
         id: "2",
-        title: "AI-Powered Policy Analyzer for Africa",
+        title: "AI Policy Analyzer",
         description:
-            "AI chatbot with LLM integration making complex African policies accessible through interactive Q&A and analysis.",
+            "RAG-based analysis of African Digital ID and data protection policies, with an interactive chatbot and dashboards for development partners assessing DPI readiness.",
         longDescription:
-            "**The Challenge:** African policy documents are often complex, fragmented, and difficult for citizens, researchers, and policymakers to navigate effectively, creating barriers to informed decision-making.\n\n**My Solution:** Developed a sophisticated AI-powered platform with a sleek, professional UI that makes complex policies accessible to all stakeholders. Integrated advanced LLM chatbot for interactive policy Q&A sessions.\n\n**Technical Excellence:** Built responsive design with smooth API integration, ensuring optimal user experience across devices. Implemented advanced natural language processing for accurate policy interpretation and contextual responses.",
-        technologies: [
-            "React",
-            "Next.js",
-            "LLMs",
-            "OpenAI API",
-            "Policy Analysis",
-            "Conversational AI",
-            "Responsive Design",
-        ],
+            "**The Challenge:** Development partners assessing a country's readiness for digital public infrastructure (DPI) have to work through long, fragmented Digital ID and data protection policies from across Africa.\n\n**The Solution:** A RAG-based analysis tool over those policies, with an interactive chatbot for questions and dashboards for comparing DPI readiness.\n\n**My Role:** Built at the Upanzi Network, where I worked on the frontend, the chatbot design, the RAG pipeline and the backend.",
+        technologies: ["React", "Next.js", "LLMs", "RAG Pipelines", "Conversational AI", "Dashboards", "Policy Analysis"],
         category: "AI/ML Application",
         features: [
-            "Interactive Policy Q&A Chatbot",
-            "Professional UI for Complex Data",
-            "LLM Integration for Policy Analysis",
+            "RAG over African Digital ID and data protection policies",
+            "Interactive policy chatbot",
+            "Dashboards for DPI readiness assessment",
+            "Built for development partners",
             "Responsive Design",
-            "API Integration",
-            "Multi-stakeholder Access",
         ],
         status: "completed",
-        startDate: "Mar 2024",
-        endDate: "May 2024",
+        startDate: "2025",
         highlights: [
-            "Sleek, professional UI making complex policies accessible",
-            "AI chatbot powered by Large Language Models",
-            "Responsive design ensuring cross-device compatibility",
-            "Smooth API integration for seamless user experience",
+            "Covers Digital ID and data protection policies across Africa",
+            "Chatbot answers grounded in the policy texts",
+            "Dashboards for development partners assessing DPI readiness",
+            "Frontend, chatbot design, RAG pipeline and backend",
         ],
         imageUrl: undefined,
         liveUrl: "#",
@@ -482,36 +500,27 @@ export const projects: Project[] = [
     },
     {
         id: "6",
-        title: "Role-Based Event Management System",
+        title: "MOSIP-Integrated Event Management System",
         description:
-            "Comprehensive event management platform with multi-role user management, event creation, booking workflows, and administrative features.",
+            "Event management with MOSIP identity verification for event authentication, role-based microservices for booking and administration, and an Angular dashboard.",
         longDescription:
-            "Built a full-featured event management system supporting multiple user roles including admins, event coordinators, and participants. Implemented comprehensive event creation, booking management, and real-time features.",
-        technologies: [
-            "React",
-            "Material-UI",
-            "Tailwind CSS",
-            "Role-Based Access",
-            "Event Management",
-            "Responsive Design",
-        ],
+            "**Identity:** Attendees are authenticated with MOSIP identity verification, using biometric and demographic tokens.\n\n**Services:** Booking and administration run as separate microservices with role-based access control (RBAC).\n\n**Dashboard:** An Angular Material dashboard with NgRx state management for organisers and administrators.",
+        technologies: ["MOSIP", "Angular", "Angular Material", "NgRx", "Microservices", "RBAC"],
         category: "Full-Stack Development",
         features: [
-            "Multi-role User Management",
-            "Event Creation and Management",
-            "Booking System",
-            "Real-time Updates",
-            "Administrative Dashboard",
-            "Responsive Interface",
+            "MOSIP identity verification for event authentication",
+            "Biometric and demographic token checks",
+            "RBAC microservices for booking",
+            "RBAC microservices for administration",
+            "Angular Material + NgRx dashboard",
         ],
         status: "completed",
         startDate: "Aug 2023",
         endDate: "Dec 2023",
         highlights: [
-            "Role-based access control implementation",
-            "Reusable React components with Material-UI",
-            "Smooth API integrations",
-            "Responsive design for all device types",
+            "Event authentication backed by MOSIP identity verification",
+            "Booking and administration split into RBAC microservices",
+            "Angular Material dashboard with NgRx state",
         ],
         imageUrl: undefined,
         liveUrl: "#",
@@ -636,17 +645,17 @@ export const skills: Skill[] = [
 
 export const achievements: Achievement[] = [
     {
-        id: "1",
-        title: "AWS Certified Cloud Practitioner",
-        description: "Certified in cloud computing fundamentals and AWS services",
-        date: "2024",
-        category: "certification",
-    },
-    {
         id: "2",
         title: "CompTIA Linux+ Certified",
         description: "Advanced Linux system administration and DevOps skills certification",
-        date: "2024",
+        date: "Dec 2024",
+        category: "certification",
+    },
+    {
+        id: "1",
+        title: "AWS Certified Cloud Practitioner",
+        description: "Certified in cloud computing fundamentals and AWS services",
+        date: "Jan 2025",
         category: "certification",
     },
     {
@@ -683,9 +692,9 @@ export const navSections = [
 
 // SEO configuration
 export const seoConfig = {
-    title: "Brhane Giday - Software Engineer & Researcher",
+    title: "Brhane Giday - Software Engineer & AI Researcher",
     description:
-        "Software engineer with 6+ years of experience in fullstack development, DevOps, and cloud-native solutions. MS in Information Technology from Carnegie Mellon University Africa. Specializing in AI applications for healthcare and policy analysis.",
+        "Software Engineer & AI Researcher with 6+ years of experience, building software and AI for digital public infrastructure in Africa — identity systems, public-service automation, and data platforms.",
     keywords: [
         "Software Engineer",
         "Researcher",
@@ -707,11 +716,18 @@ export const seoConfig = {
 
 // Statistics for hero section
 export const stats = [
-    { label: "Years Experience", value: "7+" },
+    { label: "Years Experience", value: "6+" },
     { label: "Projects Delivered", value: "15+" },
     { label: "AI Solutions Built", value: "4+" },
     { label: "Teams Led", value: "4+" },
 ];
+
+// The three areas of digital public infrastructure named in the tagline
+export const focusAreas = [
+    { id: "identity", title: "Identity systems", text: "MOSIP integrations, OpenID Connect and national ID services." },
+    { id: "automation", title: "Public-service automation", text: "AI assistants and chatbots for citizen-facing services." },
+    { id: "data", title: "Data platforms", text: "Pipelines and dashboards for labour-market and policy data." },
+] as const;
 
 // Featured technologies for hero animation
 export const featuredTechnologies = ["React", "Next.js", "Python", "AI/ML", "Node.js", "TypeScript", "AWS", "DevOps"];

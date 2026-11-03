@@ -4,6 +4,8 @@ import type { Project, ProjectCategory } from "@/types";
  * Generative artwork for a project card. Each category has its own picture
  * (a neural net, a stack of slabs, an isometric cube, a UI wireframe), and the
  * project id seeds the details, so every card is different but always the same.
+ * Each picture builds its own generator from the seed: sharing one across components
+ * would let a second render (React dev mode renders twice) draw different numbers.
  */
 
 /** Small deterministic random number generator (mulberry32), so server and client draw the same art. */
@@ -21,7 +23,8 @@ function seededRandom(seed: string): () => number {
 const WIDTH = 320;
 const HEIGHT = 150;
 
-function NeuralNet({ random }: { random: () => number }) {
+function NeuralNet({ seed }: { seed: string }) {
+    const random = seededRandom(seed);
     const layerX = [48, 124, 200, 276];
     const layers = layerX.map((x, layerIndex) => {
         const count = layerIndex === 0 || layerIndex === layerX.length - 1 ? 3 : 4 + Math.floor(random() * 2);
@@ -70,7 +73,8 @@ function Slab({ cx, cy, width, thickness, opacity }: { cx: number; cy: number; w
     );
 }
 
-function LayerStack({ random }: { random: () => number }) {
+function LayerStack({ seed }: { seed: string }) {
+    const random = seededRandom(seed);
     const layers = 3 + Math.floor(random() * 2);
     return (
         <g>
@@ -119,7 +123,8 @@ function IsometricCube() {
     );
 }
 
-function Wireframe({ random }: { random: () => number }) {
+function Wireframe({ seed }: { seed: string }) {
+    const random = seededRandom(seed);
     const cards = Array.from({ length: 3 }, () => 0.35 + random() * 0.5);
     return (
         <g>
@@ -140,7 +145,8 @@ function Wireframe({ random }: { random: () => number }) {
 }
 
 /** Sources flow into bronze, silver and gold tiers that get taller and brighter: the medallion pipeline. */
-function Pipeline({ random }: { random: () => number }) {
+function Pipeline({ seed }: { seed: string }) {
+    const random = seededRandom(seed);
     const sources = Array.from({ length: 5 }, (_, i) => ({ x: 24, y: 22 + i * 26 + random() * 6 }));
     const tiers = [
         { x: 84, height: 62, opacity: 0.14 },
@@ -213,7 +219,7 @@ function Pipeline({ random }: { random: () => number }) {
     );
 }
 
-const ART: Record<ProjectCategory, (props: { random: () => number }) => React.JSX.Element> = {
+const ART: Record<ProjectCategory, (props: { seed: string }) => React.JSX.Element> = {
     "AI/ML Application": NeuralNet,
     "Full-Stack Development": LayerStack,
     "Data Engineering": Pipeline,
@@ -223,7 +229,7 @@ const ART: Record<ProjectCategory, (props: { random: () => number }) => React.JS
 };
 
 export function ProjectArt({ project, className }: { project: Project; className?: string }) {
-    const random = seededRandom(project.id);
+
     const Art = ART[project.category];
 
     return (
@@ -234,7 +240,7 @@ export function ProjectArt({ project, className }: { project: Project; className
             className={className}
             preserveAspectRatio="xMidYMid meet"
         >
-            <Art random={random} />
+            <Art seed={project.id} />
         </svg>
     );
 }
